@@ -4,5 +4,7 @@
 *  { background-color :"blue";
 	text-align: center; }
 	
-td {text-align: left;}
+td {text-align: left;
+	background-color: "white";}
+
 	
