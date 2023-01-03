@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+div{
+	height: 40px;
+	background-color: #F1F3F4;
+}
+
+h3{
+	border-top: solid 1px #cccccc;
+	text-align: center;
+	padding: 20px;
+}
+
+.Login_t { width: 380px;
+	margin: 0 auto;}
+
+.input_id ,.input_pw { height: 30px; width: 150px;}
+.byn_lo { padding: 30px; }

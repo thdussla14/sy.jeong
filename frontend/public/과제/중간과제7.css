@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* 
+	식별자
+	1.* 2. tag 3. .class 4. #id
+
+*/
+
+/*
+
+* { }
+img { }
+.book_img{ }
+#book_img{ }
+
+*/
+
+.book_img{
+	width: 300px;
+}
+
+.title_no{
+	color: orange;	
+	display: inline;
+	font-size: 40px;
+}
+
+div{
+	background-color: #0F6878;
+	color: white;
+	padding: 30px;
+	line-height: 170%; 
+	width: 500px;
+	
+}
+
+.con_e{
+	color: orange;
+}

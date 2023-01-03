@@ -3,6 +3,7 @@
 div{ /* 1. div 에 적용 */
 	border: solid 1px red;
 	margin: 30px;
+	width: 200px;
 }
 
 span{ /* 2. span 에 적용 */ 
