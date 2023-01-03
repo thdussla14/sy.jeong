@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/*
+	class, id 정의 [만들기]
+		1. 영문
+		2. 띄어쓰기 대신 _사용
+		3. 
+		4. 
+
+*/
+
+
+.signup_title {
+	text-align: center;
+}
+
+.signup_form {
+	width: 600px;
+	margin: 0 auto;
+	border-top: solid 2px red;
+	border-bottom: solid 2px red;
+	padding: 30px;
+	
+}
+
+
+
+/* li [block -> inline-block] */
+
+.colums li {display: inline-block;}
+
+.colums {padding: 5px;}
+
+.colums .col1{width: 150px;}
+.colums .col2{width: 300px; height: 25px;}
+.colums .col2 select {width: 100px; height: 25px;}
+.colums .col3{height: 25px;}
+.hello{ vertical-align: top;}
+
+
+/* 글머리 제거 */
+
+.signup_box li {
+	list-style-type: none;
+}
+
+div{text-align: right;}
+
+.btn_box input{	
+	margin: 10px 3px 0px 0px;
+	padding: 10px 20px;
+	}

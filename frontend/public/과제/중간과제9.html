@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<link href="중간과제9.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<h3 class="signup_title"> 회원 가입 폼 </h3>
+	
+	<form class="signup_form" >	<!-- 추후 입력된 input들의 데이터 보낼 예정  -->
+		<ul class="signup_box">
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1" > 아이디 </li>
+					<li class="col2"> <input type="text"> </li>			
+				</ul>
+				
+			</li>	
+			
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1"> 비밀번호 </li>
+					<li class="col2"> <input type="password"> </li>			
+				</ul>									
+			</li>	
+				
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1"> 비밀번호 확인 </li>
+					<li class="col2"> <input type="password"> </li>			
+				</ul>			
+			</li>
+				 
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1"> 이름 </li>
+					<li class="col2"> <input type="text"> </li>			
+				</ul>			
+						
+			</li>		 
+			<li>	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1"> 이메일 </li>
+					<li class="col2"><input type="text">  @  
+						<select>
+							<option> 직접입력 </option>
+							<option> naver.com </option>
+							<option> nate.com </option>
+						</select> 
+					</li>			
+				</ul>			
+						
+			</li>		 
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums"> <!-- radio는 name 속성 필수로 해야 복수 선택 방지 -->
+					<li class="col1"> 이메일 수신 </li>
+					<li > 
+						<input type="radio" name=""> 비수신 
+						<input type="radio" name=""> 수신
+					</li>			
+				</ul>			
+			</li>		 
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums"> 
+					<li class="col1"> 가입 경로 </li>
+					<li> 
+					<input type="checkbox" name=""> 친구추천 
+					<input type="checkbox" name=""> 인터넷검색 
+					<input type="checkbox" name="" checked="checked" > 기타 </li>			
+				</ul>			
+						
+			</li>		 
+			<li> 	<!-- 행 -->
+				
+				<ul class="colums">
+					<li class="col1 hello"> 인사말 </li>
+					<li class="col2"> 
+						<textarea rows="10" cols="50"></textarea>
+					</li>			
+				</ul>			
+						
+			</li>		 
+
+	
+		</ul>
+
+		<div class="btn_box">
+		
+		<input type="submit" value="저장하기">
+		<input type="reset" value="취소하기">
+		
+		</div>
+
+	
+	</form>
+
+
+
+</body>
+</html>
