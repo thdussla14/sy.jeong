@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+div{ /* 1. div 에 적용 */
+	border: solid 1px red;
+	margin: 30px;
+}
+
+span{ /* 2. span 에 적용 */ 
+	border: solid 1px yellow;
+}
+
+.s1{ /* 3. s1클래스 에 적용 */
+	display: inline;
+	width: 100px; height: 100px;
+}
+
+.s2{ 
+	display: block;
+	width: 100px; height: 100px;		
+}
+
+.s3{ 
+	display: inline-block;
+	width: 100px; height: 100px;			
+}
+
+.s4{
+	display: none;
+	width: 100px; height: 100px;		
+}
+
+.d1{
+	display: inline;
+	width: 100px; height: 100px;
+}
+
+.d2{
+	display: block;
+	width: 100px; height: 100px;
+}
+
+.d3{
+	display: inline-block;
+	width: 100px; height: 100px;	
+}
+
+.d4{
+	display: none;
+	width: 100px; height: 100px;
+}
