@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+#web_box{
+	border: 1px solid red;
+}
+
+	/* 일반적으로 header,footer 100% 기준값으로 설정 */
+
+#header{
+	border: 1px solid blue; 
+	background-color:blue;
+	height: 200px;
+}
+	
+#content{
+	border: 1px solid orange; 
+	background-color:orange;
+	height: 600px; width: 1200px; 
+	/* PC기준: 1050 ~ 1300px */
+	margin: 0 auto;
+	display: flex;
+}
+
+#left_menu{
+	border: 1px solid yellow; 
+	background-color: yellow;
+	height: 600px; width: 600px;
+	/* 부모[상위요소]:1200 px
+		부모-본인 = 300 -4 px	
+	*/
+}
+
+#right_menu{
+	border: 1px solid purple; 
+	background-color: purple;
+	height: 600px; width: 500px;
+}
+
+#footer{
+	border: 1px solid black; 
+	background-color:black;
+	height: 200px;
+}
