@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.parent{ width: 700px; height: 700px;
+	display: flex; justify-content: center;
+	background-color:#008000; margin:0 auto;
+	position: relative;}
+	
+
+
+.parent div{width: 100px; height: 70px; 
+	text-align:center; margin:0 auto; 
+	background-color: #FFFF00;
+	border-radius: 15px;}
+	
+.box1{position: absolute; top: 150px;}
+.box2{position: absolute; top: 250px; left: 150px;}
+.box3{position: absolute; top: 250px; right: 150px;}
+.box4{position: absolute; bottom: 250px; left: 150px;}
+.box5{position: absolute; bottom: 250px; right: 150px;}
+.box6{position: absolute; bottom: 150px;}
