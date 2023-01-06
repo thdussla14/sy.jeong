@@ -4,13 +4,15 @@
 
 .cal{ background-color: #FCF9EA;
 	width: 800px; height: 700px; margin:0 auto;
-	padding-top:50px;
-	text-align: center; align-items: center;}
+	padding-top:50px;}
 .cal table{background-color: white; margin:0 auto; border:1px solid black;
-	width: 600px; height: 600px;}
-.cal h4{margin: 10px;}
-.cal td{text-align: center; width: 80px; }
+	width: 600px; height: 600px; border-collapse: collapse;}
+.cal h4{margin: 10px; text-align: center; align-items: center;}
+.cal td{width: 80px; border: 1px solid black;  }
 .t1 {color: red;}
+.t2 {width: 80px; height: 30px;
+	text-align: center; align-items: center;}
+.t3{vertical-align: top;}
 
 .info{display: inline-block; margin: 30px; }
 .info h2{ border-left: 10px solid gray;margin-bottom: 10px; padding: 0px 10px;}
