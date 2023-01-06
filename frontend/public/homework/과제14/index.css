@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+* {background-color: #FFFFFF; font-size: 13px;}
+a {color: black; text-decoration: none;}
+li{list-style-type: none;}
+
+/*----헤더--------------------------------------------*/
+
+#header { width: 100% ;margin: 0 auto; }
+
+#top_header  {display: flex;justify-content: flex-end;
+		border-bottom: 1px solid #C7C7C7;}
+#main_header {display: flex;justify-content: space-between;
+	align-items: center; text-align: center; padding-bottom: 10px; }
+	
+	
+#h-logo {width: 200px; padding-top: 10px;  }
+
+#top_header li {display: inline-block; font-size: 13px; }
+
+#main_header li {display: inline-block; margin: 10px;align-items: center;}
+.new { color: red; }
+.search img{width: 20px; height: 20px;}
+
+/*----헤더 drop------------------------------------------*/
+#drop_menu{position: relative;}
+
+#sub_menu{position:absolute; display: none; 
+	width: 100px; top:30px; left:-40px; padding: 10px;}
+	
+#sub_menu li {display: block;}
+
+#drop_menu:hover #sub_menu {display: block;}
+
+
+/*----대표이미지--------------------------------------------*/
+
+#main_img {width: 100%;}
+
+
+/*-----본문-------------------------------------------*/
+
+
+
+
+/*------푸터------------------------------------------*/

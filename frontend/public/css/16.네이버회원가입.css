@@ -63,7 +63,7 @@ h3{text-align: left;font-size: 14px; font-weight:bold;
 .ft_info{margin: 20px 0px;font-size: 8px; }
 .ft_top{display: inline-block; }
 .ft_top a:hover{text-decoration: underline;}
-.line{color:#8e8e8e; font-size: 6px; }
+.line{color:#c0c0c0; font-size: 6px; }
 
 .ft_sub{display: flex;justify-content: center; padding: 5px;}
 .ft_sub img{height: 8px; margin-top: 3px; padding-right: 5px;}
