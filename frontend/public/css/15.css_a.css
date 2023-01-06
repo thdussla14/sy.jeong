@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+a{color: black; text-decoration: none;}
+
+/* 해당 요소에 마우스를 올렸을 때 CSS */
+a:hover {color: orange; }	
+/* 해당 요소에 마우스 클릭 때 CSS */
+a:active {color: blue; }
+/* 클린한 적이 있을때 CSS */
+a:visited {color: red;}
+
+#header{ background-color: #eeeeee;
+	display: flex;justify-content: center;}
+	
+#header .drop_menu{
+	display: inline-block;margin-right: 50px;}	
+	
+	
+#header li{	display: inline-block; 
+			margin-right: 50px;}
+
+.drop_menu{ position: relative;}	/*상위요소*/
+
+.sub_menu{ position: absolute; 		/*하위요소*/
+		top:10px; left:-30px;		/* ! 상위요소와 하위요소의 접점이 있어야 hover유지*/
+		display: none;				/*화면숨기기*/
+
+		padding-top:40px;			/* ! 상위요소와 하위요소 사이 여백*/
+		
+		border-bottom: 1px solid #eeeeee;
+		border-left: 1px solid #eeeeee;
+		border-right: 1px solid #eeeeee;
+		
+		width: 140px; font-size: 15px;}
+		
+.drop_menu a{width: 200px;}
+									
+.drop_menu:hover .sub_menu
+		{display: block;}			/*숨긴화면 보이기*/

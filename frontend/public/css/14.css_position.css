@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body{ background-color: green;}
+
+#header{ display: flex;
+	justify-content: space-between;
+	position: sticky; top: 0px; 	/* 해당 요소가 화면 이탈시 위치 고정*/
+	
+	background-color: yellow;
+	border-bottom: 1px solid #eeeeee;
+	z-index: 1;}					/* 다른 요소와 겹쳤을때 배치 순서*/
+		
+#header li { display: inline-block;}
+
+.popup{width: 20%; 
+	border: 2px solid #eeeeee;
+	position: fixed; right:0px; top: 40%;	/* 오른쪽 위에서 40% 위치가 시작점*/
+	opacity: 80%;					/* 투명도 :  % 또는 소수점 사용 */
+	background-color: white; }

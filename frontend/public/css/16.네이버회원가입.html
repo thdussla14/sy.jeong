@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>네이버 회원가입</title>
+
+	<link href="16.네이버회원가입.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<div id="wrap">									<!-- 전체 레이아웃 -->
+	
+		<!-- ------------------------------------------------------ -->
+		<div id="header"> 							<!-- 헤더 -->
+			<div class="logo">						<!-- 헤더 내용물 -->
+				<a href="http://naver.com">
+					<img alt="" src="../img/네이버logo.png">	
+				</a>
+			</div>
+		</div>
+		<!-- ----------------------------------------------------- -->
+		<form id="join_form">
+			<!-- ----------------------------------------------------- -->
+			<!-- 1개 입력창 --> 
+			<h3> 아이디 </h3>
+			<div>	
+				<span class="signup_input">							
+					<input class= "input_id" type="text"> 
+					<span class="signup_at"> @naver.com </span>
+				</span>	
+			</div>
+			<h3> 비밀번호 </h3>
+			<div>	
+				<span class="signup_input">							
+					<input class= "input_id" type="password"> 
+					<span class="signup_lock1"></span>
+				</span>	
+			</div>		
+			<h3> 비밀번호 확인 </h3>
+			<div>	
+				<span class="signup_input">							
+					<input class= "input_id" type="password"> 
+					<span class="signup_lock2"></span>
+				</span>	
+			</div>
+			<!-- ----------------------------------------------------- -->		
+			<div>			
+				<h3> 이름 </h3>
+				<span class="signup_input"> 
+					<input class= "input_id" type="text"/>
+				</span>			
+				<h3> 생년월일 </h3>
+				<span class="birthbox">				
+					<span class="signup_input" id="birth_y"> 
+						<input class= "input_id" type="text" placeholder="년(4자)"/>
+					</span>
+					<span class="signup_input" id="birth_m"> 
+						<select class= "input_id" >
+							<option>월</option>
+							<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+							<option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>				
+						</select>
+					</span>
+					<span class="signup_input" id="birth_d"> 
+						<input class= "input_id" type="text" placeholder="일">
+					</span>					
+				</span>
+			</div>
+			
+			<h3> 성별 </h3>
+			<div>	
+				<span class="signup_input">							
+					<select class= "input_id">
+						<option>성별</option><option>남자</option><option>여자</option><option>선택 안함</option>
+					</select>
+				</span>	
+			</div>
+			
+			<h3> 본인 확인 이메일 <span class="option" > (선택) </span> </h3>
+			<div>	
+				<span class="signup_input">							
+					<input class= "input_id" type="text" placeholder="선택입력" /> 
+				</span>	
+			</div>
+			<!-- ----------------------------------------------------- -->
+			<h3> 휴대전화 </h3>
+			<div>	
+				
+				<span class="signup_input">												
+					<select class= "input_id">
+							<option>대한민국+82</option><option>남자</option><option>여자</option><option>선택 안함</option>
+					</select>					
+				</span>	
+				<span class="phone">
+					<span class="signup_input" id="ph_num">	
+						<input class= "input_id" type="text" placeholder="전화번호 입력">
+					</span>	
+					<span class="signup_input" id="ph_in">	
+						<input  class="btn" type="button" value="인증번호 받기">
+					</span>
+				</span>	
+				<span class="signup_input" id="in">	
+					<input disabled="disabled" class= "input_id" id="in" type="text" placeholder="인증번호 입력하세요">
+				</span>									
+			</div>
+			<!-- ----------------------------------------------------- -->
+			
+			<div>
+				<span class="signup_input" id="sign">
+					<input class="btn" id="sign" type="button" value="가입하기">
+				</span>
+			</div>
+			
+			<!-- ----------------------------------------------------- -->
+		
+		</form>
+		<!-- ----------------------------------------------------- -->
+		<div id="footer"> 
+		
+			<div class="ft_info">
+				<div class="ft_top">
+					 <a href="#"> 이용약관 </a> <span class="line">|</span>
+					 <a href="#"> 개인정보처리방침 </a> <span class="line">|</span>
+					 <a href="#"> 책임의 한계와 법적고지 </a> <span class="line">|</span> 
+					 <a href="#"> 회원정보 고객센터 </a> <span class="line">|</span>
+				</div>
+				<div class="ft_sub">
+					<img alt="" src="../img/네이버logo.png">
+					<div>
+						 Copyright NAVER Corp. All Rights Reserved.
+					 </div>
+				 </div>
+			</div>	
+				
+		</div>
+		<!-- ----------------------------------------------------- -->
+	</div>
+
+</body>
+</html>
