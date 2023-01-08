@@ -1,41 +1,47 @@
 @charset "UTF-8";
 
-* {background-color: #FFFFFF; font-size: 13px;}
+* {background-color: #FFFFFF; font-size: 13px;
+	margin: 0px; padding: 0px;}
 a {color: black; text-decoration: none;}
 li{list-style-type: none;}
 
+
 /*----헤더--------------------------------------------*/
 
-#header { width: 100% ;margin: 0 auto; }
+#top_header, #main_header {width: 100% ; height:100% ;margin: 0 auto;}
 
-#top_header  {display: flex;justify-content: flex-end;
-		border-bottom: 1px solid #C7C7C7;}
-#main_header {display: flex;justify-content: space-between;
-	align-items: center; text-align: center; padding-bottom: 10px; }
-	
-	
-#h-logo {width: 200px; padding-top: 10px;  }
+#top_header  {display: flex;justify-content: flex-end; 
+		border-bottom: 1px solid #C7C7C7; padding: 10px 50px 10px 10px;}
+#main_header {display: flex;justify-content: space-between; 
+		align-items: center; text-align: center; 
+		position: sticky; top: 0px; }
+		
+#top_header li {display: inline-block; font-size: 10px;vertical-align: middle; }
+.line{padding: 0px 10px; align-items: center;}
+#top_header img{ width:17px; height:17px ; opacity: 0.7; }
 
-#top_header li {display: inline-block; font-size: 13px; }
-
-#main_header li {display: inline-block; margin: 10px;align-items: center;}
+#main_header li {display: inline-block; margin: 20px 10px;align-items: center; font-weight: bold;
+			vertical-align: middle; }
+#h-logo{width: 100px;height: 30px;padding-top: 10px; }		
 .new { color: red; }
-.search img{width: 20px; height: 20px;}
+.search{margin: 10px 40px 0px 0px; border-bottom:1px solid black;  }
+.search input{border: none;}
+.search img{width: 15px; height: 15px; margin: 0 auto;}
 
 /*----헤더 drop------------------------------------------*/
-#drop_menu{position: relative;}
+#drop_menu{position: relative; background-color: white; }
 
 #sub_menu{position:absolute; display: none; 
-	width: 100px; top:30px; left:-40px; padding: 10px;}
+	width: 130px; top:30px; left:-40px; padding: 10px 0px;}
 	
-#sub_menu li {display: block;}
+#sub_menu li {display: block; margin: 10px; }
 
 #drop_menu:hover #sub_menu {display: block;}
 
 
 /*----대표이미지--------------------------------------------*/
 
-#main_img {width: 100%;}
+#main_img img{width: 100%;} 
 
 
 /*-----본문-------------------------------------------*/
@@ -47,11 +53,24 @@ display: flex;justify-content: space-between;}
 
 #content_main {text-align: center; align-items: center;}
 
-.item {width: 200px; padding: 10px;}
+#content h1 { margin-bottom: 20px; font-size: 20px;}
+#content p {color: #8e8e8e ;margin-bottom: 50px;} 
 
-.item_color{justify-content: space-between;}
+#items{display: flex; justify-content: space-between; 
+	font-size: 5px;flex-wrap: wrap;}
+.item {width: 360px; padding: 10px; text-align: center; align-items: center;}
+.item_img img{width: 360px;}
 
-
-
-
+.item_color{display:flex; justify-content:space-between;
+	padding: 10px;}
+.item_color span {color:#8C8F8C; }
+.item_name {text-align: left;}
+.item_size	{text-align: left; margin-bottom: 10px;}
+.item_price	{display:flex; justify-content:space-between;height: 15px;}
+.o {color: #cccccc; text-decoration: line-through;}
+.d {color: red; font-weight: bold;}
+.item_dis {text-align: left;margin-bottom: 10px;}
+.item_info{text-align: left; font-weight: bold; font-size: 3px;}
+.item_info span {color: #4F768E; font-weight: bold; font-size: 3px;}
+#best{color: red; font-weight: bold; font-size: 3px;}
 /*------푸터------------------------------------------*/
