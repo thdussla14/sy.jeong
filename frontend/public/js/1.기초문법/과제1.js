@@ -48,7 +48,7 @@
 	 
 	 let length = snumber.length
 	 
-	 if (length=8){document.querySelector('.result_box1').innerHTML = '8자리로 입력해주세요.'}{''}
+	 if (length=8){''}{document.querySelector('.result_box1').innerHTML = '8자리로 입력해주세요.'}
 	 
 	 let index   = studentArray.indexOf (snumber.value)
 
