@@ -62,12 +62,27 @@
   
  function onAdd (){ 
 	 
+	 console.log('함수실행') //확인용
+	 
+	 // <input> 마크업을 js변수로 가져오기 [DOM 객체]
 	 let studentNumber = document.querySelector ('.studentNumber')
 	 
+	 console.log('.studentNumber') //확인용
+	 
+	 // <input> 마크업에 입력된 value[값] 가져와서 변수에 저장
 	 let sNumber = studentNumber.value;
+	 
+	 console.log(sNumber) //확인용
+	 
 	 let length2 = sNumber.length
-	 console.log(length)
+	 
+	 console.log(length2) //확인용
+	 
+	 // 유효성검사 [중복체크] : 입력받은 값[studentNumber]과 기존 값들[studentArray]을 비교
+	 
 	 let Index = studentArray.indexOf (sNumber);
+	 
+	 console.log(Index) //확인용
 	 
 	 if (sNumber=="")
 	 	{document.querySelector('.result_box').innerHTML = '학번을 입력해주세요.';}
