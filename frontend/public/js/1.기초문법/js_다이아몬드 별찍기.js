@@ -45,12 +45,12 @@
  	{	 
 	if(i<=k)
 		{// if 참
-			for (let j=1  ; j<=k-i ; j++){output += ' '};		
+			for (let j=1  ; j<=k-i ; j++)  {output += ' '};		
 			for (let s=1  ; s<=i*2-1 ; s++){output += '*'};	 
 			output += '\n';
 		}			
     else{//if 거짓 
-			for (let j=1 ; j<=i-k   ; j++){output += ' '};
+			for (let j=1 ; j<=i-k   ; j++)        {output += ' '};
 			for (let s=1 ; s<=line0-(i-k)*2 ; s++){output += '*'};		
 			output += '\n'; 
 		}
