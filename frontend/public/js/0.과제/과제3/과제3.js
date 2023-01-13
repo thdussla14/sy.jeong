@@ -25,8 +25,7 @@
 	 
 	 contentArray.push(content);
 	 
-	 console.log(contentArray)
-	 
+	 console.log(contentArray)	 
 	 
 	 for(let 번호=contentArray.indexOf(content)+1 ; 번호 <= contentArray.length ; 번호++)
   	{ 테이블행 += '<tr> <th>'+ 번호 +' </th> <th>'+ content +' </th> </tr>'}

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+*{background-color: #eeeeee;} /*연동 확인용*/
+
+*{color: black;}
+
+.wrap{display: flex;}
+
+.content{width: 50%; border: 1px solid white;
+		background-color: white;color: black;}
+
+.bookmaster{background-color: white;}
+
