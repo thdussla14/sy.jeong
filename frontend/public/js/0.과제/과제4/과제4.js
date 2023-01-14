@@ -74,7 +74,7 @@
 	 			<td> 
 	 				<button> 대여중 </button>
 	 			</td>
-	 			<td></td>
+	 			<td><button style='display:none;' onclick="onDelete()" > 삭제 </button></td>
 	 			</tr>`}
  		else{html +=
 	 			 `<tr>
@@ -117,9 +117,9 @@ function check(x)
 	console.log(도서목록)
  	}// function end
  	
- // 삭제버튼 클릭시 도서목록에서 해당 도서 제거	 //수정 필요함
- function onDelete(dno) 
- 	{도서목록.splice(dno,1)
+ // 삭제버튼 클릭시 도서목록에서 해당 도서 제거
+ function onDelete(i) 
+ 	{도서목록.splice(대여목록.indexOf(도서목록[i]),1)
  	console.log(도서목록)	 	
 	printcontent()
 	}// function end
