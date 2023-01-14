@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
-*{background-color: #eeeeee;} /*연동 확인용*/
 
-*{color: black;}
-
-.wrap{display: flex;}
+.wrap{display: flex; text-align: center;}
 
 .content{width: 50%; border: 1px solid white;
 		background-color: white;color: black;}
 
-.bookmaster{background-color: white;}
+.search {margin-bottom: 20px;}
+
+.bookmaster{width: 100%; background-color:white;
+			border-collapse: collapse;border: 1px solid black;}
+.bookmaster td {padding: 10px;}
+.title {background-color:#B0C1DB; color: white;}
 
