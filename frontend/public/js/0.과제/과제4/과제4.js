@@ -53,9 +53,20 @@
  let 도서목록 = ['혼자공부하는자바','이것이자바다','열혈 C언어']
  let 대여목록 = ['혼자공부하는자바']
  
- //-------------------230114 정소연 작성----------------------------//
+ //----------------------------------230114 정소연 작성----------------------------//
 
- // 도서현황 출력
+
+ // 대여여부 확인
+ function check(x)
+	// 대여목록에 포함되어있는가?
+   { if(대여목록.indexOf(x)>=0)
+		// 포함되어있음  	= 대여중
+   		{return 0;}					
+		// 포함되어있지 않음 = 대여가능
+   	else{return 1;}
+   	}// function end				
+
+ // 도서현황 파악 함수
  function printcontent() 
  	// 테이블틀 선언
   	{let html = `<tr class="title">	
@@ -67,38 +78,36 @@
 	for (let i=0 ; i< 도서목록.length ; i++)
 	// 대여여부 확인
  		{if(check(도서목록[i])==0)
+			// 대여목록에 포함되어있는 경우 = 대여중 => 삭제버튼 사용 불가
 			{html +=
 	 			 `<tr>
-	 			<td> ${i+1}	</td>
-	 			<td> ${도서목록[i]}</td>
-	 			<td> 
-	 				<button> 대여중 </button>
-	 			</td>
-	 			<td><button style='display:none;' onclick="onDelete()" > 삭제 </button></td>
-	 			</tr>`}
+			 			<td> ${i+1}	</td>
+			 			<td> ${도서목록[i]}</td>
+			 			<td> 
+			 				<button class="out"> 대여중 </button>
+			 			</td>
+			 			<td>	
+			 				
+			 			</td>
+			 	 </tr>`; console.log(i)}
+			 // 대여목록에 포함되어있지 않은 경우 = 대여가능 => 삭제버튼 가능
  		else{html +=
 	 			 `<tr>
-	 			<td> ${i+1}	</td>
-	 			<td> ${도서목록[i]}</td>
-	 			<td> 
-	 				<button> 대여가능 </button>
-	 			</td>
-	 			<td><button onclick="onDelete()" > 삭제 </button></td>
-	 			</tr>`}
- 			
+			 			<td> ${i+1}	</td>
+			 			<td> ${도서목록[i]}</td>
+			 			<td> 
+			 				<button class="in"> 대여가능 </button>
+			 			</td>
+			 			<td>
+			 				 <button onclick="onDelete()" > 삭제 </button>
+			 			</td>
+			 	  </tr>`;console.log(i)}
+ 		// 전체 도서 현황 html 테이블로 출력
  	   	document.querySelector('.bookmaster').innerHTML = html}
  	}// function end
-printcontent() 
-
-// 대여여부 확인
-function check(x)
-	// 대여목록에 포함되어있는가?
-   { if(대여목록.indexOf(x)>=0)
-		// 포함되어있음  	= 대여중
-   		{return 0;}					
-		// 포함되어있지 않음 = 대여가능
-   	else{return 1;}
-   	}// function end				
+ 	
+ // 기본페이지에 도서현황 출력
+ printcontent() 
 
  // 도서등록버튼 클릭시 신규도서 도서목록에 추가
  function onAdd()
@@ -112,19 +121,23 @@ function check(x)
 	else if(newbook.length<5||newbook.length>10)
 		{alert('5 ~ 10자 이내로 입력해주세요.')}
 	// 새로운 도서를 도서목록에 추가
-	else{도서목록.push(newbook);}	
+	else{도서목록.push(newbook); alert('신규 도서가 등록되었습니다.')}		
+
+	newbook.value=''
 	printcontent() 
 	printContent2()    //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
 	console.log(도서목록)
-	newbook='';
+
  	}// function end
  	
  // 삭제버튼 클릭시 도서목록에서 해당 도서 제거
- function onDelete(i)  //-------------------------!! 삭제시 다른 도서 삭제되어 수정 진행중
- 	{도서목록.splice(대여목록.indexOf(도서목록[i]),1)
- 	console.log(도서목록)	 	
+ function onDelete(dno)  //-------------------------!! 삭제시 다른 도서 삭제되어 수정 진행중
+ 	{//도서목록 중 선택된 index로부터 1개 제거
+	도서목록.splice(dno,1)
+ 	console.log(dno)	 	
 	printcontent()
 	printContent2()		//-------------------------관리자페이지 도서 삭제시 고객페이지 현황 갱신
+	console.log(도서목록)
 	}// function end
 
 /*-----------------------------------20230113 권가영------------------------------------- */
@@ -139,18 +152,18 @@ function check(x)
 	for(let i = 0; i<도서목록.length; i++){
 		if(rentalBtnOnOff(도서목록[i]) == 0){ //대여할 수 없는 경우
 			html += `<tr>
-								<td>${i +1}</td>
-								<td>${도서목록[i]}</td>
-								<td><p class = "rentalOX" id ="retalNO">대여중</p></td>
-								<td id = "customerNote"><button onClick = "returnClick(${i})" class = "whatBtn" id = "returnBtn" style = "background-color: #FF3939;">도서반납버튼</button></td>
+						<td>${i +1}</td>
+						<td>${도서목록[i]}</td>
+						<td><p class = "rentalOX" id ="retalNO">대여중</p></td>
+						<td id = "customerNote"><button onClick = "returnClick(${i})" class = "whatBtn" id = "returnBtn" style = "background-color: #FF3939;">도서반납버튼</button></td>
 					</tr>`
 		}
 		else{ //대여할 수 있는 경우
 			html += `<tr>
-								<td>${i +1}</td>
-								<td>${도서목록[i]}</td>
-								<td><p class = "rentalOX" id ="retalOK">대여가능</p></td>
-								<td id = "customerNote"><button onClick = "rentalClick(${i})" class = "whatBtn" id = "rentalBtn">도서대여버튼</button></td>
+						<td>${i +1}</td>
+						<td>${도서목록[i]}</td>
+						<td><p class = "rentalOX" id ="retalOK">대여가능</p></td>
+						<td id = "customerNote"><button onClick = "rentalClick(${i})" class = "whatBtn" id = "rentalBtn">도서대여버튼</button></td>
 					</tr>`
 		}
 	}	
