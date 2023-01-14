@@ -88,9 +88,9 @@
  			
  	   	document.querySelector('.bookmaster').innerHTML = html}
  	}// function end
+printcontent() 
 
 // 대여여부 확인
-
 function check(x)
 	// 대여목록에 포함되어있는가?
    { if(대여목록.indexOf(x)>=0)
@@ -112,17 +112,96 @@ function check(x)
 	else if(newbook.length<5||newbook.length>10)
 		{alert('5 ~ 10자 이내로 입력해주세요.')}
 	// 새로운 도서를 도서목록에 추가
-	else{도서목록.push(newbook);}
+	else{도서목록.push(newbook);}	
 	printcontent() 
+	printContent2()    //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
 	console.log(도서목록)
+	newbook='';
  	}// function end
  	
  // 삭제버튼 클릭시 도서목록에서 해당 도서 제거
- function onDelete(i) 
+ function onDelete(i)  //-------------------------!! 삭제시 다른 도서 삭제되어 수정 진행중
  	{도서목록.splice(대여목록.indexOf(도서목록[i]),1)
  	console.log(도서목록)	 	
 	printcontent()
+	printContent2()		//-------------------------관리자페이지 도서 삭제시 고객페이지 현황 갱신
 	}// function end
 
- 
+/*-----------------------------------20230113 권가영------------------------------------- */
+//고객체이지 테이블 안을 채우는 함수
+ function printContent2(){
+	let html = `<tr>	
+						<th class = "index">번호</th>
+						<th class = "book">도서</th>
+						<th class = "rental">도서대여여부</th>
+						<th class = "note">비고</th>
+				</tr>`
+	for(let i = 0; i<도서목록.length; i++){
+		if(rentalBtnOnOff(도서목록[i]) == 0){ //대여할 수 없는 경우
+			html += `<tr>
+								<td>${i +1}</td>
+								<td>${도서목록[i]}</td>
+								<td><p class = "rentalOX" id ="retalNO">대여중</p></td>
+								<td id = "customerNote"><button onClick = "returnClick(${i})" class = "whatBtn" id = "returnBtn" style = "background-color: #FF3939;">도서반납버튼</button></td>
+					</tr>`
+		}
+		else{ //대여할 수 있는 경우
+			html += `<tr>
+								<td>${i +1}</td>
+								<td>${도서목록[i]}</td>
+								<td><p class = "rentalOX" id ="retalOK">대여가능</p></td>
+								<td id = "customerNote"><button onClick = "rentalClick(${i})" class = "whatBtn" id = "rentalBtn">도서대여버튼</button></td>
+					</tr>`
+		}
+	}	
+	document.querySelector('.customerTable').innerHTML = html 
+}
+printContent2()
+
+
+//대여여부를 알려주는 함수
+function rentalBtnOnOff(x){
+	if(대여목록.indexOf(x)>= 0){
+		 return 0; //만약 책을 대여해서 대여할 수 없다면 0을 반환
+	}else{
+		return 1; //만약 책을 대여한 사람이 업어서 대여할 수 있다면 1을 반환
+	}
+}
+
+
+//도서반납버튼  클릭시 처리하는 함수 [해당 인덱스를 인수를 받는다.]
+function returnClick(i){
+	
+	let bookIndex  = 대여목록.indexOf(도서목록[i]);
+	
+	console.log(bookIndex)
+	let inputInfo = confirm("반납하시겠습니까?"); //확인을 누르면 true반환, 취소를 누르면 false
+	
+	if(inputInfo == true){ //반납하겠다는 뜻
+		document.querySelector(".noticeText").innerHTML = "";	
+		대여목록.splice(bookIndex, 1); //대여목록에 있는 해당 인덱스의 도서를 삭제한다.
+		printcontent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
+		printContent2(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
+	}else{
+		//반납을 도중에 취소하면 알림으로 알려줌
+		document.querySelector(".noticeText").innerHTML = `<p> << ${대여목록[bookIndex]} >>  반납을 취소하였습니다 </p>`
+	}
+}
+
+// 도서대여버튼 클릭시 처리하는 함수 [해당 인덱스를 인수를 받는다.]
+function rentalClick(i){
+	let inputInfo = confirm("대여하시겠습니까?"); //확인을 누르면 true반환, 취소를 누르면 false
+	
+	if(inputInfo == true){ //대여하겠다는 뜻
+		document.querySelector(".noticeText").innerHTML = "";
+		대여목록.push(도서목록[i]);//대여목록에 해당 인덱스에 해당하는 도서를 넣는다
+		console.log(대여목록)
+		printcontent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
+		printContent2(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
+	}else{
+		//대여를 도중에 취소하면 알림으로 알려줌
+		document.querySelector(".noticeText").innerHTML = `<p style = "color :blue"> << ${도서목록[i]} >> 대여를 취소하였습니다 </p>`
+	}
+}
+
  

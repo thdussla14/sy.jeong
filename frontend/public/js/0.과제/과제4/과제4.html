@@ -17,9 +17,9 @@
 			<h1>관리자 페이지</h1>
 		
 			<div class="search">
-			도서명 : <input class="newbook" type="text"> 
+				도서명 : <input class="newbook" type="text"> 
 			
-			<button onclick="onAdd()"> 도서등록</button> 
+				<button onclick="onAdd()"> 도서등록</button> 
 			
 			</div>
 		
@@ -32,7 +32,17 @@
 		
 		<div class="content">
 			<h1>고객 페이지</h1>
-
+					<h5>"도서관에 오신것을 환영합니다."</h5>
+					<!-- 구현 풀이 -->
+					<table class = "customerTable">
+						<tr>
+							<th id = "index">번호</th>
+							<th id = "book">도서</th>
+							<th id = "rental">도서대여여부</th>
+							<th id = "note">비고</th>
+						</tr>
+					</table>
+					<div class = "noticeText"></djv>
 
 
 		</div>
