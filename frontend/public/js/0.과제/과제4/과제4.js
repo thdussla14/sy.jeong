@@ -103,12 +103,13 @@
 			 			</td>
 			 	  </tr>`}
  		// 전체 도서 현황 html 테이블로 출력
+ 	
  	   	document.querySelector('.bookmaster').innerHTML = html}
  	}// function end
  	
  // 기본페이지에 도서현황 출력
  adminPrintContent() 
-
+ 
  // 도서등록버튼 클릭시 신규도서 도서목록에 추가
  function onAdd()
  	{// 입력된 도서명 불러오기
@@ -121,11 +122,11 @@
 	else if(newbook.length<5||newbook.length>10)
 		{alert('5 ~ 10자 이내로 입력해주세요.')}
 	// 새로운 도서를 도서목록에 추가
-	else{도서목록.push(newbook); alert('신규 도서가 등록되었습니다.')}		
-	// 입력창 초기화
-	newbook.value=''
+	else{도서목록.push(newbook); ; alert('신규 도서가 등록되었습니다.')}		
+
+	
 	adminPrintContent()
-	customerPrintContent()    //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
+	customerPrintContent()     //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
 	console.log(도서목록)
 
  	}// function end
