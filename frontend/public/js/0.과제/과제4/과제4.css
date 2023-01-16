@@ -5,12 +5,16 @@
 
 .content{width: 50%; border: 1px solid white; text-align: center;
 		background-color: white;color: black;}
+		
 /*신규도서입력*/
 .search {margin-bottom: 20px;}
+
 /*도서현황표*/
-.bookmaster{width: 100%; background-color:white;
+.bookmaster{width: 100%; background-color:white; margin:0 auto;
 			border-collapse: collapse;border: 1px solid black;}
-.title {background-color:#B0C1DB; color: white;}			
+			
+.title {background-color:#B0C1DB; color: white;}	
+.bookmaster th {padding: 5px 10px;}		
 .bookmaster td {padding: 10px;}
 
 .in{border: none; background-color: transparent; color: blue;}

@@ -103,7 +103,7 @@
 			 			</td>
 			 	  </tr>`}
  		// 전체 도서 현황 html 테이블로 출력
- 	
+        
  	   	document.querySelector('.bookmaster').innerHTML = html}
  	}// function end
  	
@@ -115,6 +115,7 @@
  	{// 입력된 도서명 불러오기
 	let newbook = document.querySelector('.newbook').value	
  	console.log(newbook)
+ 	
  	// 기존 도서목록과 비교하여 중복확인	 	
  	if(도서목록.indexOf(newbook)>=0)
  		{alert('이미 등록된 도서입니다.')}
@@ -122,10 +123,10 @@
 	else if(newbook.length<5||newbook.length>10)
 		{alert('5 ~ 10자 이내로 입력해주세요.')}
 	// 새로운 도서를 도서목록에 추가
-	else{도서목록.push(newbook); ; alert('신규 도서가 등록되었습니다.')}		
-
-	
-	adminPrintContent()
+	else{도서목록.push(newbook); alert('신규 도서가 등록되었습니다.')}
+	// input 입력란 초기화		
+	document.querySelector('.newbook').value='';
+	adminPrintContent()		   //-----------------------관리자페이지 도서 추가시 관리자페이지 현황 갱신
 	customerPrintContent()     //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
 	console.log(도서목록)
 
@@ -133,9 +134,10 @@
  	
  // 삭제버튼 클릭시 도서목록에서 해당 도서 제거
  function onDelete(i) 
- 	{//도서목록 중 선택된 index로부터 1개 제거
+ 	{//도서목록 해당 인덱스로부터 1개 제거
 	도서목록.splice(i,1)	 	
-	adminPrintContent()
+	alert('해당 도서가 삭제되었습니다.')
+	adminPrintContent()			//-----------------------관리자페이지 도서 삭제시 관리자페이지 현황 갱신
 	customerPrintContent()		//-------------------------관리자페이지 도서 삭제시 고객페이지 현황 갱신
 	console.log(도서목록)
 	}// function end
@@ -177,7 +179,7 @@ function rentalBtnOnOff(x){
 	if(대여목록.indexOf(x)>= 0){
 		 return 0; //만약 책을 대여해서 대여할 수 없다면 0을 반환
 	}else{
-		return 1; //만약 책을 대여한 사람이 업어서 대여할 수 있다면 1을 반환
+		return 1; //만약 책을 대여한 사람이 없어서 대여할 수 있다면 1을 반환
 	}
 }
 
