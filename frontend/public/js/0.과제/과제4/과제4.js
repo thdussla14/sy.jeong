@@ -67,7 +67,7 @@
    	}// function end				
 
  // 도서현황 파악 함수
- function printcontent() 
+ function adminPrintContent() 
  	// 테이블틀 선언
   	{let html = `<tr class="title">	
 						<th>번호		</th>
@@ -99,15 +99,15 @@
 			 				<button class="in"> 대여가능 </button>
 			 			</td>
 			 			<td>
-			 				 <button onclick="onDelete()" > 삭제 </button>
+			 				 <button onclick="onDelete(${i})" > 삭제 </button>
 			 			</td>
-			 	  </tr>`;console.log(i)}
+			 	  </tr>`}
  		// 전체 도서 현황 html 테이블로 출력
  	   	document.querySelector('.bookmaster').innerHTML = html}
  	}// function end
  	
  // 기본페이지에 도서현황 출력
- printcontent() 
+ adminPrintContent() 
 
  // 도서등록버튼 클릭시 신규도서 도서목록에 추가
  function onAdd()
@@ -122,27 +122,26 @@
 		{alert('5 ~ 10자 이내로 입력해주세요.')}
 	// 새로운 도서를 도서목록에 추가
 	else{도서목록.push(newbook); alert('신규 도서가 등록되었습니다.')}		
-
+	// 입력창 초기화
 	newbook.value=''
-	printcontent() 
-	printContent2()    //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
+	adminPrintContent()
+	customerPrintContent()    //-------------------------관리자페이지 도서 추가시 고객페이지 현황 갱신
 	console.log(도서목록)
 
  	}// function end
  	
  // 삭제버튼 클릭시 도서목록에서 해당 도서 제거
- function onDelete(dno)  //-------------------------!! 삭제시 다른 도서 삭제되어 수정 진행중
+ function onDelete(i) 
  	{//도서목록 중 선택된 index로부터 1개 제거
-	도서목록.splice(dno,1)
- 	console.log(dno)	 	
-	printcontent()
-	printContent2()		//-------------------------관리자페이지 도서 삭제시 고객페이지 현황 갱신
+	도서목록.splice(i,1)	 	
+	adminPrintContent()
+	customerPrintContent()		//-------------------------관리자페이지 도서 삭제시 고객페이지 현황 갱신
 	console.log(도서목록)
 	}// function end
 
 /*-----------------------------------20230113 권가영------------------------------------- */
 //고객체이지 테이블 안을 채우는 함수
- function printContent2(){
+ function customerPrintContent(){
 	let html = `<tr>	
 						<th class = "index">번호</th>
 						<th class = "book">도서</th>
@@ -169,7 +168,7 @@
 	}	
 	document.querySelector('.customerTable').innerHTML = html 
 }
-printContent2()
+customerPrintContent()
 
 
 //대여여부를 알려주는 함수
@@ -193,8 +192,8 @@ function returnClick(i){
 	if(inputInfo == true){ //반납하겠다는 뜻
 		document.querySelector(".noticeText").innerHTML = "";	
 		대여목록.splice(bookIndex, 1); //대여목록에 있는 해당 인덱스의 도서를 삭제한다.
-		printcontent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
-		printContent2(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
+		adminPrintContent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
+		customerPrintContent(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
 	}else{
 		//반납을 도중에 취소하면 알림으로 알려줌
 		document.querySelector(".noticeText").innerHTML = `<p> << ${대여목록[bookIndex]} >>  반납을 취소하였습니다 </p>`
@@ -209,8 +208,8 @@ function rentalClick(i){
 		document.querySelector(".noticeText").innerHTML = "";
 		대여목록.push(도서목록[i]);//대여목록에 해당 인덱스에 해당하는 도서를 넣는다
 		console.log(대여목록)
-		printcontent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
-		printContent2(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
+		adminPrintContent()			//-------------------------고객페이지 반납시 관리자페이지 갱신
+		customerPrintContent(); //화면을 다시 프린트해준다. (갱신 -> 정보가 바뀌었으니)
 	}else{
 		//대여를 도중에 취소하면 알림으로 알려줌
 		document.querySelector(".noticeText").innerHTML = `<p style = "color :blue"> << ${도서목록[i]} >> 대여를 취소하였습니다 </p>`
