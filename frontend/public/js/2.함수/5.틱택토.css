@@ -12,7 +12,7 @@
 
 
 .게임판{
-	width: 100%;		/* 가로 사이즈*/
+	width: 50%;		/* 가로 사이즈*/
 	margin: 0 auto;		/* 가운데 정렬*/
 	display: flex;		/* 레이아웃 = 효과적인 배치도 */
 	flex-wrap: wrap;	/* wrap : 자동줄바꿈 / nowrap : 기본값 */
