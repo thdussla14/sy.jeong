@@ -6,7 +6,14 @@ let categoryList = [ '프리미엄', '스페셜' , '와퍼', '올데이킹','치
 let burgurList = [
 	{name : '몬스터X',   price : 9200 ,	img : '몬스터X.png', 	 category:'프리미엄'},
 	{name : '몬스터와퍼', price : 8200 ,	img : '몬스터와퍼.png', category:'프리미엄'},
-	{name : '통새우와퍼', price : 6200 ,	img : '통새우와퍼.png', category:'스페셜'}]
+	{name : '기네스와퍼', price : 8200 ,	img : '기네스와퍼.png', category:'프리미엄'},
+	{name : '통새우와퍼', price : 6200 ,	img : '통새우와퍼.png', category:'스페셜'},
+	{name : '블랙어니언와퍼', price : 6200 ,	img : '블랙어니언와퍼.png', category:'스페셜'},
+	{name : '통새우와퍼', price : 6200 ,	img : '통새우와퍼.png', category:'스페셜'},
+	{name : '치킨킹', price : 6200 ,	img : '치킨킹.png', category:'올데이킹'},
+	{name : 'BLT오믈렛킹모닝', price : 6200 ,	img : 'BLT오믈렛킹모닝.png', category:'올데이킹'},
+	{name : '바비큐킹치킨버거', price : 6200 ,	img : '바비큐킹치킨버거.png', category:'올데이킹'},
+	]
 // 카트 목록
 let cartList = []
 // 주문 목록
@@ -33,36 +40,22 @@ function category_print(){
 } // f e 
 // 2. 
 function category_select( i ){ // i : 선택된 li의 인덱스
-	// 1. 모든 li 가져와서 배열 저장 
-	let categoryli = document.querySelectorAll('.categoryli')
-	// 2. 모든 li 배열 반복문 
-	for( let j = 0 ; j<categoryli.length ; j++ ){
-		if( j == i ){ // 만약에 li배열에서 내가 선택횐 li의 인덱스와 같으면
-			categoryli[j].classList.add( 'categoryselect' ) ; }	// 해당 마크업의 class 식별자 추가 
-		else{ // 선택되지 않은 li
-			categoryli[j].classList.remove( 'categoryselect'  );}// 해당 마크업의 class 식별자 제거 		
-	}//for e
-	category_print(i)
-}//fun e
-// 3. 제품 출력 함수 [ 1. 스크립트 열렸을때 	2. 카테고리 전환시] 
- function product_print(index){	 
-	 //1. html 구성
-	 	let html ='';
-		for(let i=0 ; i<burgurList.length ; i++)
-		// i는 0번째 인덱스부터 마지막인덱스까지 버거 객체 가져온다.
-		{ if( burgurList[i].category==categoryList[index])
-		// i번째 
-		{	html += `<div onclick="cartAdd(${i})" class="product"> 
+
+	for( let j = 0 ; j<burgurList.length ; j++ ){
+		if(categoryList[i]==burgurList[j].category)
+		{burgurList[j].classList.add( 'categoryselect' ) ; 	// 해당 마크업의 class 식별자 추가 
+		html += `<div onclick="cartAdd(${i})" class="product"> 
 						<img src="img/${burgurList[i].img}" width="100%"/> 
 	 				    <div class="productinfo" >
 							<div class="ptitle"> ${burgurList[i].name} </div>
 							<div class="pprice"> ${burgurList[i].price.toLocaleString()}원</div>
 						</div>
 					</div>` 
-			}//if e
+			}//if e 
 		}// for e	 
 	 //2. 구성된 html에 마크업 대입
 	 document.querySelector('.productbox').innerHTML =html
+	 
  } //fun e
  // 4. 선택한 제품을 카트에 담기
  function cartAdd(i){
