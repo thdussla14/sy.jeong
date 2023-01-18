@@ -10,18 +10,18 @@ textarea.addEventListener( 'keyup' , ( 이벤트상태 ) => {
 	h3.innerHTML = `글자 수 : ${ textarea.value.length }`
 	// 4. 키 상태 확인 
 		console.log( 이벤트상태 )
-		console.log( '조합 alt 키 : ' + 이벤트상태.altKey )	
-		console.log( '조합 ctrl 키 : ' + 이벤트상태.ctrlKey )
-		console.log( '조합 shift 키 : ' + 이벤트상태.shiftKey )
-		console.log( ' code 키 : ' + 이벤트상태.code )
-		console.log( ' name 키 : ' + 이벤트상태.key )
+		console.log( '조합 alt 키 : ' 	+ 이벤트상태.altKey )	
+		console.log( '조합 ctrl 키 : '	+ 이벤트상태.ctrlKey )
+		console.log( '조합 shift 키 : ' 	+ 이벤트상태.shiftKey )
+		console.log( ' code 키 : ' 		+ 이벤트상태.code )
+		console.log( ' name 키 : ' 		+ 이벤트상태.key )
 })
 
 	// css 조작 
 	textarea.style.position = 'absolute' // static[작성배치] 기본값 위치불가능
 	let x = 0	// x축	// 처음 위치 설정
 	let y = 0	// y축	// 상위 마크업 시작점 기준
-	let block = 30;	// 이동 단위
+	let block = 30;		// 이동 단위
 
 print(); // 위치 배치 1번 실행 
 function print() { // 위치 배치 함수 
@@ -34,10 +34,10 @@ document.body.addEventListener( 'keydown' , ( e ) => {
 	
 	if( control ){ // 만약에 control 이 true 인 경우에만 아래 실행 
 		let key = e.keyCode;			console.log( e.keyCode );
-		if( key == 37  ){ x--; } // left-- 대입 // 왼쪽키 
-		else if( key == 38 ){ y--; } // top-- 대입 // 위쪽키 
-		else if( key == 39 ){ x++; } // left++ 대입 // 오른쪽키 
-		else if( key == 40 ){ y++; }// top++ 대입 // 아래키
+		if( key == 37  ){ x--; } 		// left-- 대입 	// 왼쪽키 
+		else if( key == 38 ){ y--; }	// top-- 대입 	// 위쪽키 
+		else if( key == 39 ){ x++; } 	// left++ 대입 	// 오른쪽키 
+		else if( key == 40 ){ y++; }	// top++ 대입 	// 아래키
 		print()
 	}// if end 
 	
