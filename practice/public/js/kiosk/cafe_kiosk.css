@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+*{padding: 0px; margin: 0px; border:none;
+	font-family:'ONE-Mobile-POP'; }
+
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;}	
+    
+.wrap{width: 100%; 
+	display: flex; justify-content: center;}
+.container {width: 45%; height: 900px;
+	text-align:center;}
+.header{width: 100%; height: 200px;}
+.content{width: 100%; height: 550px;}
+.cart{width: 100%; height: 150px;}
+/*----------------------------------*/
+.categorybox {background:#A57454; color: white;
+			width: 100%; height: 40px;font-size: 30px;}
+.categorybox li {display: inline-block; padding: 5px 30px;}
+.categoryselect {color: red;}
+
+/*----------------------------------*/
+.content {flex-wrap: wrap;}
+.product {width: 30%; display: inline-block;}
+
+
+/*----------------------------------*/
+.info_top {background-color:#A57454 ; height: 20px; padding:10px 30px 0px 30px;
+	display: flex;justify-content: space-between; align-items: center;}
+.info_top{color: white;}
+.info_bot {background-color:#A57454 ; height: 80px; 
+	display: flex;justify-content: space-around; align-items: center;}
+.item {background-color:#F0E9E4 ; padding-top:10px;
+			border-radius: 10px; width: 20%; height: 45px;}
+
+
+.button {display: flex;}
+.button button{width: 50%; height:40px; font-size: 25px;}
+.cancel {background-color: #F0E9E4;color: #A57454;}
+.order	{background-color: #A57454;color: #F0E9E4;}
+
+
+
+
+
+
+
