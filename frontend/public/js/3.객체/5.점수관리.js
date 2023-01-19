@@ -38,7 +38,7 @@ addbtn.addEventListener('click', ( ) => {
 		 	(info.mat<0 || info.mat>100) )
 			{alert('입력할 수 없는 점수 범위입니다.'); check = false;}
 			
-		//2-2. 점수 숫자만 입력 가능 [isNaN() : 숫자형식 체크 | 문자 true/ 숫자 flase]
+		//2-2. 점수 숫자만 입력 가능 [isNaN() : 숫자형식 체크]
 		 if(isNaN(info.kor)||
 			isNaN(info.eng)||
 			isNaN(info.mat))

@@ -11,7 +11,7 @@
 
 	<div class = "wrap">	<!-- 전체 구역 -->
 	
-		<div class = "container">	<!-- 키오스크 구현 -->
+		<div id="re" class = "container">	<!-- 키오스크 구현 -->
 			<div class ="kioskbox">		
 			<!-- ----------------------------------------------------------------------- -->
 				<div class="header">	
@@ -57,7 +57,44 @@
 		</div> <!-- container e -->
 		<!-- ---------------------------------------------------------------- -->
 		<div class = "container">
-			<h3> 포스기 </h3>
+			<div class="enroll">
+				<table class="enrolltable">
+					<tr class="t_title">
+						<th colspan="2"> 제품 등록 </th>
+					</tr>				
+					<tr>
+						<th> 버거이름 </th> <td><input class="name" type="text"></td>
+					</tr>
+					<tr>	
+						<th> 카테고리명 </th><td><input  class="category" type="text"></td>
+					</tr>
+					<tr>	
+						<th> 가격 </th><td><input  class="price" type="text"></td>
+					</tr>
+					<tr>	
+						<th> 이미지 </th><td><input  class="img" type="text"></td>
+					</tr>
+					<tr>
+						<th colspan="2"><button onclick="등록()" type="button">제품 등록</button> </th>
+					</tr>
+				</table> <!-- enrolltable e -->
+			</div> <!-- enroll e -->
+			<div class="itemList">
+				<table class="itemtable">
+					<!-- js 데이터가 들어가는 자리 -->
+				</table> <!-- itemtable e -->
+			</div> <!-- itemList e -->
+			<div class="orderList">
+				<table class="ordertable">
+					<!-- js 데이터가 들어가는 자리 -->			
+				</table> <!-- ordertable e -->			
+			</div> <!-- orderList e -->
+			<div class="totalList">
+				<table class="totaltable">
+					<!-- js 데이터가 들어가는 자리 -->			
+				</table> <!-- totaltable e -->				
+			</div> <!-- totalList e -->
+						
 		</div> <!-- container e -->
 	
 	</div> <!-- wrap e -->

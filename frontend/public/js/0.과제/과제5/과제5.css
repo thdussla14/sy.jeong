@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: '양진체';
-    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;}
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 /* 기본값 제거 */
 *{padding: 0px; margin: 0px; 
-	font-family:'양진체' }	
+	font-family:'KIMM_Bold' }	
 
 .wrap{display: flex;justify-content: center;}
 	
@@ -53,3 +54,28 @@
 .cartbtn button{width: 50%;color: white;padding: 20px; font-size: 20px; border: none;}
 .cancelbtn { background: black;}
 .orderbtn {background: red;}
+/*---------------------------------------------------------------------------------*/	
+/*---------------------------------------------------------------------------------*/	
+.container table {border: 1px solid black;}
+.t_title {font-size: 30px;background-color: #3674D9;color: white;}
+.enroll, .itemList,.orderList,.totalList 
+{width: 100%; border: 1px solid blue;display: flex;justify-content: center;}
+
+.enrolltable {width: 50%; height: 300px;}
+
+.itemtable, .ordertable, .totaltable {width: 100%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
