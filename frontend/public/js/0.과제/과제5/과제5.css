@@ -19,7 +19,7 @@
 .header{height: 250px;}
 
 
-.categorybox li{display: inline-block;margin:10px 20px; color: #8e8e8e;}
+.categorybox li{display: inline-block;margin:10px 40px; color: #8e8e8e;}
 
 /*선택된 li 꾸미기*/		
 .categoryselect {color: red !important; /* 속성 충돌시 최우선순위 !important */
@@ -28,7 +28,7 @@
 /*---------------------------------------------------------------------------------*/		
 .content{height: 700px;}
 .productbox{height: 450px;display: flex;flex-wrap:wrap;}
-.cartbox{height: 250px;background-color:#F5F0ED;}
+.cartbox{height: 240px;background-color:#F5F0ED;}
 
 /* 제품 */
 .product{width: 28%; margin: 2%; }
@@ -51,23 +51,22 @@
 
 
 .cartbtn{display: flex;}
-.cartbtn button{width: 50%;color: white;padding: 20px; font-size: 20px; border: none;}
+.cartbtn button{width: 50%;color: white;padding: 20px; font-size: 20px;}
 .cancelbtn { background: black;}
 .orderbtn {background: red;}
 /*---------------------------------------------------------------------------------*/	
 /*---------------------------------------------------------------------------------*/	
-.container table {border: 1px solid black;}
-.t_title {font-size: 30px;background-color: #3674D9;color: white;}
+button{border: none;}
+
+.t_title {font-size:30px;background-color:#B6927A;color:#F9F7F4;}
+.t_list {border-collapse: collapse;background-color:#F5F0ED;color:black; }
 .enroll, .itemList,.orderList,.totalList 
-{width: 100%; border: 1px solid blue;display: flex;justify-content: center;}
+{width: 100%; display: flex;justify-content: center;}
+.enrolltable{width: 50%; height: 250px;border: 1px solid black;}
+.itemtable, .ordertable, .totaltable {width: 100%;border: 1px solid black;}
 
-.enrolltable {width: 50%; height: 300px;}
-
-.itemtable, .ordertable, .totaltable {width: 100%}
-
-
-
-
+.enrolltable button {width: 25%;height: 30px;border-radius: 5px;}
+.itemtable button {width: 40px;height: 20px;border-radius: 5px;}
 
 
 

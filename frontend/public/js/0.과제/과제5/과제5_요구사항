@@ -76,9 +76,37 @@
  		
  		* 판매수량은 주문목록내 주문된 item 안에 있는 모든 제품들을 총수량
  
+------------------------------------------------------------ 
  
- 
- 
+let burgurList = [
+	{name : '기네스와퍼', 			price : 9300 ,	img : '기네스와퍼.png', category:'프리미엄'},
+	{name : '기네스콰트로치즈와퍼', 	price : 9300 ,	img : '기네스콰트로치즈와퍼.png', category:'프리미엄'},	
+	{name : '블랙어니언와퍼', 		price : 6200 ,	img : '블랙어니언와퍼.png', category:'프리미엄'},		
+	{name : '갈릭와퍼', 			price : 6200 ,	img : '갈릭와퍼.png', category:'와퍼'},	
+	{name : '통새우와퍼', 			price : 7700 ,	img : '통새우와퍼.png', category:'와퍼'},
+	{name : '치즈와퍼', 			price : 7500 ,	img : '치즈와퍼.png', category:'와퍼'},
+	{name : '베이컨치즈와퍼', 		price : 8700 ,	img : '베이컨치즈와퍼.png', category:'스페셜'},
+	{name : '콰트로치즈와퍼', 		price : 5200 ,	img : '콰트로치즈와퍼.png', category:'스페셜'},
+	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', category:'스페셜'},
+	{name : '치킨킹', 			price : 3600 ,	img : '치킨킹.png', category:'올데이킹'},
+	{name : 'BLT오믈렛킹모닝', 		price : 4900 ,	img : 'BLT오믈렛킹모닝.png', category:'올데이킹'},
+	{name : '킹치킨버거', 			price : 3600 ,	img : '킹치킨버거.png', category:'치킨버거'},
+	{name : '바비큐킹치킨버거', 		price : 3900 ,	img : '바비큐킹치킨버거.png', category:'치킨버거'}
+	]
+	
+추가용 3개 
+	{name : '몬스터X',   price : 10100 ,	img : '몬스터X.png', 	 category:'프리미엄'},
+	{name : '몬스터와퍼', price : 9300 ,	img : '몬스터와퍼.png', category:'프리미엄'},
+	{name : '블랙어니언치킨버거', price : 6200 ,	img : '블랙어니언치킨버거.png', category:'프리미엄'},	
+
+
+
+	
+	
+	
+	
+
+	]
  
  
  

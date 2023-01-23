@@ -19,21 +19,28 @@
 let categoryList = [ '프리미엄', '스페셜' , '와퍼', '올데이킹','치킨버거']
 // 등록된 버거객체 목록/배열
 let burgurList = [
-	{name : '몬스터X',   price : 9200 ,	img : '몬스터X.png', 	 category:'프리미엄'},
-	{name : '몬스터와퍼', price : 8200 ,	img : '몬스터와퍼.png', category:'프리미엄'},
-	{name : '기네스와퍼', price : 8200 ,	img : '기네스와퍼.png', category:'프리미엄'},
-	{name : '통새우와퍼', price : 6200 ,	img : '통새우와퍼.png', category:'스페셜'},
-	{name : '블랙어니언와퍼', price : 6200 ,	img : '블랙어니언와퍼.png', category:'스페셜'},
-	{name : '통새우와퍼', price : 6200 ,	img : '통새우와퍼.png', category:'스페셜'},
-	{name : '치킨킹', price : 6200 ,	img : '치킨킹.png', category:'올데이킹'},
-	{name : 'BLT오믈렛킹모닝', price : 6200 ,	img : 'BLT오믈렛킹모닝.png', category:'올데이킹'},
-	{name : '바비큐킹치킨버거', price : 6200 ,	img : '바비큐킹치킨버거.png', category:'올데이킹'},
+	{name : '기네스와퍼', 			price : 9300 ,	img : '기네스와퍼.png', category:'프리미엄'},	
+	{name : '블랙어니언와퍼', 		price : 6200 ,	img : '블랙어니언와퍼.png', category:'프리미엄'},		
+	{name : '갈릭와퍼', 			price : 6200 ,	img : '갈릭와퍼.png', category:'와퍼'},	
+	{name : '통새우와퍼', 			price : 7700 ,	img : '통새우와퍼.png', category:'와퍼'},
+	{name : '치즈와퍼', 			price : 7500 ,	img : '치즈와퍼.png', category:'와퍼'},
+	{name : '베이컨치즈와퍼', 		price : 8700 ,	img : '베이컨치즈와퍼.png', category:'스페셜'},
+	{name : '콰트로치즈와퍼', 		price : 5200 ,	img : '콰트로치즈와퍼.png', category:'스페셜'},
+	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', category:'스페셜'},
+	{name : '치킨킹', 			price : 3600 ,	img : '치킨킹.png', category:'올데이킹'},
+	{name : 'BLT오믈렛킹모닝', 		price : 4900 ,	img : 'BLT오믈렛킹모닝.png', category:'올데이킹'},
+	{name : '킹치킨버거', 			price : 3600 ,	img : '킹치킨버거.png', category:'치킨버거'},
+	{name : '바비큐킹치킨버거', 		price : 3900 ,	img : '바비큐킹치킨버거.png', category:'치킨버거'}
 	]
 // 카트 목록
 let cartList = []
 // 주문 목록
 let orderList = []
 
+let saleList = []
+
+
+//
 /* -----------------공통 - DB       end----------------------------------------------------- */
 /* -----------------js 열렸을때 1번 실행되는 함수------------------------------------------------ */
 category_print();	// 카테고리 호출 함수 호출
@@ -195,7 +202,7 @@ function product_print( index ){
  	{let html = `	<tr class="t_title">
 						<th colspan="6"> 제품 리스트 </th>
 					</tr>
- 					<tr>
+ 					<tr class="t_list">
 						<th> 번호 </th>
 						<th> 이미지 </th>
 						<th> 버거이름 </th>
@@ -203,7 +210,7 @@ function product_print( index ){
 						<th> 카테고리 </th>
 						<th> 비고 </th>
 					</tr>`
-	for( i=0 ; i<burgurList.length; i++)
+	for(let i=0 ; i<burgurList.length; i++)
 		{ html += `<tr>
 						<td> ${i+1} </td>
 						<td> <img src="img/${burgurList[i].img}" width="20px"/> </td>
@@ -235,16 +242,16 @@ function product_print( index ){
  	{ let html =`<tr class="t_title">
 						<th colspan="5"> 주문 현황 </th>
 					</tr>				
-					<tr>
+					<tr class="t_list">
 						<th> 주문번호 </th>
 						<th> 버거이름 </th>
 						<th> 가격 </th>
 						<th> 상태 </th>
 						<th> 비고 </th>
 					</tr>`
-			
-		for( i=0 ; i<orderList.length; i++) 
-		 { for( j=0 ; j<orderList[i].items.length; j++) 
+		saleList = []		
+		for(let i=0 ; i<orderList.length; i++) 
+		 { for(let j=0 ; j<orderList[i].items.length; j++) 
 			{ html +=`<tr>
 					<td> ${orderList[i].no} </td>	
 					<td> ${orderList[i].items[j].name} </td>
@@ -252,66 +259,64 @@ function product_print( index ){
 					<td> ${orderList[i].state?'주문요청':'주문완료'} </td>
 					<td> <button class="compelete" onclick="compelete(${i})" > 주문완료 </button>					
 					</td>
-				</tr>`	}}	
-
+				</tr>`		
+			// 주문 목록 중 주문된 버거 이름만 따로 배열 생성 		
+			saleList.push (orderList[i].items[j])}}
+		
+		console.log(saleList)
 		 document.querySelector('.ordertable').innerHTML =html	
 	 }// fun e
 	 
  // 3-1. 주문완료 상태 변경
  function compelete(i)
  	{ orderList[i].state = false
-	주문목록현황()} // fun e
+	주문목록현황()
+	// 주문완료되면 판매수량 및 매출현황 갱신
+	매출현황()} // fun e
  
  // 4. 매출 현황 출력
  function 매출현황()
  	{let html =`<tr class="t_title">
 					<th colspan="5"> 매출 현황 </th>
 				</tr>
- 				<tr>
+ 				<tr class="t_list">
 					<th> 제품번호 </th>
 					<th> 버거이름 </th>
 					<th> 판매수량 </th>
 					<th> 매출액 </th>
 					<th> 순위 </th>
 				</tr>`
-		for( i=0 ; i<burgurList.length ; i++)
-		{html +=`<tr>
+	// 버거 이름만 따로 추출하여 만든 배열을 새로운 배열에 이동	
+	let map배열 = saleList.map((o)=>{return o;})
+	console.log(map배열)
+	// 매출 현황에 보여질 현재 보유한 제품 리스트
+	for(let i=0 ; i<burgurList.length ; i++)
+		{// 판매수량
+		let count = 0;	
+		for(let j=0 ; j<map배열.length ; j++)	
+			{if(burgurList[i].name===map배열[j].name){count += 1}}
+			console.log(count)
+			
+		// 매출액	
+		let total = 0;	
+			total = (parseInt(burgurList[i].price)*count)				
+
+		// 순위
+		let rank = 1;
+		
+		
+			html +=`<tr>
 					<td> ${i+1} </td>
 					<td> ${burgurList[i].name} </td>
-					<td> ${orderList.length} </td>
-					<td> ${burgurList[i].price} </td>
-					<td> ${i+1} 	</td>
-				</tr>
-		`}
+					<td> ${count} </td>
+					<td class="sum_price(${i})"> ${total.toLocaleString(i)} </td>
+					<td> ${rank} 	</td>
+				</tr>`
+		}// for e
+
+		// 파악된 매출 html 매출현황 테이블에 출력
 		  document.querySelector('.totaltable').innerHTML =html	
 	 } // fun e
-
-/*
-	1. orderList.items 분리
-
-	orderList.length 만큼 반복하여 객체 order 새로운 배열에 담기 => 
-	order.items.length 만큼 반복하여 items 새로운 배열에 담기 =>
-	주문번호는 order에 속한 속성
-	동일 주문번호내에 각 item 분리?
-	버거이름은 items내 burgur에 속한 속성? 각 item에 order no 속성 추가?
-	각 item 분리후 수량 카운트?	
-
-	let orderburgurList = []
-	orderList[i].items[j].name?
-
-	
-	주문번호				버거이름				가격					요청/완료일		비고
-	order.no			burgur.name			burgur.price		order.state 
-	orderList[i].no		burgurList[i].name	burgurList[i].name
-
-
-*/
-
-
-
-
-
-
 
 
 
