@@ -39,7 +39,7 @@ let orderList = []
 
 let saleList = []
 
-
+let 매출액 = []
 //
 /* -----------------공통 - DB       end----------------------------------------------------- */
 /* -----------------js 열렸을때 1번 실행되는 함수------------------------------------------------ */
@@ -150,7 +150,8 @@ function product_print( index ){
 	 // 2. 주문완료 후 
 	 cartList.splice(0); // 개수 생략시 모두 삭제
 	 cart_print()
-	 주문목록현황() 	 
+	 주문목록현황()
+ 	 title_select2()
 	 console.log(cartList)
  }//fun e
  // 7. 카트내 버거 출력 [ 1. 제품 클릭시 2. 취소/ 주문시]
@@ -173,10 +174,11 @@ function product_print( index ){
 		
  }//fun e 
  //---------------------------------------------------------------------------------------------
- 제품목록현황()
- 주문목록현황()
- 매출현황()
- 
+제품목록현황()
+주문목록현황()
+매출현황()
+title_select1()
+
  // 1. 제품 등록 입력창
  function 등록()
 	{ let 제품 =
@@ -199,10 +201,7 @@ function product_print( index ){
 	
   // 2. 등록된 버거 현황 출력
  function 제품목록현황()
- 	{let html = `	<tr class="t_title">
-						<th colspan="6"> 제품 리스트 </th>
-					</tr>
- 					<tr class="t_list">
+ 	{let html = `<tr class="t_list">
 						<th> 번호 </th>
 						<th> 이미지 </th>
 						<th> 버거이름 </th>
@@ -239,10 +238,7 @@ function product_print( index ){
  
  // 3. 주문된 주문 목록 현황 출력
  function 주문목록현황()
- 	{ let html =`<tr class="t_title">
-						<th colspan="5"> 주문 현황 </th>
-					</tr>				
-					<tr class="t_list">
+ 	{ let html =`<tr class="t_list">
 						<th> 주문번호 </th>
 						<th> 버거이름 </th>
 						<th> 가격 </th>
@@ -275,13 +271,10 @@ function product_print( index ){
 	매출현황()} // fun e
 
 
- 
+
  // 4. 매출 현황 출력
  function 매출현황()
- 	{let html =`<tr class="t_title">
-					<th colspan="5"> 매출 현황 </th>
-				</tr>
- 				<tr class="t_list">
+ 	{let html =`<tr class="t_list">
 					<th> 제품번호 </th>
 					<th> 버거이름 </th>
 					<th> 판매수량 </th>
@@ -291,8 +284,9 @@ function product_print( index ){
 	// 버거 이름만 따로 추출하여 만든 배열을 새로운 배열에 이동	
 	let map배열 = saleList.map((o)=>{return o;})
 	console.log(map배열)
-	
-	let 매출액 = []
+
+	매출액=[]
+
 	// 매출 현황에 보여질 현재 보유한 제품 리스트
 	for(let i=0 ; i<burgurList.length ; i++)
 		{// 판매수량
@@ -301,32 +295,65 @@ function product_print( index ){
 			{if(burgurList[i].name===map배열[j].name){count += 1}}
 			console.log(count)
 			
+		
 		// 매출액	
 		let total = 0;	
 			total = (parseInt(burgurList[i].price)*count)	
 			매출액.push(total)
-
-		// 순위
-		let rank = 1;
-	 	
 			
+		// 순위....
+		let rank=1;
+		
 			html +=`<tr>
 					<td> ${i+1} </td>
 					<td> ${burgurList[i].name} </td>
 					<td> ${count} </td>
 					<td> ${total.toLocaleString(i)} </td>
-					<td> ${rank} 	</td>
+					<td> ${rank} </td>
 				</tr>`
 		}// for e
 
-
-	console.log(매출액)
-		
 		// 파악된 매출 html 매출현황 테이블에 출력
 		  document.querySelector('.totaltable').innerHTML =html	
 	 } // fun e
 
-
-// 매출액 = [0,0,0,0,0,0,0,0,0,0]
-// 매출액2 = [0,0,0,0,0,0,0,0,0,0]
- 
+function title_select1()
+	{document.querySelector('.enroll').style.display = 'block',
+	document.querySelector('.itemList').style.display = 'block',
+	document.querySelector('.orderList').style.display = 'none',
+	document.querySelector('.totalList').style.display = 'none'}
+function title_select2()
+	{document.querySelector('.enroll').style.display = 'none',
+	document.querySelector('.itemList').style.display = 'none',
+	document.querySelector('.orderList').style.display = 'block',
+	document.querySelector('.totalList').style.display = 'none'}	
+function title_select3()
+	{document.querySelector('.enroll').style.display = 'none',
+	document.querySelector('.itemList').style.display = 'none',
+	document.querySelector('.orderList').style.display = 'none',
+	document.querySelector('.totalList').style.display = 'block'}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

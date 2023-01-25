@@ -57,11 +57,16 @@
 		</div> <!-- container e -->
 		<!-- ---------------------------------------------------------------- -->
 		<div class = "container">
+			<div class="t_title">
+				<ul>
+					<li class="title" onclick="title_select1()">제품 현황</li> <span> | </span>
+					<li class="title" onclick="title_select2()">주문 현황</li> <span> | </span>
+					<li class="title" onclick="title_select3()">매출 현황</li>					
+				</ul>			
+			</div>		
 			<div class="enroll">
-				<table class="enrolltable">
-					<tr class="t_title">
-						<th colspan="2"> 제품 등록 </th>
-					</tr>				
+				<h3 class="now"> 제품 등록 </h3>				
+				<table class="enrolltable">				
 					<tr>
 						<th> 버거이름 </th> <td><input class="name" type="text"></td>
 					</tr>
@@ -74,22 +79,25 @@
 					<tr>	
 						<th> 이미지 </th><td><input  class="img" type="text"></td>
 					</tr>
-					<tr>
-						<th colspan="2"><button onclick="등록()" type="button">제품 등록</button> </th>
+					<tr>	
+						<th colspan="2"> <button onclick="등록()" type="button">제품 등록</button> </th>
 					</tr>
 				</table> <!-- enrolltable e -->
-			</div> <!-- enroll e -->
+			</div> <!-- enroll e -->			
 			<div class="itemList">
+			<h3 class="now"> 제품 현황 </h3>
 				<table class="itemtable">
 					<!-- js 데이터가 들어가는 자리 -->
 				</table> <!-- itemtable e -->
 			</div> <!-- itemList e -->
 			<div class="orderList">
+			<h3 class="now"> 주문 현황 </h3>
 				<table class="ordertable">
 					<!-- js 데이터가 들어가는 자리 -->			
 				</table> <!-- ordertable e -->			
 			</div> <!-- orderList e -->
 			<div class="totalList">
+			<h3 class="now"> 매출 현황 </h3>
 				<table class="totaltable">
 					<!-- js 데이터가 들어가는 자리 -->			
 				</table> <!-- totaltable e -->				
