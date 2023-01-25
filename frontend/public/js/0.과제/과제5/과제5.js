@@ -19,18 +19,18 @@
 let categoryList = [ '프리미엄', '스페셜' , '와퍼', '올데이킹','치킨버거']
 // 등록된 버거객체 목록/배열
 let burgurList = [
-	{name : '기네스와퍼', 			price : 9300 ,	img : '기네스와퍼.png', category:'프리미엄'},	
+	{name : '기네스와퍼', 			price : 9300 ,	img : '기네스와퍼.png', 	category:'프리미엄'},	
 	{name : '블랙어니언와퍼', 		price : 6200 ,	img : '블랙어니언와퍼.png', category:'프리미엄'},		
-	{name : '갈릭와퍼', 			price : 6200 ,	img : '갈릭와퍼.png', category:'와퍼'},	
-	{name : '통새우와퍼', 			price : 7700 ,	img : '통새우와퍼.png', category:'와퍼'},
-	{name : '치즈와퍼', 			price : 7500 ,	img : '치즈와퍼.png', category:'와퍼'},
+	{name : '갈릭와퍼', 			price : 6200 ,	img : '갈릭와퍼.png', 		category:'와퍼'},	
+	{name : '통새우와퍼', 			price : 7700 ,	img : '통새우와퍼.png', 	category:'와퍼'},
+	{name : '치즈와퍼', 			price : 7500 ,	img : '치즈와퍼.png', 		category:'와퍼'},
 	{name : '베이컨치즈와퍼', 		price : 8700 ,	img : '베이컨치즈와퍼.png', category:'스페셜'},
 	{name : '콰트로치즈와퍼', 		price : 5200 ,	img : '콰트로치즈와퍼.png', category:'스페셜'},
-	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', category:'스페셜'},
-	{name : '치킨킹', 			price : 3600 ,	img : '치킨킹.png', category:'올데이킹'},
-	{name : 'BLT오믈렛킹모닝', 		price : 4900 ,	img : 'BLT오믈렛킹모닝.png', category:'올데이킹'},
-	{name : '킹치킨버거', 			price : 3600 ,	img : '킹치킨버거.png', category:'치킨버거'},
-	{name : '바비큐킹치킨버거', 		price : 3900 ,	img : '바비큐킹치킨버거.png', category:'치킨버거'}
+	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', 	category:'스페셜'},
+	{name : '치킨킹', 			price : 3600 ,	img : '치킨킹.png',		category:'올데이킹'},
+	{name : 'BLT오믈렛킹모닝', 		price : 4900 ,	img : 'BLT오믈렛킹모닝.png',category:'올데이킹'},
+	{name : '킹치킨버거', 			price : 3600 ,	img : '킹치킨버거.png', 	category:'치킨버거'},
+	{name : '바비큐킹치킨버거', 		price : 3900 ,	img : '바비큐킹치킨버거.png',category:'치킨버거'}
 	]
 // 카트 목록
 let cartList = []
@@ -305,26 +305,28 @@ function product_print( index ){
 		let total = 0;	
 			total = (parseInt(burgurList[i].price)*count)	
 			매출액.push(total)
-		
+
 		// 순위
 		let rank = 1;
-
+	 	
+			
 			html +=`<tr>
 					<td> ${i+1} </td>
 					<td> ${burgurList[i].name} </td>
 					<td> ${count} </td>
-					<td class="sum_price"> ${total.toLocaleString(i)} </td>
+					<td> ${total.toLocaleString(i)} </td>
 					<td> ${rank} 	</td>
 				</tr>`
 		}// for e
-		
 
 
-		console.log(매출액)
+	console.log(매출액)
 		
 		// 파악된 매출 html 매출현황 테이블에 출력
 		  document.querySelector('.totaltable').innerHTML =html	
 	 } // fun e
 
 
+// 매출액 = [0,0,0,0,0,0,0,0,0,0]
+// 매출액2 = [0,0,0,0,0,0,0,0,0,0]
  
