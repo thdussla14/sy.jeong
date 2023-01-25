@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">		<!-- git -->
+<title>Insert title here</title>
+
+	<style type="text/css">
+		.wrap {display: flex; justify-content: center;}
+		.box {width: 33%; border: 1px solid #eeeeee;}
+	
+	</style>
+
+</head>
+<body>
+
+<!-- 	<h3> h는 기본값 설정이 많아서 레이아웃에서는 자주 사용 X</h3> 
+	
+	레이아웃 설정시 자주 사용하는 마크
+	
+	<div> 기본값 :display:block; </div>
+	
+	<span>기본값 :display:inline; </span>
+
+	<header></header>
+	<nav></nav>
+	<section></section>
+	<aside></aside>
+	<footer></footer> -->
+
+	<div class="wrap">
+		<div class="box"> 
+			<h3>글쓰기 페이지</h3>
+			<form>	<!-- 입력형식 : 백엔드 사용시 데이터 전송 -->
+				작성자 : 	<input type="text" 				class="bwriter"> <br/>
+				비밀번호 :	<input type="password"			class="bpassword"> <br/>
+				제목 :  	<input type="text" 				class="btitle"> <br/>
+				내용 :  	<textarea rows="10" cols="50" 	class="bcontent"></textarea> <br/>
+				<button type="button" onclick="onwrite()"> 글 등록 </button>
+				<!-- form 마크업 안에서 button마크업 type="button" 설정 필수  -->
+			
+			</form>
+		</div>	
+		<div class="box">
+			<h3>글목록 페이지</h3>
+			<table class="boardtable"></table>
+		</div>
+		<div class="box">
+			<h3>글보기 페이지</h3>
+			<div class="viewbox"></div>
+		</div>
+	</div>
+
+
+
+	<!-- script 링크 -->
+	<script src="8.비회원게시판.js" type="text/javascript"></script>
+
+</body>
+</html>
