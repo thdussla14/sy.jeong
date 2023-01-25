@@ -273,6 +273,8 @@ function product_print( index ){
 	주문목록현황()
 	// 주문완료되면 판매수량 및 매출현황 갱신
 	매출현황()} // fun e
+
+
  
  // 4. 매출 현황 출력
  function 매출현황()
@@ -289,6 +291,8 @@ function product_print( index ){
 	// 버거 이름만 따로 추출하여 만든 배열을 새로운 배열에 이동	
 	let map배열 = saleList.map((o)=>{return o;})
 	console.log(map배열)
+	
+	let 매출액 = []
 	// 매출 현황에 보여질 현재 보유한 제품 리스트
 	for(let i=0 ; i<burgurList.length ; i++)
 		{// 판매수량
@@ -299,26 +303,28 @@ function product_print( index ){
 			
 		// 매출액	
 		let total = 0;	
-			total = (parseInt(burgurList[i].price)*count)				
-
+			total = (parseInt(burgurList[i].price)*count)	
+			매출액.push(total)
+		
 		// 순위
 		let rank = 1;
-		
-		
+
 			html +=`<tr>
 					<td> ${i+1} </td>
 					<td> ${burgurList[i].name} </td>
 					<td> ${count} </td>
-					<td class="sum_price(${i})"> ${total.toLocaleString(i)} </td>
+					<td class="sum_price"> ${total.toLocaleString(i)} </td>
 					<td> ${rank} 	</td>
 				</tr>`
 		}// for e
+		
 
+
+		console.log(매출액)
+		
 		// 파악된 매출 html 매출현황 테이블에 출력
 		  document.querySelector('.totaltable').innerHTML =html	
 	 } // fun e
 
 
-
- 
  
