@@ -20,13 +20,13 @@ let categoryList = [ '프리미엄', '스페셜' , '와퍼', '올데이킹','치
 // 등록된 버거객체 목록/배열
 let burgurList = [
 	{name : '기네스와퍼', 			price : 9300 ,	img : '기네스와퍼.png', 	category:'프리미엄'},	
-	{name : '블랙어니언와퍼', 		price : 6200 ,	img : '블랙어니언와퍼.png', category:'프리미엄'},		
+	{name : '블랙어니언와퍼', 		price : 6200 ,	img : '블랙어니언와퍼.png', category:'프리미엄'},
+	{name : '베이컨치즈와퍼', 		price : 8700 ,	img : '베이컨치즈와퍼.png', category:'스페셜'},
+	{name : '콰트로치즈와퍼', 		price : 5200 ,	img : '콰트로치즈와퍼.png', category:'스페셜'},
+	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', 	category:'스페셜'},			
 	{name : '갈릭와퍼', 			price : 6200 ,	img : '갈릭와퍼.png', 		category:'와퍼'},	
 	{name : '통새우와퍼', 			price : 7700 ,	img : '통새우와퍼.png', 	category:'와퍼'},
 	{name : '치즈와퍼', 			price : 7500 ,	img : '치즈와퍼.png', 		category:'와퍼'},
-	{name : '베이컨치즈와퍼', 		price : 8700 ,	img : '베이컨치즈와퍼.png', category:'스페셜'},
-	{name : '콰트로치즈와퍼', 		price : 5200 ,	img : '콰트로치즈와퍼.png', category:'스페셜'},
-	{name : '할라피뇨와퍼', 		price : 6200 ,	img : '할라피뇨와퍼.png', 	category:'스페셜'},
 	{name : '치킨킹', 			price : 3600 ,	img : '치킨킹.png',		category:'올데이킹'},
 	{name : 'BLT오믈렛킹모닝', 		price : 4900 ,	img : 'BLT오믈렛킹모닝.png',category:'올데이킹'},
 	{name : '킹치킨버거', 			price : 3600 ,	img : '킹치킨버거.png', 	category:'치킨버거'},
@@ -182,10 +182,10 @@ title_select1()
  // 1. 제품 등록 입력창
  function 등록()
 	{ let 제품 =
-		{name : document.querySelector('.name').value,
-		price:parseInt(document.querySelector('.price').value),
-		img	:document.querySelector('.img').value,
-		category :document.querySelector('.category').value }
+		{name 	:document.querySelector('.name').value,
+		 price	:parseInt(document.querySelector('.price').value),
+		 img	:document.querySelector('.img').value,
+		 category :document.querySelector('.category').value }
 		
 	// 1. 카테고리명 유효성 검사
 	if(!categoryList.includes(제품.category))
@@ -197,125 +197,151 @@ title_select1()
 	
 	burgurList.push(제품); console.log(burgurList)
 	제품목록현황()
+	// 키오스크 화면도 갱신
+	category_select(0)
+	alert('버거등록완료')
 	} // fun e
 	
   // 2. 등록된 버거 현황 출력
  function 제품목록현황()
  	{let html = `<tr class="t_list">
-						<th> 번호 </th>
-						<th> 이미지 </th>
-						<th> 버거이름 </th>
-						<th> 가격 </th>
-						<th> 카테고리 </th>
-						<th> 비고 </th>
+						<th width="5%"> 번호 </th>
+						<th width="10%"> 이미지 </th>
+						<th width="30%"> 버거이름 </th>
+						<th width="15%"> 카테고리 </th>
+						<th width="20%"> 가격 </th>						
+						<th width="20%"> 비고 </th>
 					</tr>`
 	for(let i=0 ; i<burgurList.length; i++)
 		{ html += `<tr>
 						<td> ${i+1} </td>
-						<td> <img src="img/${burgurList[i].img}" width="20px"/> </td>
-						<td> ${burgurList[i].name} </td>
-						<td> ${burgurList[i].price} </td>
+						<td> <img src="img/${burgurList[i].img}" width="100%"/> </td>
+						<td> ${burgurList[i].name} </td>						
 						<td> ${burgurList[i].category} </td>
+						<td> ${burgurList[i].price} </td>
 						<td> 
 							<button onclick="Delete(${i})"> 삭제 </button>
-							<button onclick="Update(${i})"> 수정 </button>						
+							<button onclick="Update(${i})"> 가격수정 </button>						
 						</td>
 					</tr>`			
 		} // for e					
 		document.querySelector('.itemtable').innerHTML =html						
 	}  // fun e
+	
  // 2-1. 등록된 버거 삭제
  function Delete(i)
  	{burgurList.splice(i,1); 
+ 	alert('제품 삭제 성공')
  	제품목록현황()
+ 	매출현황()
+ 	category_select(0)
  	console.log(burgurList) }// fun e
+ 	
  // 2-2. 등록된 버거 가격 변경
  function Update(i)
  	{ let 변경가격 = parseInt(prompt('변경할 가격을 입력해주세요.')) 	
- 	burgurList[i].price = 변경가격 	
+ 	burgurList[i].price = 변경가격 
+ 	alert('가격 수정 성공')	
 	제품목록현황()
+	매출현황()
+	category_select(0)
 	 console.log(burgurList)} // fun Update e
  
- // 3. 주문된 주문 목록 현황 출력
+ // 3. 주문된 주문 목록 현황 출력 [1. js 실행 // 2. 주문시  // 3.주문완료시 ]
  function 주문목록현황()
  	{ let html =`<tr class="t_list">
-						<th> 주문번호 </th>
-						<th> 버거이름 </th>
-						<th> 가격 </th>
-						<th> 상태 </th>
-						<th> 비고 </th>
+						<th width="10%"> 주문번호 		</th>
+						<th width="30%"> 버거이름 		</th>
+						<th width="20%"> 상태 		</th>
+						<th width="20%"> 요청시간/완료시간</th>
+						<th width="20%"> 비고 		</th>
 					</tr>`
-		saleList = []		
-		for(let i=0 ; i<orderList.length; i++) 
-		 { for(let j=0 ; j<orderList[i].items.length; j++) 
-			{ html +=`<tr>
-					<td> ${orderList[i].no} </td>	
-					<td> ${orderList[i].items[j].name} </td>
-					<td> ${orderList[i].items[j].price} </td>
-					<td> ${orderList[i].state?'주문요청':'주문완료'} </td>
-					<td> <button class="compelete" onclick="compelete(${i})" > 주문완료 </button>					
+	saleList = []	
+	orderList.forEach((order, i) => {	// 주문리스트 회전/반복
+	order.items.forEach((burgur, j) => {	// 각 주문마다 버거리스트 회전/반복
+	
+	let time = order.time.getHours()+ ' : ' + order.time.getMinutes() ;
+	if( orderList[i].state == false)
+	{ time += ` / ${order.complete.getHours()} : ${order.complete.getMinutes()}`}
+	
+	html += `<tr>
+					<td> ${order.no} </td>	
+					<td> ${burgur.name} </td>					
+					<td> ${order.state?'주문요청':'주문완료'} </td>
+					<td> ${time} </td>
+					<td> 
+						<button class="compelete" onclick="compelete(${i})" > 주문완료 </button>					
 					</td>
-				</tr>`		
-			// 주문 목록 중 주문된 버거 이름만 따로 배열 생성 		
-			saleList.push (orderList[i].items[j])}}
-		
-		console.log(saleList)
-		 document.querySelector('.ordertable').innerHTML =html	
+				</tr>`	
+				saleList.push (burgur)
+				})	})
+							
+	document.querySelector('.ordertable').innerHTML =html			
+				
 	 }// fun e
 	 
- // 3-1. 주문완료 상태 변경
- function compelete(i)
- 	{ orderList[i].state = false
+ // 3-1. 주문 상태 변경
+ function compelete(i)	
+ 	{ orderList[i].state = false ; 		// 주문완료
+ 	orderList[i].complete = new Date();	// 주문완료 시간
 	주문목록현황()
 	// 주문완료되면 판매수량 및 매출현황 갱신
 	매출현황()} // fun e
 
 
-
  // 4. 매출 현황 출력
  function 매출현황()
  	{let html =`<tr class="t_list">
-					<th> 제품번호 </th>
-					<th> 버거이름 </th>
-					<th> 판매수량 </th>
-					<th> 매출액 </th>
-					<th> 순위 </th>
+					<th width="10%"> 제품번호 </th>
+					<th width="40%"> 버거이름 </th>
+					<th width="20%"> 판매수량 </th>
+					<th width="20%"> 매출액 </th>
+					<th width="10%"> 순위 </th>
 				</tr>`
-	// 버거 이름만 따로 추출하여 만든 배열을 새로운 배열에 이동	
-	let map배열 = saleList.map((o)=>{return o;})
-	console.log(map배열)
-
-	매출액=[]
-
-	// 매출 현황에 보여질 현재 보유한 제품 리스트
-	for(let i=0 ; i<burgurList.length ; i++)
-		{// 판매수량
-		let count = 0;	
-		for(let j=0 ; j<map배열.length ; j++)	
-			{if(burgurList[i].name===map배열[j].name){count += 1}}
-			console.log(count)
-			
-		
-		// 매출액	
-		let total = 0;	
-			total = (parseInt(burgurList[i].price)*count)	
-			매출액.push(total)
-			
-		// 순위....
-		let rank=1;
-		
-			html +=`<tr>
+				
+	 burgurList.forEach((burgur, i)=>{ // 현재 등록된 모든 버거 반복중
+	 
+ 		html +=`<tr>
 					<td> ${i+1} </td>
-					<td> ${burgurList[i].name} </td>
-					<td> ${count} </td>
-					<td> ${total.toLocaleString(i)} </td>
-					<td> ${rank} </td>
-				</tr>`
-		}// for e
-
+					<td> ${burgur.name} </td>
+					<td> ${sales_count(i)} </td>
+					<td> ${(sales_count(i)*burgur.price).toLocaleString()} </td>
+					<td> ${sales_rank (i)} </td>
+				</tr>` })
+				
 		// 파악된 매출 html 매출현황 테이블에 출력
 		  document.querySelector('.totaltable').innerHTML =html	
 	 } // fun e
+	 
+// 판매수량  
+ function sales_count(index){ console.log(index+'번 버거 선택') // index 확인용
+ 
+ 	let count = 0 ; // 1. i번째 제품의 누적 판매량수 저장 변수
+ 	
+ 	orderList.forEach((order, i) => {	// 주문리스트 회전/반복
+	order.items.forEach((burgur, j) => {	// 각 주문마다 버거리스트 회전/반복
+	
+	if(burgur.name == burgurList[index].name) {count++}
+	
+	})})
+ 	return count;} // fun e
+ 	
+// 순위
+  function sales_rank (index) { console.log(index+'번 버거 순위')
+ 	// 1. index 번째 버거 순위 저장 변수 [ 기본값 :  1등 ]
+ 	let rank = 1;	
+ 	
+ 	// 2. index 번째 버거의 매출액
+ 	let total = sales_count(index)* burgurList[index].price ;
+ 	
+ 	// 3. 모든 버거들의 매출액
+ 	burgurList.forEach((burgur,i)=>{
+ 	
+ 		let total2 = sales_count(i)* burgur.price ;
+ 		
+ 		if(total<total2){rank++} 	
+ 	})
+ 	return rank ; } // fun e
 
 function title_select1()
 	{document.querySelector('.enroll').style.display = 'block',

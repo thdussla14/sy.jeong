@@ -68,8 +68,7 @@ button{border: none;}
 .enrolltable {width: 50%; height:200px;padding: 10px; }
 .itemtable, .ordertable, .totaltable {width: 100%;}
 .enrolltable button {width: 25%;height: 30px;border-radius: 5px;}
-.itemtable button {width: 40px;height: 20px;border-radius: 5px;}
-
+.itemtable button {width: 70px;height: 20px;border-radius: 5px;}
 
 
 
