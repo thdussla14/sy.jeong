@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+/* 웹폰트 */
+@font-face {
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 기본값 성정 : 글꼴, 색상, 여백 */
+* {font-family:'KIMM_Bold';
+	color: black;
+	margin: 0px;padding: 0px;}
+a{text-decoration:none;}
+
+/* 로고 구역 : 가운데 정렬 */
+.logobox{text-align: center;}
+		
+/* 하단 메뉴 top 위치 변경*/
+.h_bottom {top:40px!important;}/*부트스트랩 설정보다 우선순위*/
+
+/* 부트스트랩의 class 설정 변경 */
+.nav-link {color: black!important;}
+
+.h_topmenu{width: 100% ; display: flex; justify-content: flex-end;font-size: 8px; }
+.h_bottommenu {width: 100% ; display: flex; justify-content: space-between;font-size: 15px; }
+
+/*------------------------------------------------------------------------------------------*/
+.box_title {text-align: center; 
+			border-bottom: 2px solid black;
+			width: 20%;
+			margin: 0 auto;
+			padding-top: 10%;
+			padding-bottom: 1%;}
+.itembox {display: flex; flex-wrap: wrap;margin: 3%;}
+
+
+/* 디바이스마다 css 다르게 설정 -> 미디어 쿼리 */	
+/* @media(조건){참일 경우 css} */
+
+/* 최대 가로사이즈가 1000px 미만일 경우 */
+@media(max-width:1000px){	
+	.item {width: 45% !important; margin: 2% !important; }
+}
+/* 최대 가로사이즈가 500px 미만일 경우 */
+@media(max-width:500px){	
+	.item {width: 90% !important; margin: 2% !important; }
+}
+/* PC 기준 (1200px 이상) */			
+.item {width: 20%; margin: 2%; }
+.item img {width: 100%; 	/* 상위 요소의 크기 백분율*/
+		border-radius: 20px; /* 둥근 모서리*/}
+.item:hover { /* 해당 요소에 마우스를 올렸을때 */
+	opacity: 60%;}	
+.item_title{
+	font-size: 14px;
+	margin: 5% 0%;}
+.item_size{
+	font-size: 12px;
+	color: #999999;
+	border-bottom: 1px solid black;
+	padding-bottom: 4%;}		
+.item_price{
+	font-size: 12px;
+	color: #999999;
+	margin-top:3%;
+	text-decoration: line-through;}	/* 취소선 */	
+.item_sale{
+	font-size: 14px;
+	font-weight: bold;}		
+.item_discount{
+	font-size: 14px;
+	font-weight: bold;
+	color: #ff9995;}		
+.item_bottom{
+	display: flex;			/* 하위 요소의 가로배치 */
+	justify-content: space-between;	/* 하위 요소의 가로배치 */
+	align-items: center;	/* 하위 요소의 세로 정렬 */
+	margin-top: 3%;}	
+.item_review{
+	font-size: 12px;
+	color: #999999;
+	text-align: right;
+}		
+		
+		
+		
+		
+		
+		
+		
+		
+		

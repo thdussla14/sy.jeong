@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="widtd=device-widtd, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 1. 부트스트랩 설치 
+	
+		<meta name="viewport" content="widtd=device-widtd, initial-scale=1">
+	
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>	
+	 -->
+	 
+	<!-- 2. 부트스트랩 class 위주 
+		.container	: 반응형 박스/구역
+		.row		: 하위 요소 가로배치 (display:flex와 유사)
+		그리드 [반응형 제작]	
+			- 박스[구역]마다 12조각으로 분할
+			- col-md-조각수
+			- off-set-공백조각수
+		.table		: 
+	 -->	
+	
+	<div>
+		css 없는 기본 박스권
+	</div>
+	<div class="container">
+		미리 만들어진 css [부트스트랩] 박스권
+	</div>
+	<div class="container">	
+		<div class="box row">
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+			<div class="col-md-1 col-1"> col-md-1 [열1칸] </div>
+		</div>
+		----------------------------------------------------------
+		<div class="row">
+			<div class="col-md-8 col-8"> col-md-8 </div>
+			<div class="col-md-4 col-4"> col-md-4 </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-4"> col-md-4 </div>
+			<div class="col-md-4 col-4"> col-md-4 </div>
+			<div class="col-md-4 col-4"> col-md-4 </div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-6"> col-md-6 </div>
+			<div class="col-md-6 col-6"> col-md-6 </div>
+		</div>	
+		-----------------------------------------------------------
+		<div class="row">
+			<div class="col-md-8 col-8"> col-md-8 
+				<div class="row">
+					<div class="col-md-4 col-4"> 외부 8 그리드 내 4 그리드 </div>
+					<div class="col-md-4 col-4"> 외부 8 그리드 내 8 그리드 </div>
+				</div>
+			</div>
+			<div class="col-md-4 col-4"> col-md-4
+				<div class="row">
+					<div class="col-md-6 col-6"> 외부 4 그리드 내 6 그리드 </div>
+					<div class="col-md-6 col-6"> 외부 4 그리드 내 6 그리드 </div>	
+				</div>					
+			</div>				
+		</div>
+		-----------------------------------------------------------
+		<div class="row">
+			<div class="col-md-5 col-6"> col-md-5 </div>
+			<div class="col-md-5 off-set-2 col-6"> col-md-5  </div>	
+		</div>
+		-----------------------------------------------------------
+		<table class="table">	<!-- 테이블 -->
+			<thead>	<!-- 제목 -->
+				<tr> <td> 번호 </td> <td> 제목 </td> <td> 작성일 </td> <td> 조회수 </td> </tr>
+			</thead>	
+			<tbody>	<!-- 내용 -->
+				<tr> <td> 1 </td> <td> 안녕~~~ </td> <td> 2023.01.26 </td> <td> 123 </td> </tr>
+				<tr> <td> 2 </td> <td> JAVA~~ </td> <td> 2023.01.27 </td> <td> 123 </td> </tr>
+				<tr> <td> 3 </td> <td> JS~~~~ </td> <td> 2023.01.28 </td> <td> 123 </td> </tr>
+			</tbody>	
+		</table>
+		
+		<div class="row">
+			<div class="col-md-4">	<!-- 12조각 중 4조각 -->
+				<table class="table table-striped">	<!-- 테이블 -->
+					<thead>	<!-- 제목 -->
+						<tr> <td> 번호 </td> <td> 제목 </td> <td> 작성일 </td> <td> 조회수 </td> </tr>
+					</thead>	
+					<tbody>	<!-- 내용 -->
+						<tr> <td> 1 </td> <td> 안녕~~~ </td> <td> 2023.01.26 </td> <td> 123 </td> </tr>
+						<tr> <td> 2 </td> <td> JAVA~~ </td> <td> 2023.01.27 </td> <td> 123 </td> </tr>
+						<tr> <td> 3 </td> <td> JS~~~~ </td> <td> 2023.01.28 </td> <td> 123 </td> </tr>
+					</tbody>	
+				</table>			
+			</div>
+			<div class="col-md-4">	<!-- 12조각 중 4조각 -->
+				<table class="table table-hover">	<!-- 테이블 -->
+					<thead>	<!-- 제목 -->
+						<tr> <td> 번호 </td> <td> 제목 </td> <td> 작성일 </td> <td> 조회수 </td> </tr>
+					</thead>	
+					<tbody>	<!-- 내용 -->
+						<tr> <td> 1 </td> <td> 안녕~~~ </td> <td> 2023.01.26 </td> <td> 123 </td> </tr>
+						<tr> <td> 2 </td> <td> JAVA~~ </td> <td> 2023.01.27 </td> <td> 123 </td> </tr>
+						<tr> <td> 3 </td> <td> JS~~~~ </td> <td> 2023.01.28 </td> <td> 123 </td> </tr>
+					</tbody>	
+				</table>			
+			</div> 	
+			<div class="col-md-4">	<!-- 12조각 중 4조각 -->
+				<table class="table table-bordered">	<!-- 테이블 -->
+					<thead>	<!-- 제목 -->
+						<tr> <td> 번호 </td> <td> 제목 </td> <td> 작성일 </td> <td> 조회수 </td> </tr>
+					</thead>	
+					<tbody>	<!-- 내용 -->
+						<tr> <td> 1 </td> <td> 안녕~~~ </td> <td> 2023.01.26 </td> <td> 123 </td> </tr>
+						<tr> <td> 2 </td> <td> JAVA~~ </td> <td> 2023.01.27 </td> <td> 123 </td> </tr>
+						<tr> <td> 3 </td> <td> JS~~~~ </td> <td> 2023.01.28 </td> <td> 123 </td> </tr>
+					</tbody>	
+				</table>			
+			</div> 
+		</div>
+			
+	</div>	<!-- container e -->
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+
+</body>
+</html>
