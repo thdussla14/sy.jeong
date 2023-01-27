@@ -1,0 +1,77 @@
+@charset "UTF-8";
+	
+/* 	position:static 	[기본값] 위치 선택 불가 
+	position:relative	/하위 요소의 기준점/ 
+	position:absolute	/상위 요소의 relative 기준/ 
+	
+	position:absolute의 경우 상위요소에서 position:relative 를 설정하지 않으면 body 기준으로 설정됨
+ */	
+
+/* 게임 화면 설정 */
+.wrap {	position:relative;
+	width: 1000px; height: 600px; margin: 0 auto; border: 1px solid #eeeeee;
+	background-image: url("img/게임배경.jfif");
+	background-size: 100%;
+	background-repeat: no-repeat;}
+.wrap2 {position:relative;
+	width: 1000px; height: 200px; margin: 0 auto; background-color: black;color: white;}
+.logbox, .logbox2 {position:absolute; width: 200px; height: 100px;}
+.logbox {left:50px;}
+.logbox2{left:750px;}
+
+.userbox{ position:absolute; left:10px; top:400px;
+	width: 100px;height: 100px; 
+	background-image: url("img/게임캐릭터.png");
+	background-size: 90%;
+	background-repeat: no-repeat;}
+
+.monbox { position: absolute; left:910px; top:400px;
+	width: 100px;  
+	height: 100px;	
+	background-image: url("img/몬스터.gif");
+	background-size: 70%;
+	background-repeat: no-repeat;
+	
+	/* 애니메이션 이동 효과 */
+	transition: all 1s;	
+}
+
+
+.userHP {position: absolute; left:10px; top:30px;
+		 height: 20px; background-color:blue; color: white;}
+
+
+.monHP {position: absolute; left:680px; top:30px;
+		 height: 20px; background-color:red;color: white; }
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

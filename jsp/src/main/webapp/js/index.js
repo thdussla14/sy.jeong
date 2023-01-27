@@ -1,11 +1,11 @@
 
 let productList = [
-	{img:'p1.gif', title:'퓨어 니트 샤 스커트 세트', size:'[M,L]',price: 56000 , discount: 0.3 , like :55, reviw: 412},
-	{img:'p2.gif', title:'로라 오프 숄더 셔츠', size:'[M,L]',price: 52000 , discount: 0.2 , like :25, reviw: 606},
-	{img:'p3.gif', title:'라움 리본 포켓 셔츠 원피스', size:'[M,L]',price: 56000 , discount: 0.2 , like :54, reviw: 205},
-	{img:'p4.gif', title:'모앤 꽈배기 V넥 루즈핏 가디건', size:'[M,L]',price: 48000 , discount: 0.3 , like :28, reviw: 323},
-	{img:'p5.gif', title:'포드 카라 스트라이프 셔츠', size:'[M,L]',price: 54000 , discount: 0.3 , like :54, reviw: 813},
-	{img:'p6.gif', title:'블린 랩 버튼 카라 원피스', size:'[M,L]',price: 67000 , discount: 0.3 , like :66, reviw: 111},	
+	{img:'1.jpg', title:'14K 핑크골드 하트 플라이 목걸이', size:'[M,L]',price: 399000 , discount: 0.1 , like :55, reviw: 412},	
+	{img:'3.jpg', title:'14K 핑크골드 쁘띠 모던 튤리 목걸이', size:'[M,L]',price: 399000 , discount: 0.1 , like :54, reviw: 205},
+	{img:'4.jpg', title:'14K 핑크골드 쁘띠 호스후프 목걸이', size:'[M,L]',price: 399000 , discount: 0.1 , like :28, reviw: 323},
+	{img:'5.jpg', title:'14K 핑크골드 쁘띠 티 목걸이', size:'[M,L]',price: 399000 , discount: 0.1 , like :54, reviw: 813},
+	{img:'2.jpg', title:'14K 핑크골드 하트 플라이 귀걸이', size:'[M,L]',price: 329000 , discount: 0.1 , like :25, reviw: 606},
+	{img:'반지1.jpg', title:'14K 핑크골드 러브라인 여성 커플링', size:'[M,L]',price: 389000 , discount: 0.1 , like :66, reviw: 111},	
 ]
 
 
