@@ -16,7 +16,7 @@ a{text-decoration:none;}
 
 /* 로고 구역 : 가운데 정렬 */
 .logobox{text-align: center;}
-		
+.logobox img {width: 20%; height: 200px; }		
 /* 하단 메뉴 top 위치 변경*/
 .h_bottom {top:40px!important;}/*부트스트랩 설정보다 우선순위*/
 
