@@ -11,9 +11,9 @@ board_print(null,null)
 function board_print(keyword, key){
 	// 1. JAVA[백엔드]로부터 데이터 요청
 		// 1. 검색이 없는 경우 -> JAVA에게 검색[조건]이 없는 게시물들을 요청
-		if(keyword == null && key == null){alert('검색이 없는 게시물 출력')}
+		// if(keyword == null && key == null){alert('검색이 없는 게시물 출력')}
 		// 2. 검색이 있는 경우 -> JAVA에게 keyword, key 보내서 검색[조건]이 맞는 게시물들을 요청
-		else {alert('검색에 맞는 게시물 출력')}
+		// else {alert('검색에 맞는 게시물 출력')}
 	// 2. DB -> JAVA 로 전달된 게시물리스트 데이터 
 	let boardlist = [
    { no : 5 , title : '안녕하세요A' , writer : '유재석' , date : '2023-01-30' , view:325 , up : 9 , down : 1  } , 

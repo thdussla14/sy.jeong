@@ -16,13 +16,13 @@ function qlist_print(){
 	qboardlist.forEach((o)=>{
 		html += 
 			`<tr>
-				<th>${o.no}</th>
-				<th><a href="q_view.html">${o.title}</a></th>
-				<th>${o.writer}</th>
-				<th>${o.date}</th>
-				<th>${o.view}</th>
-				<th>${o.state==1?'문의접수':'답변완료'}</th>
-				<th>${o.complete}</th>
+				<td>${o.no}</td>
+				<td><a href="q_view.html">${o.title}</a></td>
+				<td>${o.writer}</td>
+				<td>${o.date}</td>
+				<td>${o.view}</td>
+				<td>${o.state==1?'문의접수':'답변완료'}</td>
+				<td>${o.complete}</td>
 			</tr>`
 	})
 	

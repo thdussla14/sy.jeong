@@ -16,12 +16,14 @@ a{text-decoration:none; color: black;}
 
 /* 로고 구역 : 가운데 정렬 */
 .logobox{text-align: center; }
-.logobox img {width: 20%; height: 150px; }		
+.logobox img {width: 20%; height: 100px; }	
+
+	
 /* 하단 메뉴 top 위치 변경*/
 .h_bottom {top:40px!important;}/*부트스트랩 설정보다 우선순위*/
 
 /* 부트스트랩의 class 설정 변경 */
-.nav-link {color: black!important;font-family: 'KIMM_Bold';}
+.nav-link {color: white!important;font-family: 'KIMM_Bold';}
 
 .h_topmenu{width: 100% ; display: flex; justify-content: flex-end;font-size: 8px; }
 .h_bottommenu {width: 100% ; display: flex; justify-content: space-between;font-size: 15px; }

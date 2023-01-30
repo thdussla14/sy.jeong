@@ -12,6 +12,7 @@
 
 	<!-- 사용자정의 : css -->
 	<link href="/jsp/css/index.css" rel="stylesheet">
+	<link href="../css/board/view.css" rel="stylesheet">
 	
 	<!-- 헤더에서 사용되는 경로 : 절대경로 [페이지마다 헤더 사용하는데 페이지마다 상대경로 다르다.]  -->
 	<!-- 
@@ -27,7 +28,7 @@
 <body>
 
 	<!-- 상단 헤더 / sticky top : 반응형 상단고정 -->
-	<div class="navbar navbar-expand-lg sticky-top bg-white h_top">	<!-- 네비게이션 [메뉴] -->
+	<div class="navbar navbar-expand-lg sticky-top bg-black h_top">	<!-- 네비게이션 [메뉴] -->
 		<div class="container">						<!-- 구역 -->
 			<div class="collapse navbar-collapse">		<!-- 감추기 -->
 				<ul class="navbar-nav h_topmenu">						<!-- 메뉴 목록-->
@@ -49,7 +50,7 @@
 	</div>
 	
 	<!-- 하단 헤더 -->
-	<div class="navbar navbar-expand-lg sticky-top bg-white h_bottom">	
+	<div class="navbar navbar-expand-lg sticky-top bg-black h_bottom">	
 		<div class="container">
 		
 			<!-- collapse 버튼 -->
@@ -76,7 +77,38 @@
 	<div class="container">
 	
 		<h3 class="box_title"> 문의사항 조회 </h3>	
-
+		<div class="viewbox">
+			<table class="table">
+				<tr>
+					<th> 작성자 </th> <td> 유재석 </td> <th> 작성일 </th> <td> 2023-01-30 </td>
+				</tr>
+				<tr>
+					<th> 제목 </th> <td colspan="3"> 문의합니다A </td> 
+				</tr>
+				<tr >
+					<th> 문의 내용 </th> 
+					<td colspan="3"> 
+						Q. 고객센터의 상담 시간을 알고 싶어요.	<br>
+						Q. 배송은 언제 되나요?				<br>
+						Q. 배송 전 취소 하고 싶어요!			<br>
+						Q. 교환/반품 신청은 어떻게 하나요?		
+					</td> 
+				</tr>
+				<tr>
+					<th> 관리자 답변 </th> 
+					<td colspan="3"> 
+						- 고객센터 전화번호 : 1544-9180												<br>
+						- 상담 시간 : 평일 오전 9시 30분 ~ 오후 6시 									<br>
+						(점심시간 : 오전 11시 30분 ~ 오후 1시 30분 / 주말, 공휴일 휴무)						<br>
+						- 전화 연결이 어려운 경우 카카오 상담톡으로 문의를 남겨주시면 확인 후 정성껏 답변드리겠습니다.	<br>
+						- 영업일 기준 오후 1시 이전 결제 완료 주문건 :  당일 출고됩니다. (일부 상품 제외)		
+					</td> 
+				</tr>
+				<tr>
+					<th class="vcontent" colspan="4"> <a href="q_list.html"><button class="form-control backbtn" type="button">목록보기</button></a> </th>
+				</tr>
+			</table>
+		</div>
 		
 
 
