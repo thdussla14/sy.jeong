@@ -34,7 +34,7 @@ function product_print(){
 					</div>
 				</div>`	
 	})
-	document.querySelector('.itembox').innerHTML = html;
+	document.querySelector('.itembox').innerHTML = html
 }
 
 

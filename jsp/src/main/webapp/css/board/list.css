@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+table tr td{
+	white-space:nowrap; 		/* 자동 줄바꿈 해제 */
+	overflow: hidden;			/* 사이즈 넘어갈경우 내용 숨기기 */
+	text-overflow: ellipsis;	
+	word-break :break-all;
+	max-width: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

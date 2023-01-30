@@ -9,29 +9,30 @@
 }
 
 /* 기본값 성정 : 글꼴, 색상, 여백 */
-* {font-family:'KIMM_Bold';
+* {font-family:'맑은 고딕';
 	color: black;
 	margin: 0px;padding: 0px;}
-a{text-decoration:none;}
+a{text-decoration:none; color: black;}
 
 /* 로고 구역 : 가운데 정렬 */
-.logobox{text-align: center;}
-.logobox img {width: 20%; height: 200px; }		
+.logobox{text-align: center; }
+.logobox img {width: 20%; height: 150px; }		
 /* 하단 메뉴 top 위치 변경*/
 .h_bottom {top:40px!important;}/*부트스트랩 설정보다 우선순위*/
 
 /* 부트스트랩의 class 설정 변경 */
-.nav-link {color: black!important;}
+.nav-link {color: black!important;font-family: 'KIMM_Bold';}
 
 .h_topmenu{width: 100% ; display: flex; justify-content: flex-end;font-size: 8px; }
 .h_bottommenu {width: 100% ; display: flex; justify-content: space-between;font-size: 15px; }
 
 /*------------------------------------------------------------------------------------------*/
-.box_title {text-align: center; 
+.box_title {font-family: 'KIMM_Bold';
+			text-align: center; 
 			border-bottom: 2px solid black;
 			width: 20%;
-			margin: 0 auto;
-			padding-top: 10%;
+			margin: 3% auto;
+			padding-top: 5%;
 			padding-bottom: 1%;}
 .itembox {display: flex; flex-wrap: wrap;margin: 3%;}
 
