@@ -103,8 +103,7 @@ document.addEventListener('keydown',(e)=>{
 		 }
 		
 	userbox.style.left = `${u_left}px`//--------------------------------출력
-	
-	승부()
+
 	user()
 	mon()
 
@@ -114,6 +113,7 @@ document.addEventListener('keyup',(e)=>{
 		userbox.style.backgroundImage = `url(img/게임캐릭터.png)`
 		userbox.style.backgroundSize = `90%`
 })
+
 // 몬스터 조작 설정
 setInterval(mon_moving,500);
 
@@ -145,11 +145,12 @@ function mon_moving (){
 function levelUp() {
 	
 	if(m_HP<=0)					//--------------------몬스터 퇴치시 다음 몬스터 출력
-		{alert('**********next level***********');		
+		{alert('WIN');		
 		u_left = 10 ;
 		m_left = 910 ;
-		몬스터.splice(0,1);
-		monbox.style.backgroundImage = `url(img/${몬스터[1].m_img})`;
+		monbox.style.display='none';
+		몬스터.splice(0,1)
+		console.log(몬스터)
 		user()
 		mon()
 		}
