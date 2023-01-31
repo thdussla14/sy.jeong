@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+
+/* 캘린더 구역 */
+.calender { border: 1px solid #eeeeee; 
+			padding: 3%; 
+			border-radius: 3%;
+			box-shadow: 0px 0px 3px #ff9995;}
+
+/* 캘린더 상단 메뉴 */
+.cal_top {display: flex;justify-content: center;
+		margin: 2% 0%;}
+
+/* 이전달/다음달 버튼 */
+.previousbtn, .nextbtn {
+	background-color: white;
+	border: 1px solid #eeeeee; 
+	padding: 5px 20px;
+	color: #ff9995;
+	font-size: 20px;
+}
+
+/* 상단 연/월 */
+.top_date {font-family:'KIMM_Bold'; 
+			margin: 0% 3%; color: #ff9995;}
+
+/* 날짜 표시 구역 */
+.cal_day {display: flex;justify-content: flex-start;
+		flex-wrap: wrap;}
+
+/* 요일 표시 */
+.weekday {height: 30px !important;font-family:'KIMM_Bold';
+		 text-align: center; padding-top:5px;
+		 background-color: #eeeeee; }
+.sunday {background-color: #ff5757; color:white;}
+
+/* 날짜 표시 */
+.day {display: inline-block;border: 1px solid #eeeeee; 
+		width: 14%;height: 100px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;}
+		
+/* 일정 표시 구역 */
+.content {background-color: #ff9995;color: white;
+		margin: 1%; padding: 1%;
+		/* 내용이 구역 사이즈보다 커졌을때 */
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		}
+
+/* 모달 배경 구역 */
+.modal_wrap {
+	position: fixed;						/* 위치 고정 */
+	top:0 ; left:0;
+	width:100% ; height: 100%;
+	background-color: rgba(0,0,0,0.5);		/* rgb(0,0,0) : black / rgba(0,0,0,0.5) : 투명도 추가 / 배경에만 투명도를 추가*/
+	display:flex;
+	justify-content: center;				/* 가로 가운데 정렬 */
+	align-items: center;					/* 세로 가운데 정렬 */
+	z-index: 1030;							/* 헤더 부트스트랩 sticky-top z-index:1020 이므로 더 크게 설정 */
+	display: none;
+}	
+
+.modal_box{
+	background-color: white;
+	width: 40%;
+	padding: 3%; border-radius: 5%;
+}
+
+.modal_title, .modal_date{ font-family: 'KIMM_Bold';}
+
+.modal_date{
+	font-size: 14px; font-weight: normal;
+}
+
+.modal_btns{
+	display: flex;justify-content: flex-end;
+	margin: 3% 0%;	
+}
+
+.modal_box button {
+	background-color: #ff9995;
+	color:white;
+	padding: 5px 20px;
+	margin-left: 3%;
+	border: 1px solid #eeeeee; border-radius: 10px;
+}
+
+
+
+
+
+
+
+

@@ -11,19 +11,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- 사용자정의 : css -->
-	<link href="../css/index.css" rel="stylesheet">
-	<link href="../css/board/view.css" rel="stylesheet">
-	
-	<!-- 헤더에서 사용되는 경로 : 절대경로 [페이지마다 헤더 사용하는데 페이지마다 상대경로 다르다.]  -->
-	<!-- 
-		!!!! href , src 에서 경로 설정시 주의 !!!!
-		서버경로 
-			1.http://localhost: 포트경로 / 프로젝트명 / 폴더명 / 파일명 	http://192.168.17.136/:8080/jsp/css/index.css
-			2.http://ip주소 : 포트경로 / 프로젝트명 / 폴더명 / 파일명  	http://192.168.17.136/:8080/jsp/css/index.css
-		절대경로
-			/ 프로젝트명[root:최상위폴더] / 폴더명 / 파일명			
-	 -->
-
+	<link href="/jsp/css/index.css" rel="stylesheet">
+	<link href="/jsp/css/member/calender.css" rel="stylesheet">
 </head>
 <body>
 
@@ -72,42 +61,49 @@
 			</div>
 		</div>
 	</div>
-	<!-- 본문 s ----------------------------------------------------------------------------------------- -->
+	<!---------------------------------------------------------------------------------------------------------------- -->
+
+	<div class="container">		<!-- 반응형 구역 생성 -->
+
+		<h3 class="box_title"> 캘린더 </h3>	<!-- 구역 제목 -->
+
+		<div class="calender">	<!-- 캘린더 구역 -->
 		
-	<div class="container">
+			<div class="cal_top">	<!-- 상단 메뉴 -->
+				<button class="previousbtn" type="button"> < </button>	<!-- 이전달 버튼 -->
+				<h3 class="top_date"> <!-- js 데이터 --> </h3>			<!-- 현재 연/월 -->
+				<button class="nextbtn" type="button"> > </button>		<!-- 다음달 버튼 -->
+			</div>
+			
+			<div class="cal_day">	<!-- 날짜 표시 구역 -->
+					<!-- js 데이터 -->
+			</div>			
+		</div>	<!-- 캘린더 구역 e -->		
+	</div> 	<!-- container e -->
 	
-		<h3 class="box_title"> 게시글 조회 </h3>	
-		<div class="viewbox">
-			<table class="table">
-				<tr>
-					<th> 작성자 </th> <td> 유재석 </td> <th> 작성일 </th> <td> 2023-01-30 </td>
-				</tr>
-				<tr>
-					<th> 제목 </th> <td colspan="3"> 안녕하세요A </td> 
-				</tr>
-				<tr >
-					<td colspan="4"> 
-						SY는 ' 밝고 아름답게 '라는 슬로건 아래 일상 속 다양한 순간을 함께하는 주얼리를 선보입니다.	<br>
-						SY는 함께하는 모든 이들의 일상이 더욱 가치 있고 빛날 수 있도록 끊임없이 연구합니다. <br>
-						소재를 탐구하는 실험정신, 세대와 트렌드를 초월하는 디자인을 핵심으로 매 시즌 선보이는 컬렉션은 아름다운 요소를 사려 깊은
-						감각으로 혼합하여 시각적 언어로 표현합니다.				
-					</td> 
-				</tr>
-				<tr>
-					<th class="vcontent" colspan="4"> <a href="list.html"><button class="form-control backbtn" type="button">목록보기</button></a> </th>
-				</tr>
+	<!-- 모달 [ 알림창 ] -->
+	<div class="modal_wrap">	<!-- 모달 구역 -->
+		<div class="modal_box">		<!-- 모달 상자 -->
+			<h3 class="modal_title"> 일정 목록 </h3>	<!-- 제목 -->
+			<table class="table modal_table">		<!-- 일정 목록 테이블 -->
+				<!-- js 데이터 -->
 			</table>
+			<h3 class="modal_title"> 일정 추가 <span class="modal_date">2023-01-31</span> </h3>
+			<input class="modal_color" type="color">
+			<input class="modal_time" type="time">
+			<textarea rows="5" class="modal_input form-control"></textarea>
+			<div class="modal_btns">
+				<button class="modal_write" type="button"> 등록 </button>
+				<button class="modal_close" type="button"> 닫기 </button>
+			</div>
 		</div>
-	
-	</div>	<!-- container e -->
-	
-	<!-- 본문 e ----------------------------------------------------------------------------------------- -->
-	
+	</div>
+
+
+	<!---------------------------------------------------------------------------------------------------------------- -->
 	<!-- 부트스트랩 : js  body 하단 작성 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
 	<!-- 사용자정의 : js -->
-	<script src="../js/board/view.js" type="text/javascript"></script>
-	
-
+	<script src="/jsp/js/member/calender.js" type="text/javascript"></script>
 </body>
 </html>

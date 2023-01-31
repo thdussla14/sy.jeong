@@ -3,6 +3,7 @@ console.log('js 실행')
 
 let 문의사항임시저장소 =[]
 
+
 function qwrite(){
 	let qboard = {				
 		qwriter : document.querySelector('.qwriter').vlaue,
@@ -17,7 +18,7 @@ function qwrite(){
 	문의사항임시저장소.push(qboard)
 	
 	let result = true ; 
-	if(result){alert('글쓰기 성공'); location.href="qlist.html"}
+	if(result){alert('글쓰기 성공'); location.href="q_list.html"}
 	else{alert('글쓰기 실패')}
 	console.log(qboard)
 	console.log(문의사항임시저장소)
