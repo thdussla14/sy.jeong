@@ -15,19 +15,78 @@ let movieList=[
 ]
 
 let setlist = [
-{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '10:00'},
-{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '11:30'},
-{movie:'아바타-물의 길', space : '서울', room: '4관',  time: '09:20'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
-{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+	{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '10:00'},
+	{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '11:30'},
+	{movie:'아바타-물의 길', space : '서울', room: '4관',  time: '09:20'},
+	{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '11:30'},
+	{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+	{movie:'아바타-물의 길', space : '수원', room: '3관',  time: '09:20'},
+	{movie:'아바타-물의 길', space : '수원', room: '3관',  time: '16:00'},
+	{movie:'아바타-물의 길', space : '수원', room: '4관',  time: '10:00'},
+	{movie:'아바타-물의 길', space : '수원', room: '4관',  time: '11:30'},
+	{movie:'아바타-물의 길', space : '수원', room: '4관',  time: '16:00'},
+	{movie:'아바타-물의 길', space : '수원', room: '5관',  time: '10:00'},
+	{movie:'아바타-물의 길', space : '안산', room: '3관',  time: '11:30'},
+	{movie:'아바타-물의 길', space : '안산', room: '3관',  time: '16:00'},
+	{movie:'아바타-물의 길', space : '안산', room: '4관',  time: '10:00'},
+	{movie:'아바타-물의 길', space : '안산', room: '5관',  time: '09:20'},
+	{movie:'아바타-물의 길', space : '안산', room: '5관',  time: '11:30'},
+	{movie:'아바타-물의 길', space : '안산', room: '5관',  time: '16:00'}
 ]
+
+list()
+
+function list(){
+	
+	html = ``
+	
+	movieList.forEach((o,i)=>{
+	
+	html += `<div><button class="list" onclick="print(${i})"> ${o.name}</button> </div>`
+		
+	})
+	document.querySelector('.movie_list').innerHTML =html
+}
+
+
+print(0)
+function print(i){
+	html = ``
+	
+	let choosen =  movieList[i].name
+	
+	movieList.forEach((o2)=>{
+	
+	if(choosen==o2.name)
+	
+	html += `
+				<h3>  ${o2.name}  </h3>
+				
+				<div class="row"> 
+					<div class="col-md-4"> 
+						<img class="main_img" src="img/${o2.img}" width="100%">
+					</div>				
+					<div class="col-md-8"> 
+						<div class="m_title" > 		  ${o2.name}  </div>
+						<div class="m_score" > 평점 	: ${o2.평점}	 </div>
+						<div class="m_info" >
+							  <div> 감독 		: 	${o2.감독}			</div>
+							  <div> 장르		: 	${o2.장르}			</div>
+							  <div> 개봉일	:	${o2.개봉일}		</div>
+							  <div> 상영시간	:	${o2.상영시간}	분	</div>
+						</div>
+						<div class="btns">
+								<button class="printtime(${i})" type="button">   상영시간표	</button>							
+								<a href="movie_list.html"><button class="back" type="button">목록보기</button></a>
+						</div>				
+					</div>
+				</div>	<!-- row e -->`
+		
+	})// for e
+	document.querySelector('.moviebox').innerHTML = html
+
+}// fun e
+
 
  function reseve(){
 	 
@@ -36,8 +95,7 @@ let setlist = [
  
  function close(){
 	 
-	 document.querySelector('.modal_wrap').style.display='none';
-	 
+	 document.querySelector('.modal_wrap').style.display='none';	 
  }
 
 

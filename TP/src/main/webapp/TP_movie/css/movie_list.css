@@ -4,6 +4,11 @@
 a {text-decoration: none; color: black;}
 
 
+.wrap {width: 900px; background-color: #eeeeeeee;}
+.row {background-color: #FFC600;height: 50px;align-items: center;}
+
+.now, .next { border: none; background-color:#FFC600; color: white; }
+
 
 /* 출력 구역 설정*/
 .items {flex-wrap: wrap;display: flex;justify-content:space-between;

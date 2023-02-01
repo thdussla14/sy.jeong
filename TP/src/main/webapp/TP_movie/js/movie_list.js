@@ -33,3 +33,45 @@ function movie_print(){
 		
 	document.querySelector('.items').innerHTML = html
 }
+
+let nextmovieList=[
+	{name:'라스트버스',		img:'라스트버스.jpg',		감독 :'Gillies MacKinnon', 장르 : '드라마', 		개봉일:'20230209'},
+	{name:'어메이징 모리스',		img:'어메이징모리스.jpg',	감독 :'Toby Genkel'  		, 장르 : '애니메이션', 	개봉일:'20230215'},
+	{name:'앤트맨과 와스프: 퀀텀매니아',	img:'앤트맨.jpg',	감독 :'Peyton Reed' 		, 장르 : 'SF', 		개봉일:'20230215'},
+	{name:'피터 본 칸트',		img:'피터 본 칸트.jpg',	감독 :'Francois Ozon' 	, 장르 : '로맨스', 	개봉일:'20230215'},
+	{name:'스톰보이',			img:'스톰보이.jpg',		감독 :'Shawn Seet'   		, 장르 : '드라마', 	개봉일:'20230216'},
+	{name:'TAR타르',			img:'타르.jpg',			감독 :'Todd Field'    	, 장르 : '드라마', 	개봉일:'20230222'},
+	{name:'미녀와 야수: 마법에 걸린 왕자',	img:'미녀야수.jpg',감독 :'Viktor Glukhushin', 장르 : '애니메이션', 	개봉일:'20230222'},
+	{name:'서치 2',			img:'서치.jpg',			감독 :'Nicholas D. Johnson', 장르 : '스릴러',	개봉일:'20230222'}
+]
+
+function nextmovie_print(){
+	
+	let html = ``
+	
+	nextmovieList.forEach((o,j)=>{
+		
+		html += `<div class="item" >
+					<img class="m_img" src="img/${o.img}" >
+					<div class="m_name"> ${o.name}	</div>
+					<div class="m_direc"> ${o.감독}	</div>
+					<div class="m_genre"> ${o.장르}	</div>
+					<div class="m_date"> ${o.개봉일} 개봉예정 	</div>
+				</div>`
+		})
+		
+	document.querySelector('.items').innerHTML = html
+}
+
+document.querySelector('.now').addEventListener('click', (e)=>{
+	document.querySelector('.now').style.color='black'
+	document.querySelector('.next').style.color='white'
+	movie_print()
+})
+
+document.querySelector('.next').addEventListener('click', (e)=>{
+	document.querySelector('.next').style.color='black'
+	document.querySelector('.now').style.color='white'
+	nextmovie_print()
+})
+
