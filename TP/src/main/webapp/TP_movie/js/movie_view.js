@@ -14,6 +14,21 @@ let movieList=[
 	{name:'장화신은 고양이:끝내주는 모험',img:'장화신은고양이.jpg',	감독 :'Joel Crawford' , 장르 : '애니메이션',	평점:8.41, 개봉일:'20230104', 상영시간: 120},	
 ]
 
+let setlist = [
+{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '10:00'},
+{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '11:30'},
+{movie:'아바타-물의 길', space : '서울', room: '4관',  time: '09:20'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
+]
+
  function reseve(){
 	 
 	 document.querySelector('.modal_wrap').style.display='flex';
