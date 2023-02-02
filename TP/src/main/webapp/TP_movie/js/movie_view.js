@@ -16,7 +16,6 @@ let movieList=[
 
 let setlist = [
 	{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '10:00'},
-	{movie:'아바타-물의 길', space : '서울', room: '3관',  time: '11:30'},
 	{movie:'아바타-물의 길', space : '서울', room: '4관',  time: '09:20'},
 	{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '11:30'},
 	{movie:'아바타-물의 길', space : '서울', room: '5관',  time: '16:00'},
@@ -76,7 +75,7 @@ function print(i){
 							  <div> 상영시간	:	${o2.상영시간}	분	</div>
 						</div>
 						<div class="btns">
-								<button class="printtime(${i})" type="button">   상영시간표	</button>							
+								<button onclick="printtime(${i})" type="button">   상영시간표	</button>							
 								<a href="movie_list.html"><button class="back" type="button">목록보기</button></a>
 						</div>				
 					</div>
@@ -99,8 +98,49 @@ function print(i){
  }
 
 
-
-
+ function printtime(i) {
+	 
+	 let html = `<tr>
+					<th> 지역 </th> <th> 상영관 </th> <th> 시간 </th>
+				</tr>`;
+	 
+	 setlist.forEach((o3,j)=>{
+		
+		 
+		 if( movieList[i].name == o3.movie)
+			 
+			 {	setlist.forEach((o4,k)=>{		 
+				 
+				 if( o3[j].movie == o4[k].movie && o3[j].space == o4[k].space)
+			 			
+			 			{  setlist.forEach((o5,l)=>{
+							 
+							 if(o4[k].movie == o5[l].movie && o4[k].space == o5[l].space && o4[k].room == o5[l].room)
+							 
+							 { html += `<tr>
+											<th> ${o5.space}</th> 
+											<th> ${o5.room}</th>
+											<th> ${o5.time}</th> 
+										</tr>`
+										
+										 
+									 }	// if e
+											 
+									})	// for5 e	
+									 	 			 
+							 }	// if e
+				
+						})	// for4 e
+							 
+					 }	// if e
+					
+				})	// for3 e
+				 
+				 document.querySelector('.momo').innerHTML=html;
+				 
+				 
+			 }	// fun e
+			
 
 
 
