@@ -14,57 +14,71 @@
 </head>
 <body>
 
-	<div class="movie_list">
+	<div class="wrap">
 
-
-	</div>
+		<div class="movie_list list-group">
 	
-	<div class="container">
-
-		<div class="moviebox">
-		
-		</div>	<!-- moviebox e -->
-		
-	</div>	<!-- container e -->
 	
-	<div class="container">
-	
-		<div class="timebox">
+		</div>
 		
-			<h3> 상영시간표 </h3>
+		<div class="container">
+	
+			<div class="moviebox">
 			
-			<div class="row"> 
-				<div class="col-md-4"> 
-					관람일자 <input type="date">
-				</div>			
-				<div class="col-md-4 offset-md-4"> 
-					<button class="reserve" onclick="reseve()" type="button"> 예매하기	</button>
-				</div>
-			</div>
-						
-			<table class="table momo">
-				<tr>
-					<th> 지역 </th> <th> 상영관 </th> <th> 시간 </th>
-				</tr>
-				
-			</table>
+			</div>	<!-- moviebox e -->
+			
+		</div>	<!-- container e -->		
+		<!-- ------------------------------------------------------------------------------- -->		
+		<div class="container">
 		
-		</div> <!-- timebox e -->
-	</div>	<!-- container e -->
-	
+			<div class="timebox">
+			
+				<h3> 상영시간표 </h3>
+				
+				<div class="row"> 
+					<div class="col-md-4 offset-8 ">
+						관람일자 <input class="date" type="date"> 			
+					</div>
+				</div>
+				
+				<table class="table momo">
+					
+					
+				</table>	
+
+				<div class="row"> 
+					<div class="col-md-9"> 
+						<div class="reserve_info"> 
+						
+						</div>
+					</div>				
+					<div class="col-md-3"> 
+						<button class="reserve btns" type="button"> 예매하기	</button>
+					</div>
+				</div>
+							
+
+			
+			</div> 	<!-- timebox e -->
+		</div>	<!-- container e -->
+	</div>	<!-- wrap e -->
+	<!-- ------------------------------------------------------------------------------- -->
 	<div class="modal_wrap">	<!-- 모달 구역 -->
 		<div class="modal_box">
+		
 			<h3> 예매 내역 </h3>
+			
 			<table class="table">
-				<tr> <th> 극장명  </th> <td> CGV 수원  </td> </tr>
-				<tr> <th> 영화명  </th> <td> 아바타     </td> </tr>
-				<tr> <th> 상영일시 </th> <td> 20230201 </td> </tr>
-				<tr> <th> 좌석번호 </th> <td> 3관 G07   </td> </tr>
-				<tr> <th> 결제금액 </th> <td> 16,000원  </td> </tr>				
+				<tr> <th> 극장명 		</th> <td> CGVOX 수원  	</td> </tr>
+				<tr> <th> 영화명		</th> <td> 아바타     	</td> </tr>
+				<tr> <th> 상영일시		</th> <td> 20230201 	</td> </tr>
+				<tr> <th> 좌석번호 	</th> <td> 3관 G07   	</td> </tr>
+				<tr> <th> 결제금액 	</th> <td> 16,000원  	</td> </tr>				
 			</table>
+			
 			<div>
-				<button type="button"> 예매취소 </button>
-				<button onclick="close()" type="button"> 닫기    </button>
+				<button class="modal_cancel btns" type="button"> 예매취소 </button>
+				<button class="modal_close btns"  type="button"> 닫기    </button>
 			</div>
 			
 		</div>	<!-- modal_box e -->

@@ -14,13 +14,24 @@ let movieList=[
 	{name:'장화신은 고양이:끝내주는 모험',img:'장화신은고양이.jpg',	감독 :'Joel Crawford' , 장르 : '애니메이션',	평점:8.41, 개봉일:'20230104'},	
 ]
 
+let nextmovieList=[
+	{name:'라스트버스',		img:'라스트버스.jpg',		감독 :'Gillies MacKinnon', 장르 : '드라마', 		개봉일:'20230209'},
+	{name:'어메이징 모리스',		img:'어메이징모리스.jpg',	감독 :'Toby Genkel'  		, 장르 : '애니메이션', 	개봉일:'20230215'},
+	{name:'앤트맨과 와스프: 퀀텀매니아',	img:'앤트맨.jpg',	감독 :'Peyton Reed' 		, 장르 : 'SF', 		개봉일:'20230215'},
+	{name:'피터 본 칸트',		img:'피터 본 칸트.jpg',	감독 :'Francois Ozon' 	, 장르 : '로맨스', 	개봉일:'20230215'},
+	{name:'스톰보이',			img:'스톰보이.jpg',		감독 :'Shawn Seet'   		, 장르 : '드라마', 	개봉일:'20230216'},
+	{name:'TAR타르',			img:'타르.jpg',			감독 :'Todd Field'    	, 장르 : '드라마', 	개봉일:'20230222'},
+	{name:'미녀와 야수: 마법에 걸린 왕자',	img:'미녀야수.jpg',감독 :'Viktor Glukhushin', 장르 : '애니메이션', 	개봉일:'20230222'},
+	{name:'서치 2',			img:'서치.jpg',			감독 :'Nicholas D. Johnson', 장르 : '스릴러',	개봉일:'20230222'}
+]
+//-------------------현재 상영작 출력---------------------------------------------------------------------------------------//
 movie_print()
 
 function movie_print(){
 	
 	let html = ``
 	
-	movieList.forEach((o,i)=>{
+	movieList.forEach((o)=>{
 		
 		html += `<div class="item" >
 					<img class="m_img" src="img/${o.img}" >
@@ -34,22 +45,12 @@ function movie_print(){
 	document.querySelector('.items').innerHTML = html
 }
 
-let nextmovieList=[
-	{name:'라스트버스',		img:'라스트버스.jpg',		감독 :'Gillies MacKinnon', 장르 : '드라마', 		개봉일:'20230209'},
-	{name:'어메이징 모리스',		img:'어메이징모리스.jpg',	감독 :'Toby Genkel'  		, 장르 : '애니메이션', 	개봉일:'20230215'},
-	{name:'앤트맨과 와스프: 퀀텀매니아',	img:'앤트맨.jpg',	감독 :'Peyton Reed' 		, 장르 : 'SF', 		개봉일:'20230215'},
-	{name:'피터 본 칸트',		img:'피터 본 칸트.jpg',	감독 :'Francois Ozon' 	, 장르 : '로맨스', 	개봉일:'20230215'},
-	{name:'스톰보이',			img:'스톰보이.jpg',		감독 :'Shawn Seet'   		, 장르 : '드라마', 	개봉일:'20230216'},
-	{name:'TAR타르',			img:'타르.jpg',			감독 :'Todd Field'    	, 장르 : '드라마', 	개봉일:'20230222'},
-	{name:'미녀와 야수: 마법에 걸린 왕자',	img:'미녀야수.jpg',감독 :'Viktor Glukhushin', 장르 : '애니메이션', 	개봉일:'20230222'},
-	{name:'서치 2',			img:'서치.jpg',			감독 :'Nicholas D. Johnson', 장르 : '스릴러',	개봉일:'20230222'}
-]
-
+//---------------------상영 예정작 출력------------------------------------------------------------------------------------//
 function nextmovie_print(){
 	
 	let html = ``
 	
-	nextmovieList.forEach((o,j)=>{
+	nextmovieList.forEach((o)=>{
 		
 		html += `<div class="item" >
 					<img class="m_img" src="img/${o.img}" >
@@ -63,14 +64,16 @@ function nextmovie_print(){
 	document.querySelector('.items').innerHTML = html
 }
 
+//-------------------카테고리 선택 이벤트------------------------------------------------------------------------------------//
+
 document.querySelector('.now').addEventListener('click', (e)=>{
-	document.querySelector('.now').style.color='black'
+	document.querySelector('.now').style.color='#FFC600'
 	document.querySelector('.next').style.color='white'
 	movie_print()
 })
 
 document.querySelector('.next').addEventListener('click', (e)=>{
-	document.querySelector('.next').style.color='black'
+	document.querySelector('.next').style.color='#FFC600'
 	document.querySelector('.now').style.color='white'
 	nextmovie_print()
 })

@@ -1,35 +1,68 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {padding: 0px; margin: 0 auto;font-family: 'SUIT-Regular';font-weight: 600;}
 a {text-decoration: none; color: black;}
 
 
-.movie_list {position:fixed; top: 0px;left:300px;}
-.list{border: none;background-color: #505050;color: white;
-	width: 200px;
+h3 {font-family: 'twayair';margin-bottom: 3%;}
+
+
+
+/* 전체 사이즈 설정*/
+.wrap {width: 900px; padding: 2%; }
+
+/* 좌측 영화 목록 설정*/
+.movie_list {position:fixed; top: 0px;left:200px;}
+.list{border: none;background-color:#41276F;color: white;
+	width: 120px;font-size:15px; padding:2%;
 	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
+/* 영화 정보 설정*/
+.moviebox{padding: 3%;margin: 3%;}
+.information {padding: 3%;}
+.m_title {font-family: 'twayair'; font-size: 25px;}
+.m_title, .m_info,.btns {margin: 2% 0%;}
+.m_info{padding-left: 2%;}
+.percent{color: red;font-weight:900;}
+.btns{width: 130px; font-size:20px;font-weight:600;
+		 border-radius:5px;border:none;
+		 background-color:#FFC600; color: white;}
+		 
+
+/* 상영시간표 설정*/
+.timebox {border: 2px solid #41276F;border-radius: 30px;
+		padding: 4%;margin: 3%;display:none;}
+.time{border: none;border-radius:5px;width:80px;
+	background-color:#FFC600; color: white;}
 
 
-.moviebox, .timebox {width: 900px;margin: 0 auto;background-color:#eeeeee;
-		border: 1px solid black; padding: 2%;}
-
-.time{display:inline-block; justify-content:flex-start;
-	border-radius: 15%;margin-right:5%;
-	background-color: #eeeeee; padding: 1%;}
-
-
+/* 모달 배경 설정*/
 .modal_wrap {
 	position: fixed;						/* 위치 고정 */
 	top:0 ; left:0;
 	width:100% ; height: 100%;
-	background-color: rgba(0,0,0,0.5);		/* rgb(0,0,0) : black / rgba(0,0,0,0.5) : 투명도 추가 / 배경에만 투명도를 추가*/
+	background-color: rgba(173,173,173,0.5);	/* rgb(0,0,0) : black / rgba(0,0,0,0.5) : 투명도 추가 / 배경에만 투명도를 추가*/
 	display:flex;
 	justify-content: center;				/* 가로 가운데 정렬 */
 	align-items: center;					/* 세로 가운데 정렬 */
 	z-index: 1030;							/* 헤더 부트스트랩 sticky-top z-index:1020 이므로 더 크게 설정 */
 	display: none;
 }
-
+/* 모달 기본 설정*/
 .modal_box{
 	text-align: center;
 	background-color: white;
