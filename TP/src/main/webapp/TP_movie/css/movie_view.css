@@ -3,10 +3,10 @@
 a {text-decoration: none; color: black;}
 
 
-.movie_list {position:fixed; top: 0px;left:100px;}
-.list{border: none;background-color: navy;color: white;
+.movie_list {position:fixed; top: 0px;left:300px;}
+.list{border: none;background-color: #505050;color: white;
 	width: 200px;
-	overflow: hidden;text-overflow: ellipsis;}
+	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
 
 
