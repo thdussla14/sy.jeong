@@ -143,8 +143,12 @@ function select (i){
 // 예매하기 버튼 클릭 이벤트
  document.querySelector('.reserve').addEventListener('click',(e)=>{
 	 
-	 document.querySelector('.modal_wrap').style.display='flex';
-	 modal_print()
+	 if(document.querySelector('.tim').value=='')
+	 {alert('시간을 선택해 주세요.'); return;}
+	 
+	 else{document.querySelector('.modal_wrap').style.display='flex';
+	 modal_print()}
+	 
  })
 
 // 예매내역 
