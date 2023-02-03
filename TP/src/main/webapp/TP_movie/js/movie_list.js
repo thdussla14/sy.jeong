@@ -68,13 +68,13 @@ function nextmovie_print(){
 
 document.querySelector('.now').addEventListener('click', (e)=>{
 	document.querySelector('.now').style.color='#FFC600'
-	document.querySelector('.next').style.color='white'
+	document.querySelector('.next').style.color='black'
 	movie_print()
 })
 
 document.querySelector('.next').addEventListener('click', (e)=>{
 	document.querySelector('.next').style.color='#FFC600'
-	document.querySelector('.now').style.color='white'
+	document.querySelector('.now').style.color='black'
 	nextmovie_print()
 })
 

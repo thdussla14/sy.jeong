@@ -6,21 +6,25 @@ public class 과제1_연산자문제 {
 	
 	public static void main(String[] args) {
 		
+		Scanner Scanner = new Scanner(System.in); 
+		
 		// 문제1
+		
 			System.out.println( " |\\_/| \n |q p|  /}\n ( 0 )\"\"\"\\\n |\"^\"`   |\n ||_/=\\\\_| ");
 		
 		// 문제2
-			Scanner Scanner = new Scanner(System.in); 
-			
+				
 			String 순번  		= Scanner.next();
 			String 작성자  	= Scanner.next();		
 			String 내용  		= Scanner.next();	
 			String 날짜  		= Scanner.next();
 			
-			System.out.println(" ------------------방문록-----------------\n 순번 | 작성자 |    내용   |  날짜 ");
-			System.out.println("  "+순번+"  | "+  작성자 + " | " +  내용 + " | "+ 날짜);
-			System.out.println(" ---------------------------------------");
-		
+			System.out.printf("---------------------- 방문록 ---------------------\n");
+			System.out.printf("%3s | %6s | %15s | %6s \n" , "번호" , "작성자" , "내용" , "날짜");
+			System.out.printf("%3s | %6s | %15s | %6s \n",순번 , 작성자 , 내용 , 날짜 );
+			System.out.printf("-------------------------------------------------\n");
+			
+			
 		// 문제3
 			System.out.print("기본급 : ");
 			int 기본급 =  Scanner.nextInt();
@@ -28,7 +32,7 @@ public class 과제1_연산자문제 {
 			int 수당	  =  Scanner.nextInt();
 					
 			int 실수령액 = 기본급 + 수당 - (int)(기본급*0.1);
-			System.out.println(실수령액);
+			System.out.println("실수령액 : "+실수령액);
 			
 		// 문제4
 			System.out.print("금액 : ");
@@ -52,6 +56,7 @@ public class 과제1_연산자문제 {
 		   
 		 // 문제 5
 		   System.out.print("문제5 정수 : ");
+		   
 		   int 정수1 = Scanner.nextInt();
 		   
 		   boolean 논리 = ((정수1%7)==0);
@@ -101,7 +106,7 @@ public class 과제1_연산자문제 {
 		   
 		   int 결과5 = 논리7 ? 정수5 : 정수6 ;
 		   
-		   System.out.println(결과5);
+		   System.out.println("큰수"+결과5);
 		   
 		// 문제 10   
 		   System.out.print("반지름 : ");
@@ -109,7 +114,7 @@ public class 과제1_연산자문제 {
 		   
 		   int 원넓이 =(int)(반지름*반지름*3.14);
 		   
-		   System.out.println(원넓이);
+		   System.out.println("원넓이"+원넓이);
 		   
 		// 문제 11   
 		   System.out.print("문제11 실수 2개 : ");
@@ -121,14 +126,16 @@ public class 과제1_연산자문제 {
 		   System.out.println(결과6+"%");
 		   
 		// 문제 12
-		   System.out.print("윗변 밑변 높이 : ");
+		   System.out.print("윗변 : ");
+		   System.out.print("밑변 : ");
+		   System.out.print("높이 : ");
 		   int 윗변 = Scanner.nextInt();
 		   int 밑변 = Scanner.nextInt();
 		   int 높이 = Scanner.nextInt();
 		   
 		   int 결과7 = (int)((윗변*밑변)*높이/2);
 		   
-		   System.out.println(결과7);
+		   System.out.println("넓이"+결과7);
 		   
 	   // 문제 13
 		   System.out.print("키 : ");
@@ -139,11 +146,12 @@ public class 과제1_연산자문제 {
 		   System.out.println("표준체중 : "+표준체중);
 		   
 	   // 문제 14
-		   System.out.println("키, 몸무게 : ");
+		   System.out.println("키 : ");
+		   System.out.println("몸무게 : ");
 		   int 키2 = Scanner.nextInt();
 		   int 체중 = Scanner.nextInt();
 		   
-		   float BMI = (체중/((키 / 100) * (키 / 100)));
+		   float BMI = (체중/((키2 / 100) * (키2 / 100)));
 		   
 		   System.out.println("BMI : "+BMI);
 		   
@@ -154,10 +162,10 @@ public class 과제1_연산자문제 {
 		   
 		   double 센치 = (인치*2.54);
 		   
-		   System.out.println(센치+"cm");
+		   System.out.println(센치+"cm");		
 		   
 		// 문제 16
-		   System.out.println("중간고사, 기말고사, 수행평가 ");
+		   System.out.println("중간고사, 기말고사, 수행평가 : ");
 		   
 		   int 중간 = Scanner.nextInt();
 		   int 기말 = Scanner.nextInt();
@@ -165,15 +173,17 @@ public class 과제1_연산자문제 {
 		   
 		   double 총점 = ((중간*0.3)+(기말*0.3)+(수행*0.4));
 		   
-		   System.out.printf("총점 : %2.1d",총점);
+		   System.out.printf("총점 : %3.2f \n",총점);
 		   
 		// 문제 17
 		   
 		   int x = 10; 
 		   int y = x-- + 5 +--x ;
-		   		// y = 10 + 5 + (10-1) = 24
+		   		// y = 10 + 5 (x-1=>x=9)
+		   			// y = 15 + (x-1=>x=8) 
+		   					// y = 15 + 8 = 23
 		   	    // x = 8  
-		   System.out.printf(" x의 값 : %d , y의값 :  %d ", x, y);
+		   System.out.printf(" x의 값 : %d , y의값 :  %d  \n", x, y);
 		   
 		// 문제 18
 		   System.out.println("나이 :");
@@ -194,7 +204,7 @@ public class 과제1_연산자문제 {
 		   int total = 국어+영어+수학;
 		   float 평균 = (total/3);
 		   
-		   System.out.printf(" 총점 : %d , 평균 :  %2.1d ", total, 평균);
+		   System.out.printf(" 총점 : %d , 평균 :  %3.2f \n", total, 평균);
 		   
 		   
 		 // 문제 20 
@@ -202,8 +212,8 @@ public class 과제1_연산자문제 {
 		   String ID = Scanner.next();
 		   String PW = Scanner.next();
 		   
-		   boolean 일치1 = (ID == "admin");
-		   boolean 일치2 = (PW == "1234" );
+		   boolean 일치1 = (ID.equals("admin"));
+		   boolean 일치2 = (PW.equals("1234") );
 		   
 		   String 로그인 = 일치1 && 일치2 ? "로그인 성공" : "로그인 실패";
 		   
@@ -218,29 +228,25 @@ public class 과제1_연산자문제 {
 		   
 		   int 큰수1 = 정수01>정수02 ? 정수02>정수03? 정수01 : 정수03: 정수02;
 		   
+		   System.out.println("큰수"+큰수1);
 		   
+		// 문제 22   
 		   
+		   System.out.println("플레이어 1: ");		   
+		   System.out.println("플레이어 2: ");
 		   
+		   int 플레이어1 = Scanner.nextInt();
+		   int 플레이어2 = Scanner.nextInt();
+		  
+		   boolean 논리8  = 플레이어1 == 플레이어2;
+		   boolean 논리9 	 = 플레이어1>플레이어2;
+		   boolean 논리10 = 플레이어1==0 && 플레이어2==2;
+				   
 		   
+		   String 승리자 = 논리8? "무승부": 논리9||논리10? "플레이어1 승리": "플레이어2 승리";
 		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
-		   
+		   System.out.println(승리자);
+		   		   
 					
 	} // main e
 	

@@ -14,6 +14,8 @@
 </head>
 <body>
 
+	<div class="header">  </div>
+
 	<div class="wrap">
 
 		<div class="movie_list list-group">
@@ -49,7 +51,12 @@
 				<div class="row"> 
 					<div class="col-md-9"> 
 						<div class="reserve_info"> 
-						
+							선택 내역 : 
+							<span class="movie"> </span>
+							<span class="space"> </span>
+							<span class="room">  </span>
+							<span class="day"> 	 </span>
+							<span class="tim">	 </span>						
 						</div>
 					</div>				
 					<div class="col-md-3"> 
@@ -62,23 +69,29 @@
 			</div> 	<!-- timebox e -->
 		</div>	<!-- container e -->
 	</div>	<!-- wrap e -->
+	
+	
+	<div class="footer">  </div>
+	
+	
 	<!-- ------------------------------------------------------------------------------- -->
 	<div class="modal_wrap">	<!-- 모달 구역 -->
 		<div class="modal_box">
 		
 			<h3> 예매 내역 </h3>
 			
-			<table class="table">
-				<tr> <th> 극장명 		</th> <td> CGVOX 수원  	</td> </tr>
-				<tr> <th> 영화명		</th> <td> 아바타     	</td> </tr>
-				<tr> <th> 상영일시		</th> <td> 20230201 	</td> </tr>
-				<tr> <th> 좌석번호 	</th> <td> 3관 G07   	</td> </tr>
-				<tr> <th> 결제금액 	</th> <td> 16,000원  	</td> </tr>				
+			<table class="table mo_ta">
+				<tr> <th> 극장명 		</th> <td class="m_space">  	</td> </tr>
+				<tr> <th> 영화명		</th> <td class="m_movie"> 		</td> </tr>				
+				<tr> <th> 상영관 		</th> <td class="m_room">   	</td> </tr>
+				<tr> <th> 상영일		</th> <td class="m_day"> 		</td> </tr>
+				<tr> <th> 상영시간		</th> <td class="m_time"> 		</td> </tr>
+				<tr> <th> 결제금액 	</th> <td class="m_price"> 		</td> </tr>				
 			</table>
 			
 			<div>
 				<button class="modal_cancel btns" type="button"> 예매취소 </button>
-				<button class="modal_close btns"  type="button"> 닫기    </button>
+				<a href="movie_list.html"><button class="modal_close btns"  type="button"> 닫기 </button></a>
 			</div>
 			
 		</div>	<!-- modal_box e -->

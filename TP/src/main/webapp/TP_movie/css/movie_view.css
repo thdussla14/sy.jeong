@@ -20,13 +20,15 @@ a {text-decoration: none; color: black;}
 
 h3 {font-family: 'twayair';margin-bottom: 3%;}
 
+/* 헤더/푸터 임시 사이즈 설정*/
+.header,.footer  {width: 100%; height: 250px;background-color: #eeeeee;}
 
 
 /* 전체 사이즈 설정*/
-.wrap {width: 900px; padding: 2%; }
+.wrap {width: 1040px; padding: 2%; }
 
 /* 좌측 영화 목록 설정*/
-.movie_list {position:fixed; top: 0px;left:200px;}
+.movie_list {position:fixed; top: 250px;left:350px;}
 .list{border: none;background-color:#41276F;color: white;
 	width: 120px;font-size:15px; padding:2%;
 	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
@@ -39,15 +41,15 @@ h3 {font-family: 'twayair';margin-bottom: 3%;}
 .m_info{padding-left: 2%;}
 .percent{color: red;font-weight:900;}
 .btns{width: 130px; font-size:20px;font-weight:600;
-		 border-radius:5px;border:none;
-		 background-color:#FFC600; color: white;}
+		 border-radius:5px;border:1px solid #cccccc;
+		 background-color:  white; color:#808080;}
 		 
 
 /* 상영시간표 설정*/
 .timebox {border: 2px solid #41276F;border-radius: 30px;
 		padding: 4%;margin: 3%;display:none;}
 .time{border: none;border-radius:5px;width:80px;
-	background-color:#FFC600; color: white;}
+	background-color:#eeeeee; color:black;}
 
 
 /* 모달 배경 설정*/
@@ -64,13 +66,13 @@ h3 {font-family: 'twayair';margin-bottom: 3%;}
 }
 /* 모달 기본 설정*/
 .modal_box{
-	text-align: center;
+	text-align: center;align-items: center;
 	background-color: white;
-	width: 30%; height: 60%;
+	width: 25%; height: 60%;
 	padding: 3%; border-radius: 5%;
 }
 
-
+.mo_ta {margin: 15% 0%;}
 
 
 

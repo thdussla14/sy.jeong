@@ -17,13 +17,18 @@
 * {padding: 0px; margin: 0 auto;text-align: center;font-family: 'SUIT-Regular';}
 a {text-decoration: none; color: black;}
 
+/* 헤더/푸터 임시 사이즈 설정*/
+.header,.footer  {width: 100%; height: 250px;background-color: #eeeeee;}
+
+
+
 /* 전체 사이즈 설정*/
-.wrap {width: 900px; }
+.wrap {width: 1040px; }
 /* 상단 카테고리 설정*/
-.row {background-color:#41276F;height: 50px;align-items: center;}
-.now, .next { border: none; background-color:#41276F; color:#FFC600; 
+.row {height: 50px;align-items: center;border-bottom: 1px solid #cccccc;}
+.now, .next { border: none; color:#F5B21C; background-color: white;
 			font-family: 'twayair'; font-size: 25px;}
-.next {color:  white;}
+.next {color: black;}
 
 /* 아이템 출력 구역 설정*/
 .items {flex-wrap: wrap;display:flex; justify-content:center;}
@@ -37,5 +42,5 @@ a {text-decoration: none; color: black;}
 		text-overflow: ellipsis;}
 .percent{color: red;font-weight:600;}		
 .viewbtn {width: 100px; font-size:15px;font-weight:600;
-		 border-radius:5px;border:none;
-		 background-color:#FFC600; color: white;}
+		 border-radius:5px;border:1px solid #cccccc;
+		 background-color:  white; color:#808080;}
