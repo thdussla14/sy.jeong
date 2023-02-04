@@ -17,54 +17,279 @@
 	<div class="header">  </div>
 
 	<div class="wrap">
-
-		<div class="movie_list list-group">
-	
-	
-		</div>
 		
 		<div class="container">
 	
 			<div class="moviebox">
 			
 			</div>	<!-- moviebox e -->
+					
+		</div>	<!-- container e -->	
+		<!-- ------------------------------------------------------------------------------- -->	
+		
+		<div class="bar">
+			<span class="info_print">주요정보</span><span>|</span>
+			<span>트레일러</span><span>|</span>
+			<span>스틸컷</span><span>|</span>
+			<span>평점/리뷰</span><span>|</span>
+			<span class="timetable_print">상영시간표</span>
+			<span>|</span><a href="movie_list.html">
+			<span>무비차트</span></a>
+		</div>
+		<!-- ------------------------------------------------------------------------------- -->	
+		<div class="example_info">
+		
+			<p>		
+				아바타는 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 		<br>
+				살아남기 위해 떠나야 하는 긴 여정과 전투,												<br>
+				그리고 견뎌내야 할 상처에 대한 이야기를 그렸다. 										<br>
+				월드와이드 역대 흥행 순위 1위를 기록한 전편에 이어 제임스 카메론 감독이 13년만에 선보이는 영화로, 	<br>
+				샘 워싱턴, 조 샐다나, 시고니 위버, 스티븐 랭, 케이트 윈슬렛이 출연하고 존 랜도가 프로듀싱을 맡았다.
+			</p>
+			<img src="img/영화소개.png" width="100%">
+			<!-- ------------------------------------------------------------------------------- -->
+			<div class="info_bar"> 트레일러 </div>
 			
-		</div>	<!-- container e -->		
-		<!-- ------------------------------------------------------------------------------- -->		
+			<div class="row info_content">
+				<div class="col-md-4"> 
+				<iframe width="100%" src="https://www.youtube.com/embed/kihrFxwdMb4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+				<div> [아바타: 물의 길] 메인 예고편 </div>				
+				</div>
+				<div class="col-md-4"> 
+				<iframe width="100%" src="https://www.youtube.com/embed/WscLMTs-9Rw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+				<div> [아바타: 물의 길] 파이널 예고편 </div>	
+				</div>
+				<div class="col-md-4"> 
+				<iframe width="100%"  src="https://www.youtube.com/embed/7Q70_m-59O8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+				<div> [아바타: 물의 길] 티저 예고편 </div>	
+				</div>				
+			</div>
+			<!-- ------------------------------------------------------------------------------- -->
+			<div class="info_bar"> 스틸컷 </div>
+			
+				<div class="carousel slide info_content" id="maincarousel" data-bs-ride="carousel" data-bs-interval="3000">	
+						<div class="carousel-inner">		
+						
+						<div class="carousel-item active">		
+							<img src="img/스틸컷1.jpg" class="d-block w-80">				
+						</div>	
+						<div class="carousel-item">				
+							<img src="img/스틸컷2.jpg" class="d-block w-80">				
+						</div>
+						<div class="carousel-item">				
+							<img src="img/스틸컷3.jpg" class="d-block w-80">				
+						</div>
+						<div class="carousel-item">				
+							<img src="img/스틸컷4.jpg" class="d-block w-80">				
+						</div>		
+												
+					</div>	
+				</div>	
+
+			<!-- ------------------------------------------------------------------------------- -->	
+			<div class="info_bar"> 평점/리뷰 </div>
+				<div class="row info_content">
+					<div class="col-md-6 copy"> 
+						영상미가 뛰어나고 <br>
+						몰입하여 보게되는 영화				
+					</div>
+					<div class="col-md-6">
+						<img src="img/영화소개3.png" width="100%">
+					</div>
+				</div>
+				<img src="img/영화소개2.png" width="100%">
+			<!-- ------------------------------------------------------------------------------- -->
+			<div class="event">  
+				<div class="row" >
+					<div class="col-md-9">
+						관람일 포함 7일 이내 관람평을 남기시면 <span class="point">CJ ONE 20P</span>가 적립됩니다. <br>
+						<span class="point2">61,514명</span><span class="point3">의 실관람객이 평가해주셨습니다.</span>
+					</div>
+					<div class="col-md-3 ">
+						<button class="grade">  평점 작성 </button>
+						<button class="m_grade"> 내 평점 </button>
+					</div>			
+				</div>
+			</div>
+			<!-- ------------------------------------------------------------------------------- -->
+			<div class="info_content"> <span>최신순</span> <span> | </span> <span>추천순</span> </div>
+			
+			<div class="row info_content review">
+				
+				<div class="col-md-6 row review_item"> 
+					<div class="col-md-3">
+						<img src="img/id.png" width="100%">
+					</div>
+					<div class="col-md-9">							
+						<div class="id"> 
+							<img src="img/황금알2.png" width="30px"> bong-sseong
+						</div>
+						<div class="review_content">
+							세시간이 지루하게 느껴지지 않고 몰입하여 재밌게 봤습니다 인생영화 등극
+						</div>
+						<div class="id">
+							<span>2023.02.24</span><span> | </span>
+							<span> <img src="img/좋아요.png" width="20px"> 34 </span>
+						</div>
+						
+					</div>
+				</div> <!-- review_item e -->
+				
+				<div class="col-md-6 row review_item"> 
+					<div class="col-md-3">
+						<img src="img/id.png" width="100%">
+					</div>
+					<div class="col-md-9">							
+						<div class="id"> 
+							<img src="img/황금알2.png" width="30px"> qorgksruf
+						</div>
+						<div class="review_content">
+							아이맥스 I열 가운데 명당자리에서 봤는데, 
+							화면 꽉차고 색감 미쳤어요.. 스토리는 전작보다는 재미가 떨어지는 느낌이 있는데,
+							색감과 cg만큼은 최고인것 같습니다..
+						</div>
+						<div class="id">
+							<span>2023.02.24</span><span> | </span>
+							<span> <img src="img/좋아요.png" width="20px"> 39 </span>
+						</div>
+					</div>
+				</div> <!-- review_item e -->
+				
+								<div class="col-md-6 row review_item"> 
+					<div class="col-md-3">
+						<img src="img/id.png" width="100%">
+					</div>
+					<div class="col-md-9">							
+						<div class="id"> 
+							<img src="img/황금알2.png" width="30px"> YUSEULBI
+						</div>
+						<div class="review_content">
+							기대한것보다 더 완벽해진 아바타 아이를 낳고 아이를 잃기까지 느낀 감정 숲이 아닌 바다의 모습까지 너무 멋있다 
+							3시간동안 집중을 놓치지않고 볼정도로 멋지다
+						</div>
+						<div class="id">
+							<span>2023.02.24</span><span> | </span>
+							<span> <img src="img/좋아요.png" width="20px"> 37 </span>
+						</div>
+					</div>
+				</div> <!-- review_item e -->
+				
+								<div class="col-md-6 row review_item"> 
+					<div class="col-md-3">
+						<img src="img/id.png" width="100%">
+					</div>
+					<div class="col-md-9">							
+						<div class="id"> 
+							<img src="img/황금알2.png" width="30px"> thdussla14
+						</div>
+						<div class="review_content">
+							진짜미쳤다너무좋아서포토플레이까지뽑음으아아빨리3기나왔으면 좋겠당😻😻
+						</div>
+						<div class="id">
+							<span>2023.02.24</span><span> | </span>
+							<span> <img src="img/좋아요.png" width="20px"> 23 </span>
+						</div>
+					</div>
+				</div> <!-- review_item e -->
+				<div class="row">		
+					<div class="col-md-4 offset-md-4">
+						<ul class="pagination">
+						   <li class="page-item">
+						     <a class="page-link" href="#" aria-label="Previous">
+						       <span aria-hidden="true">&laquo;</span>
+						     </a>
+						   </li>
+						   <li class="page-item"><a class="page-link" href="#">1</a></li>
+						   <li class="page-item"><a class="page-link" href="#">2</a></li>
+						   <li class="page-item"><a class="page-link" href="#">3</a></li>
+						   <li class="page-item"><a class="page-link" href="#">4</a></li>
+						   <li class="page-item"><a class="page-link" href="#">5</a></li>
+						   <li class="page-item">
+						     <a class="page-link" href="#" aria-label="Next">
+						       <span aria-hidden="true">&raquo;</span>
+						     </a>
+						   </li>
+						</ul>
+					</div>
+				</div>	
+			</div> <!-- review e -->
+			
+			
+		</div> <!-- user_info e -->
+	<!-- ------------------------------------------------------------------------------- -->		
 		<div class="container">
 		
-			<div class="timebox">
+		
+			<div class="time_table">
 			
-				<h3> 상영시간표 </h3>
+			
+			<div class="row timebox">
+				<!-- ----------------------------------------------------------------------- -->
 				
-				<div class="row"> 
-					<div class="col-md-4 offset-8 ">
-						관람일자 <input class="date" type="date"> 			
+				<div class="row box1">
+					<div >
+					관람일자 <input class="date" type="date"> 	
 					</div>
-				</div>
-				
-				<table class="table momo">
-					
-					
-				</table>	
-
-				<div class="row"> 
-					<div class="col-md-9"> 
-						<div class="reserve_info"> 
-							선택 내역 : 
-							<span class="movie"> </span>
-							<span class="space"> </span>
-							<span class="room">  </span>
-							<span class="day"> 	 </span>
-							<span class="tim">	 </span>						
+					<div class="col-md-3">
+						<div class="box2_h"> 영화 </div>
+					</div>
+					<div class="col-md-3">
+						<div class="box2_h"> 지역 </div>
+					</div>
+					<div class="col-md-2">
+						<div class="box2_h"> 상영관 </div>
+					</div>
+					<div class="col-md-4">
+						<div class="box2_h"> 시간 </div>
+					</div>
+				</div>	
+				<!-- ---------------------------------------------------------------------- -->
+				<div class="row box2">
+					<div class="col-md-3 box2">
+						<div class="movie_list"> </div>					
+					</div>
+					<div class="col-md-3 box2">
+						<div class="row">
+							<div class="col-md-6 local_list"> </div>
+							<div class="col-md-6 space_list"> </div>
 						</div>
-					</div>				
-					<div class="col-md-3"> 
-						<button class="reserve btns" type="button"> 예매하기	</button>
 					</div>
-				</div>
-							
+					<div class="col-md-2 box2">					
+						<div class="room_list"> </div>				
+					</div>			
+					<div class="col-md-4 box2">					
+						<div class="mime_list"> </div>				
+					</div>
+				</div>	
+				<!-- ---------------------------------------------------------------------- -->			
+				<div class="row box3"> 
+					<div class="col-md-1">
+						<div class="img">   </div> 					
+					</div>
+					<div class="col-md-1 offset-md-2">					
+						<div > 영화명 | </div> 
+						<div > 극장명 | </div>
+						<div > 상영관 | </div>
+						<div > 상영일 | </div>						
+						<div > 상영시 | </div>	
+					</div>					
+					<div class="col-md-4">
+						<div class="movie"> </div> 
+						<div class="space"> </div>
+						<div class="room">  </div>
+						<div class="day"> 	</div>
+						<div class="tim">	</div>	
+					</div>					
+					<div class="col-md-2 offset-md-2"> 
+						<button class="reserve reserve_btn" type="button"> 예매하기 </button>
+					</div>
 
+				</div>	
+				<!-- ------------------------------------------------------------------- -->
+			</div>
+	
+		
+			</div> <!-- time_table  e-->
 			
 			</div> 	<!-- timebox e -->
 		</div>	<!-- container e -->
@@ -80,7 +305,7 @@
 		
 			<h3> 예매 내역 </h3>
 			
-			<table class="table mo_ta">
+			<table class="table mo_table">
 				<tr> <th> 극장명 		</th> <td class="m_space">  	</td> </tr>
 				<tr> <th> 영화명		</th> <td class="m_movie"> 		</td> </tr>				
 				<tr> <th> 상영관 		</th> <td class="m_room">   	</td> </tr>
@@ -96,6 +321,7 @@
 			
 		</div>	<!-- modal_box e -->
 	</div>	<!-- modal_wrap e -->
+	
 	
 	
 	

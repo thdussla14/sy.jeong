@@ -27,53 +27,78 @@ h3 {font-family: 'twayair';margin-bottom: 3%;}
 /* 전체 사이즈 설정*/
 .wrap {width: 1040px; padding: 2%; }
 
-/* 좌측 영화 목록 설정*/
-.movie_list {position:fixed; top: 250px;left:350px;}
-.list{border: none;background-color:#41276F;color: white;
-	width: 120px;font-size:15px; padding:2%;
-	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
-
 /* 영화 정보 설정*/
-.moviebox{padding: 3%;margin: 3%;}
-.information {padding: 3%;}
+.information {padding: 1%;}
 .m_title {font-family: 'twayair'; font-size: 25px;}
-.m_title, .m_info,.btns {margin: 2% 0%;}
-.m_info{padding-left: 2%;}
+.m_score {border-bottom: 1px solid #888888;
+			padding: 3% 0% 1% 0%;margin-bottom: 2%; }
+.al img {width: 15px;}
 .percent{color: red;font-weight:900;}
-.btns{width: 130px; font-size:20px;font-weight:600;
-		 border-radius:5px;border:1px solid #cccccc;
-		 background-color:  white; color:#808080;}
-		 
+
+.bar { width:650px; ;height: 50px; 
+		margin: 5% 15%; padding: 1% 3% 3% 3%;
+		background-color: #eeeeee;}
+.bar span {padding:1.5%;}
+/* 영화 소개 설정 */
+.info_bar {background-color:#eeeeee;padding-left: 1%;margin-left:1%;}
+.info_content{padding: 3%;}		
+.copy{font-size: 35px;font-weight: 400;} 
+.event {padding: 3%;margin:2%;
+		background-color: #eeeeee;border-radius: 15px;font-size:20px; }
+.point{color: red;}
+.point2{font-size: 18px;}
+.point3{font-size: 15px;}
+.grade, .m_grade {width:90px; height: 70px; 
+				border: none;border-radius: 15px; }
+.grade {background-color:  rgba(255,0,0,0.6); color: white;}
+.m_grade{background-color:  rgba(0,0,0,0.6); color: white;}
+.review{border-top: 1px solid #888888;}
+.review_item{border: 1px solid #eeeeee;padding: 0px;margin: 0px;}
+.review_content{height: 100px;font-weight: 400;}
+.id{padding: 3% 0%;}
+.pagination {padding-top: 5%;}
+
 
 /* 상영시간표 설정*/
-.timebox {border: 2px solid #41276F;border-radius: 30px;
-		padding: 4%;margin: 3%;display:none;}
-.time{border: none;border-radius:5px;width:80px;
-	background-color:#eeeeee; color:black;}
+.time_table {display:none;}
+.box1 {background-color: rgba(0,0,0,0.5);color: white; 
+		height: 80px;padding-top: 1%;}
+.box2 {background-color: #eeeeee;}
+.list{border: none; text-align:left; background-color: #eeeeee;
+		width: 200px;font-size:15px; padding:4% 1% 4% 0%;
+		white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.list:focus{color: red;}
+.box3 {background-color:#808080;color: white;height: 150px;padding-top: 1%;}
+.movie{white-space:nowrap;overflow: hidden;text-overflow: ellipsis;}
+.reserve_btn {width: 130px; height: 120px; 
+		font-size:20px;font-weight:600;
+		border-radius:5px;border:none;
+		background-color:#40266e; color: white;}
 
 
 /* 모달 배경 설정*/
 .modal_wrap {
-	position: fixed;						/* 위치 고정 */
+	position: fixed;				
 	top:0 ; left:0;
 	width:100% ; height: 100%;
-	background-color: rgba(173,173,173,0.5);	/* rgb(0,0,0) : black / rgba(0,0,0,0.5) : 투명도 추가 / 배경에만 투명도를 추가*/
+	background-color: rgba(173,173,173,0.5);	
 	display:flex;
-	justify-content: center;				/* 가로 가운데 정렬 */
-	align-items: center;					/* 세로 가운데 정렬 */
-	z-index: 1030;							/* 헤더 부트스트랩 sticky-top z-index:1020 이므로 더 크게 설정 */
+	justify-content: center;				
+	align-items: center;					
+	z-index: 1030;							
 	display: none;
 }
 /* 모달 기본 설정*/
 .modal_box{
 	text-align: center;align-items: center;
 	background-color: white;
-	width: 25%; height: 60%;
+	width: 30%; height: 80%;
 	padding: 3%; border-radius: 5%;
 }
-
-.mo_ta {margin: 15% 0%;}
-
+.mo_table {margin: 15% 0%;}
+.btns{width: 130px; font-size:20px;font-weight:600;
+		 border-radius:5px;border:1px solid #cccccc;
+		 background-color:  white; color:#808080; margin-top: 3%;}
 
 
 
