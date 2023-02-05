@@ -38,13 +38,12 @@ function list(){
 	
 	movieList.forEach((o,i)=>{
 	
-	if(영화 == o.name)
-		{html += `<button type="button" class="list" onclick="print(${i})"> >> ${o.name} </button>`;}
-	else{html += `<button type="button" class="list" onclick="print(${i})">    ${o.name} </button>`;}
+	html += `<button type="button" class="list m_list" onclick="print(${i})"> ${o.name} </button>`;
 		
 	})
-	
+
 	document.querySelector('.movie_list').innerHTML =html
+	local_print()
 }
 
 //---선택 영화 정보 출력---------------------------------------------------------------------------------------------------//
@@ -69,7 +68,7 @@ function print(i){
 					<div class="col-md-9 information"> 
 						<div class="m_title" > 	  	  ${o2.name}  </div>
 						<div>
-							  <div class="m_score">  예매율 ${ o2.예매율 }%<span>|</sapn><span class="al"> <img src="img/main_page/황금알.png"> ${ o2.egg }%</span></div>
+							  <div class="m_score">  예매율 ${ o2.예매율 }%<span>|</sapn><span class="al"> <img src="img/황금알.png"> ${ o2.egg }%</span></div>
 							  <div class="m_info">	 평점 	:<span class="percent"> ${o2.평점}</span>	 </div>
 							  <div class="m_info">   감독 	: 	${o2.감독}		</div>
 							  <div class="m_info">   장르		: 	${o2.장르}		</div>
@@ -94,15 +93,47 @@ function print(i){
 //-----info 출력---------------------------------------------------------------------------------------------------//
 
 
+// 주요정보 클릭 이벤트
 document.querySelector('.info_print').addEventListener ('click',(e)=>{
 	document.querySelector('.example_info').style.display='block';
+	document.querySelector('.story').style.display='block';
+	document.querySelector('.trailer').style.display='block';
+	document.querySelector('.still').style.display='block';
+	document.querySelector('.rating').style.display='block';
 	document.querySelector('.time_table').style.display='none';
 })
-
+// 트레일러 클릭 이벤트
+document.querySelector('.trailer_print').addEventListener ('click',(e)=>{
+	document.querySelector('.story').style.display='none';
+	document.querySelector('.trailer').style.display='block';
+	document.querySelector('.still').style.display='none';
+	document.querySelector('.rating').style.display='none';
+	document.querySelector('.time_table').style.display='none';
+})
+// 스틸컷 클릭 이벤트
+document.querySelector('.still_print').addEventListener ('click',(e)=>{
+	document.querySelector('.story').style.display='none';
+	document.querySelector('.trailer').style.display='none';
+	document.querySelector('.still').style.display='block';
+	document.querySelector('.rating').style.display='none';
+	document.querySelector('.time_table').style.display='none';
+})
+// 평점/리뷰 클릭 이벤트
+document.querySelector('.rating_print').addEventListener ('click',(e)=>{
+	document.querySelector('.story').style.display='none';
+	document.querySelector('.trailer').style.display='none';
+	document.querySelector('.still').style.display='none';
+	document.querySelector('.rating').style.display='block';
+	document.querySelector('.time_table').style.display='none';
+})
+// 평점 작성 버튼 클릭 이벤트
 document.querySelector('.grade').addEventListener ('click',(e)=>{
 	alert('로그인이 필요한 서비스입니다.\n로그인페이지로 이동하시겠습니까?')
 })
 
+document.querySelector('.m_grade').addEventListener ('click',(e)=>{
+	alert('로그인이 필요한 서비스입니다.\n로그인페이지로 이동하시겠습니까?')
+})
 
 //-----상영 시간표 출력---------------------------------------------------------------------------------------------------//
 
