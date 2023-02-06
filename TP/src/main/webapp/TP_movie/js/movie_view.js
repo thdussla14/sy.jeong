@@ -167,6 +167,24 @@ function local_print(){
 	
 }	// fun e
  
+ document.querySelector('.list').addEventListener((e)=>{select(e)})
+ 
+ 
+function select(e){
+	
+	let 선택영화 = document.querySelectorAll('.list')
+	
+	선택영화.forEach((o)=>{
+		
+		if(spaceList[j].classList[2]!='select')
+		{o.classList.add('select') }
+		else{o.classList.remove('select')}
+	})
+	local_print()
+}
+ 
+ 
+ 
 function space_print(j){
 	
 	if(document.querySelector('.date').value=='')
