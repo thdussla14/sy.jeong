@@ -43,7 +43,6 @@ function list(){
 	})
 
 	document.querySelector('.movie_list').innerHTML =html
-	local_print()
 }
 
 //---선택 영화 정보 출력---------------------------------------------------------------------------------------------------//
@@ -159,6 +158,8 @@ function local_print(){
 	
 	spaceList.forEach((o,j)=>{
 		
+		
+		
 		html += `<button type="button" class="list" onclick="space_print(${j})"> ${o.local}</button>`
 		
 	})
@@ -166,24 +167,7 @@ function local_print(){
 	document.querySelector('.local_list').innerHTML = html
 	
 }	// fun e
- 
- document.querySelector('.list').addEventListener((e)=>{select(e)})
- 
- 
-function select(e){
-	
-	let 선택영화 = document.querySelectorAll('.list')
-	
-	선택영화.forEach((o)=>{
-		
-		if(spaceList[j].classList[2]!='select')
-		{o.classList.add('select') }
-		else{o.classList.remove('select')}
-	})
-	local_print()
-}
- 
- 
+  
  
 function space_print(j){
 	

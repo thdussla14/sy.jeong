@@ -17,7 +17,7 @@ public class 과제2_키오스크 {
 		int hwanta	= 0;
 		
 		while(true)
-		{System.out.println("1. 콜라[300원] 2. 사이다[400원] 3. 환타[500]");
+		{System.out.println("1. 콜라[300원] 2. 사이다[400원] 3. 환타[500]  4. 결제  5. 재고현황");
 			
 		int ch = scanner.nextInt();
 			// 1. 콜라 선택
@@ -61,7 +61,7 @@ public class 과제2_키오스크 {
 					{System.out.printf("%3s  %6d %5d \n","환타"	,hwanta	,(hwanta*500));}
 				
 				int total = (cola*300)+(cider*400)+(hwanta*500);
-				System.out.println("----------------------");
+				System.out.println("---------장바구니--------");
 				System.out.println("총가격 : "+total);
 				System.out.println("----------------------");
 					// 4-2. 결제 여부 선택
@@ -72,14 +72,17 @@ public class 과제2_키오스크 {
 						{System.out.println("금액을 입력해주세요.");
 						int pay = scanner.nextInt();
 						// 금액 충족 확인
-						if(pay>total) 
+						if(pay>=total) 
 							{// 잔액 출력
 							System.out.println("잔액 :"+(pay-total));
+							System.out.println("결제가 완료되었습니다.");
 							// 장바구니 초기화
 							cola  	= 0;cider 	= 0;hwanta	= 0;
 							}
 						else {// 잔액 부족 알림
 							System.err.println("[알림]잔액이 부족합니다. \n결제가 취소되었습니다.");
+							// 재고 복구
+							colastorage += cola;ciderstorage += cider;hwantastorage += hwanta;							
 							// 장바구니 초기화
 							cola  	= 0;cider 	= 0;hwanta	= 0;
 							}
@@ -93,9 +96,19 @@ public class 과제2_키오스크 {
 						}
 					// 4-3. 예외의 번호 입력시 에러 알람	
 					else {System.err.println(">>> 알 수 없는 번호 입니다.");}				
-			}
-		// 5. 예외의 번호 입력시 에러 알람	
-		else {System.err.println(">>> 알 수 없는 번호 입니다.");}
+				}
+			// 5. 재고 파악
+			else if(ch==5) 
+				{// 5-1. 재고 출력
+				System.out.println("---------재고현황---------");
+				System.out.printf("%3s  %3s \n","제품명"	,"재고수량");
+				System.out.printf("%3s  %3d	\n","콜라"	,colastorage);
+				System.out.printf("%3s  %3d \n","사이다"	,ciderstorage);
+				System.out.printf("%3s  %3d \n","환타"	,hwantastorage);
+				System.out.println("----------------------");
+				}
+			// 5. 예외의 번호 입력시 에러 알람	
+			else {System.err.println(">>> 알 수 없는 번호 입니다.");}
 		
 		}	// while e	
 		
