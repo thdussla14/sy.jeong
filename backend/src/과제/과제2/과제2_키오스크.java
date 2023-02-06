@@ -51,14 +51,14 @@ public class 과제2_키오스크 {
 			else if(ch==4) 
 				{	// 4-1.장바구니 현황 출력 		
 				System.out.println("----------------------");
-				System.out.printf("%3s  %6s %6s \n","제품명","수량","가격");
+				System.out.printf("%3s  %6s %5s \n","제품명","수량","가격");
 				
 				if(cola	!= 0)
-					{System.out.printf("%3s  %6d %6d \n","콜라"	,cola	,(cola*300));}
+					{System.out.printf("%3s  %6d %5d \n","콜라"	,cola	,(cola*300));}
 				if(cider!= 0)
-					{System.out.printf("%3s  %6d %6d \n","사이다"	,cider	,(cider*400));}
+					{System.out.printf("%3s  %6d %5d \n","사이다"	,cider	,(cider*400));}
 				if(hwanta!= 0)
-					{System.out.printf("%3s  %6d %6d \n","환타"	,hwanta	,(hwanta*500));}
+					{System.out.printf("%3s  %6d %5d \n","환타"	,hwanta	,(hwanta*500));}
 				
 				int total = (cola*300)+(cider*400)+(hwanta*500);
 				System.out.println("----------------------");
