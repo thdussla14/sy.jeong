@@ -272,11 +272,11 @@
 						<div class="img">   </div> 					
 					</div>
 					<div class="col-md-1 offset-md-2">					
-						<div > 영화명 | </div> 
-						<div > 극장명 | </div>
-						<div > 상영관 | </div>
-						<div > 상영일 | </div>						
-						<div > 상영시 | </div>	
+						<div > 영화명 </div> <span>|</span>
+						<div > 극장명 </div> <span>|</span>
+						<div > 상영관 </div> <span>|</span>
+						<div > 상영일 </div> <span>|</span>						
+						<div > 상영시 </div> <span>|</span>
 					</div>					
 					<div class="col-md-4">
 						<div class="movie"> </div> 
@@ -286,7 +286,7 @@
 						<div class="tim">	</div>	
 					</div>					
 					<div class="col-md-2 offset-md-2"> 
-						<button class="reserve reserve_btn" type="button"> 예매하기 </button>
+						<button class="sit" onclick="seat_print()" type="button"> 좌석선택 </button>
 					</div>
 
 				</div>	
@@ -316,6 +316,7 @@
 				<tr> <th> 상영관 		</th> <td class="m_room">   	</td> </tr>
 				<tr> <th> 상영일		</th> <td class="m_day"> 		</td> </tr>
 				<tr> <th> 상영시간		</th> <td class="m_time"> 		</td> </tr>
+				<tr> <th> 선택좌석		</th> <td class="m_seat"> 		</td> </tr>
 				<tr> <th> 결제금액 	</th> <td class="m_price"> 		</td> </tr>				
 			</table>
 			
@@ -329,7 +330,26 @@
 	
 	
 	
+		<div class="modal_wrap2">	<!-- 모달 구역 -->
+		<div class="modal_box2">
+		
+			<h3> 좌석 선택 </h3>
+			
+			<div class="table mo_table2">
+				<div class="screen"> SCREEN </div>
+				<div class="seated"> 		</div>
+				<div>선택한 좌석 : <span  class="selected_seat"></span>  </div>
 	
+			</div>
+			
+			
+			<div>
+				<button class="modal_cancel2 btns" type="button"> 예매취소 </button>
+				<button class="reserve btns" type="button"> 예매하기 </button>
+			</div>
+			
+		</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
 	
 	
 	

@@ -28,7 +28,7 @@ let roomList = [
 {room: 'SCREENX관'	, times: [{time:'10:00'},{time:'15:30'},{time:'18:10'},{time:'21:00'}]}	
 ]
 
-
+let seat = ['A','B','C','D','E','F','G']
 //--영화 리스트 출력-----------------------------------------------------------------------------------------------------//
 
 function list(){
@@ -236,12 +236,11 @@ function day_select(){
 // 예매하기 버튼 클릭 이벤트
  document.querySelector('.reserve').addEventListener('click',(e)=>{
 	 
-	 if(상영관==''){alert('상영관을 선택해 주세요.'); return;}
 	 
-	 else if(상영시==''){alert('관람시간을 선택해 주세요.'); return;}
+	 document.querySelector('.modal_wrap').style.display='flex';
+	 modal_print()
 	 
-	 else{document.querySelector('.modal_wrap').style.display='flex';
-	 modal_print()}
+	 document.querySelector('.modal_wrap2').style.display='none';
 	 
  })
 
@@ -253,6 +252,7 @@ function modal_print(){
 	document.querySelector('.m_room').innerHTML		= document.querySelector('.room').innerHTML
 	document.querySelector('.m_day').innerHTML		= document.querySelector('.day').innerHTML
 	document.querySelector('.m_time').innerHTML		= document.querySelector('.tim').innerHTML
+	document.querySelector('.m_seat').innerHTML		= document.querySelector('.selected_seat').innerHTML
 	document.querySelector('.m_price').innerHTML	= `16,000원`
 	
 }
@@ -264,15 +264,47 @@ function modal_print(){
 	 
  })
  
-			
+//----에매 내역 모달 내용 출력----------------------------------------------------------------------------------------------//
 
+// 예매하기 버튼 클릭 이벤트
+ function seat_print(){
+
+	 if(상영관==''){alert('상영관을 선택해 주세요.'); return;}
+	 
+	 else if(상영시==''){alert('관람시간을 선택해 주세요.'); return;}
+	 
+	 else{
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
+	 htmls = ``
+
+	 for (let s=1; s<=70 ; s++)
+	 {htmls += `<button class="seat" onclick="selected_seat(${s})" > </buton>`}
+	
+	 document.querySelector('.selected_seat').innerHTML = ''
+	 document.querySelector('.seated').innerHTML = htmls;
+	 document.querySelector('.modal_wrap2').style.display='flex'
+	 }
+}		
+
+function selected_seat(s){
+		
+	 htmls2 = ` `	
+	if(s<=10){htmls2 += `A`+s}	
+	else if(s<=20){htmls2 += `B`+(s-10)}	
+	else if(s<=30){htmls2 += `c`+(s-20)}
+	else if(s<=40){htmls2 += `D`+(s-30)}	
+	else if(s<=50){htmls2 += `E`+(s-40)}
+	else if(s<=60){htmls2 += `F`+(s-50)}
+	else {htmls2 += `G`+(s-60)}
+
+	 document.querySelector('.selected_seat').innerHTML = htmls2;
+	
+}
+
+// 모달 버튼 이벤트
+ document.querySelector('.modal_cancel2').addEventListener('click',(e)=>{
+	 
+	 document.querySelector('.modal_wrap2').style.display='none';
+	 
+ })
+
