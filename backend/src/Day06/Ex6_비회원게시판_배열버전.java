@@ -35,18 +35,20 @@ public class Ex6_비회원게시판_배열버전 {
 		// 행 기준 자르기
 		String[] boards = fstr.split("\n");// 행 기준 분리 게시글 2개 => 3조각..
 		
+		
 		// board = {"안녕,안냐세요,강호동,4567","안녕,안냐세요,강호동,4567"}
 		System.out.println("-----------------게시판------------------");
 		System.out.printf("%1s\t %3s\t %5s\n","번호"," 제목","작성자","조회수");		
+		
 		// 열 기준 자르기 
 		for ( int i=0 ; i<boards.length ; i++)
 			{String[] cols = boards[i].split(",");
 			String title 	= cols[0];
 			String content	= cols[1];
 			String writer	= cols[2];
-			String password	= cols[2];
+			String password	= cols[3];
 			
-			System.out.printf("%1s\t %3s\t %5s\n",i,title, writer );
+			System.out.printf("%1s\t %3s\t %5s\n",i+1,title, writer );
 		}
 		
 		
