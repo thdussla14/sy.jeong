@@ -9,15 +9,7 @@ public class Bcontroller {
 	ArrayList<Board>boardDB = new ArrayList<>();
 
 	// 1. 글 출력
-	public ArrayList<Board> print() {
-		
-		ArrayList<Board> result = new ArrayList<>();
-		
-		for(int i=1 ; i<=boardDB.size() ; i++) {
 
-		}
-
-	}
 	
 	// 2. 글 선택
 	public Board content(int ch) {

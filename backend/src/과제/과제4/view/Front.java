@@ -79,7 +79,7 @@ public class Front {
 		System.out.println(id+"님의 아이디로 로그인되었습니다.");
 		System.out.println("--------------커뮤니티--------------");
 		System.out.println("번호\t조회수\t작성자\t제목");
-		ArrayList<Board> print = bc.print();
+		
 		
 		System.out.println("메뉴> 1. 글쓰기 2. 글보기  3. 로그아웃");
 		int ch2 = scanner.nextInt();
