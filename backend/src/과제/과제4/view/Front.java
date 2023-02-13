@@ -48,7 +48,7 @@ public class Front {
 		System.out.println("아이디 : ");		String id = scanner.next();
 		System.out.println("비밀번호 : ");		String pwd = scanner.next();
 		int result = mc.login(id,pwd);
-		if( result >= 0 ) {community(); }// 게시판으로 이동
+		if( result >= 0 ) {community(id); }// 게시판으로 이동
 		else if(result == -1 ) {System.err.println("[알림] 비밀번호가 일치하지 않습니다.");}
 		else if(result == -2 ) {System.err.println("[알림] 존재하지 않는 아이디입니다.");}
 		
@@ -62,7 +62,7 @@ public class Front {
 		if( result == null ) {System.err.println("[알림] 존재하지 않는 회원입니다.");}
 		else {System.out.println("회원님의 아이디는"+result+"입니다.");}
 		
-	} // finfid e
+	} // findid e
 	
 	// 5. 비밀번호 찾기 페이지
 	public void findpw(){
@@ -75,49 +75,67 @@ public class Front {
 	} // findpw e
 	
 	// 6. 로그인 성공시 커뮤니티 페이지
-	public void community() {
+	public void community(String id) {
+		System.out.println(id+"님의 아이디로 로그인되었습니다.");
 		System.out.println("--------------커뮤니티--------------");
 		System.out.println("번호\t조회수\t작성자\t제목");
+		ArrayList<Board> print = bc.print();
 		
 		System.out.println("메뉴> 1. 글쓰기 2. 글보기  3. 로그아웃");
 		int ch2 = scanner.nextInt();
 		
-		if(ch2 == 1) {write(); }
-		else if(ch2 == 2) {content(); }
+		if(ch2 == 1) {write(id); }
+		else if(ch2 == 2) {content(id); }
 		else if(ch2 == 3) {index(); }
 		else {System.err.println("[알림] 알 수 없는 행동입니다."); }
 		
 	} // community e
 	
 	// 7. 글 상세 페이지
-	public void content() {
-		System.out.println("--------------글보기---------------");
-		System.out.println("제목:  ");
-		System.out.println("작성자: "+"조회수: ");
-		System.out.println("내용:  ");
-		System.out.println("메뉴> 1. 글삭제 2. 글수정  3. 뒤로가기");
+	public void content(String id) {
+		System.out.println("상세보기할 게시물 번호 : ");
+		int ch = scanner.nextInt();
+		Board result = bc.content(ch);
 		
+		System.out.println("--------------글보기---------------");
+		System.out.println("제목:  "+result.title);
+		System.out.println("작성자: "+result.id+"조회수: "+result.count);
+		System.out.println("내용:  "+result.content);
+		
+		System.out.println("메뉴> 1. 글삭제 2. 글수정  3. 뒤로가기");
 		int ch2 = scanner.nextInt();
-		if(ch2 == 1) { }
-		else if(ch2 == 2) {write(); }
-		else if(ch2 == 3) {community();}
+		if(ch2 == 1) { delete(id);}
+		else if(ch2 == 2) {write(id); }
+		else if(ch2 == 3) {community(id);}
 		else {System.err.println("[알림] 알 수 없는 행동입니다."); }
 		
 	} // content e
 	
 	// 8. 글 작성 페이지
-	public void write() {
+	public void write(String id) {
 		System.out.println("--------------글작성---------------");
 		System.out.println("제목:  "); String title 	  = scanner.next();
 		System.out.println("내용:  "); String content  = scanner.next();
 		
-		int result = bc.write(content, title, content, 0);
+		int result = bc.write(id, title, content, 0);
 		if(result==0) { System.out.println("[글 작성 성공]");}
 		else if(result==1) { System.err.println("[알림] 제목이 공백입니다.");}
 		else if(result==2) { System.err.println("[알림] 내용이 공백입니다.");}
+		else {System.err.println("[알림] 알 수 없는 행동입니다."); }
 		
 	} // write e
+		
+	// 9. 글 삭제
+	public void delete(String id) {
+		System.out.println("삭제할 게시물 번호 : ");
+		int dch = scanner.nextInt();
+		
+		int result = bc.delete(dch, id);
+		if(result ==0) {System.out.println("[글 삭제 성공]");}
+		else if(result ==1) {System.err.println("[알림] 작성자 본인만 삭제가능합니다.");}
+		else {System.err.println("[알림] 알 수 없는 행동입니다."); }
+		
+	}// delete e
 	
 	
-
 } // class e
