@@ -78,11 +78,11 @@ public class Front {
 		System.out.println("제목 : "	+result.getTitle());
 		System.out.println("작성자: "	+result.getWriter()		+"\t 조회수 : "+result.getView());
 		System.out.println("내용 : "	+result.getContent());
-		
+		// 5-4. 뒤로가기/수정/삭제 선택
 		System.out.println("메뉴 > 1. 뒤로가기 2. 삭제 3. 수정");
 		int ch2 = scanner.nextInt();
 		if(ch2==1) {return ; }
-		// 글 삭제
+		// 5-5. 글 삭제
 		else if(ch2==2) {
 			
 			boolean result2 = Bcontroller.getInstance().delete(bno);		
