@@ -99,7 +99,7 @@ public class Front {
 		
 		System.out.println("--------------글보기---------------");
 		System.out.println("제목:  "+result.title);
-		System.out.println("작성자: "+result.id+"조회수: "+result.count);
+		System.out.println("작성자: "+result.id+"\t\t조회수: "+result.count);
 		System.out.println("내용:  "+result.content);
 		
 		System.out.println("메뉴> 1. 글삭제 2. 글수정  3. 뒤로가기");
