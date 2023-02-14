@@ -1,7 +1,7 @@
 package 과제.과제5.model;
 
 public class Product {
-
+	
 	// 1.필드
 	// 1-1. 관계 필드 = 참조 필드 [FK]
 	private int mno;
