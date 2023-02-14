@@ -3,11 +3,14 @@ package practice2.model;
 public class Account {
 
 	// 1. 필드
-	String name;
-	String account;
-	String password;
-	int balance;
+	private String name;
+	private String account;
+	private String password;
+	private int balance;
 	
+	static final int MIN_BALANCE = 0;
+	static final int MAX_BALANCE = 1000000;
+
 	// 2. 생성자
 	// 2-1. 빈생성자
 	public Account() { }
