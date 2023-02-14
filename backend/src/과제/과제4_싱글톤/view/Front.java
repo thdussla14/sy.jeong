@@ -128,8 +128,8 @@ public class Front {
 		// 3. 결과 제어
 		System.out.println("-------------------글상세--------------------");
 		System.out.println("제목  : "+result.getTitle());
-		System.out.println("작성자 : "+result.getMember().getId()+"\t조회수 : "+result.getView());
-		System.out.println("내용  : "+result.getContent());
+		System.out.println("작성자 : "+result.getMember().getId()+"\t조회수 : "+result.getView());// result.getMemver() 			 순환참조 에러 발생 
+		System.out.println("내용  : "+result.getContent());									 // result.getMember().getId()   에러 발생 x
 		System.out.println("-------------------------------------------");
 		System.out.println("메뉴> 1. 삭제  2. 수정  3. 뒤로가기");
 		System.out.println("-------------------------------------------");

@@ -4,7 +4,19 @@ package 과제.과제4_싱글톤.model;
 		M : Member/Board 관계 
 			=> 1명의 회원이 글 작성			 [ object ]
 			=> 1명의 회원이 여러개의 글 작성 가능	 [ ArrayList ]	
-			=> *** 양방향으로 관계시 toString X [ 무한루프에 빠짐 ]
+			
+			=> *** 양방향으로 관계시 toString X [ 무한루프에 빠짐 ] // stackoverflowerror
+			
+			- 객체 호출시 -> 주소값
+			- 스택 영역 		vs		힙 영역
+			Board board		= new	Board();
+									32번지
+			Member member	= new 	Member();
+									33번지
+			board.setMember(member);	32번지에 33번지 대입
+			member.setBoard(board);		33번지에 32번지 대입 // 순환참조
+			
+			System.out.printIn(board);
 */
 
 public class Board {
