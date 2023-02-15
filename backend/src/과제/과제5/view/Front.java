@@ -206,17 +206,22 @@ public class Front {
 		
 		// 1. 입력 받기
 		System.out.println("제품번호 : ");	int    pno 		= scanner.nextInt();
-		System.out.println("-------------------------------------------");	
-		System.out.println("제목 : ");	String title 	= scanner.next();
-		System.out.println("내용 : "); 	String content 	= scanner.next();
-		System.out.println("가격 : "); 	String price 	= scanner.next();
 		// 2. 컨트롤러에게 전달 후 결과 받기
-		boolean result = Pcontroller.getInstance().update(pno,title, content, price);
+		int result = Pcontroller.getInstance().check(pno);
 		// 3. 결과 제어
-		if(result) {System.out.println("[알림] 제품 수정 성공"); }
-		else {System.err.println("[알림] 제품 수정 실패"); }	
-		
-		
+		if(result==-1){System.err.println("[알림] 해당 제품 수정 권한 없음"); }	
+		else if(result>=0) {
+			
+			System.out.println("-------------------------------------------");	
+			System.out.println("제목 : ");	String title 	= scanner.next();
+			System.out.println("내용 : "); 	String content 	= scanner.next();
+			System.out.println("가격 : "); 	String price 	= scanner.next();
+			
+			boolean result2 = Pcontroller.getInstance().update(result, title, content, price);
+			
+			if(result2) {System.out.println("[알림] 제품 수정 성공"); }
+			else {System.err.println("[알림] 제품 수정 실패"); }			
+		}
 	}// update e
 	
 	// 제품삭제------------------------------------------------------------------------------------
@@ -225,24 +230,35 @@ public class Front {
 		// 1. 입력 받기
 		System.out.println("제품번호 : ");	int    pno 		= scanner.nextInt();
 		// 2. 컨트롤러에게 전달 후 결과 받기
-		boolean result = Pcontroller.getInstance().delete(pno);
-		// 3. 결과 제어
-		if(result) {System.out.println("[알림] 제품 삭제 성공"); }
-		else {System.err.println("[알림] 제품 삭제 실패"); }	
-		
+		int result = Pcontroller.getInstance().check(pno);
+		// 3. 결과 제어	
+		if(result==-1){System.err.println("[알림] 해당 제품 수정 권한 없음"); }
+		else if(result>=0) {
+			
+			boolean result2 = Pcontroller.getInstance().delete(result);
+				
+			if(result2) {System.out.println("[알림] 제품 삭제 성공"); }
+			else {System.err.println("[알림] 제품 삭제 실패"); }	
+		}
 		
 	}// delete e
 	// 판매완료------------------------------------------------------------------------------------
 	public void compelete() {
-		
+
 		// 1. 입력 받기
 		System.out.println("제품번호 : ");	int   pno 	= scanner.nextInt();
-		// 2. 컨트롤러에게 전달 후 결과 받기
-		boolean result = Pcontroller.getInstance().compelete(pno);
-		// 3. 결과 제어
-		if(result) {System.out.println("[알림] 상태 변경 성공"); }
-		else {System.err.println("[알림] 상태 변경 실패"); }	
 		
+		// 2. 컨트롤러에게 전달 후 결과 받기
+		int result = Pcontroller.getInstance().check(pno);
+		// 3. 결과 제어
+		if(result==-1){System.err.println("[알림] 해당 제품 수정 권한 없음"); }
+		else if(result>=0) {
+			
+			boolean result2 = Pcontroller.getInstance().compelete(result);	
+			
+			if(result2) {System.out.println("[알림] 상태 변경 성공"); }
+			else {System.err.println("[알림] 상태 변경 실패"); }	
+		}
 	}// compelete e
 	
 	

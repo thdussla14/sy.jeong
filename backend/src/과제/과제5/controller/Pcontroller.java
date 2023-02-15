@@ -60,42 +60,37 @@ public class Pcontroller {
 		return myproduct;
 	}
 	// 5. 제품 수정
-	public boolean update(int pno,String title, String content, String price) {
-
-		for(int i=0; i<productDB.size() ; i++)
-			{if(productDB.get(i).getPno()==pno)
-				{
-				productDB.get(i).setTitle(title);
-				productDB.get(i).setContent(content);
-				productDB.get(i).setPrice(price);
-				return true;
-				}}// for e
-
-		return false;
+	public boolean update(int result,String title, String content, String price) {
+ 
+		productDB.get(result).setTitle(title);
+		productDB.get(result).setContent(content);
+		productDB.get(result).setPrice(price);
+		return true;
 	}
 	// 6. 제품 삭제
-	public boolean delete(int pno) {
+	public boolean delete(int result) {
 		
-		for(int i=0 ; i<productDB.size() ; i++)
-			{if(productDB.get(i).getPno()==pno)
-				{ productDB.remove(i);
-				return true;
-				}}// for e
-
-		return false;
+		productDB.remove(result);
+		return true;
 	}
 	
 	// 7. 판매 완료
-	public boolean compelete(int pno) {
+	public boolean compelete(int result) {
 
-		for(int i=0; i<productDB.size() ; i++)
-			{if(productDB.get(i).getPno()==pno)
-				{ productDB.get(i).setState("판매완료");
-				return true;
-				}}// for e
+		productDB.get(result).setState("판매완료");
+		return true;
 
-		return false;
 	}
 	
+	// 8. 유효성검사
+	public int check(int pno) {
+		
+		for(int i=0; i<productDB.size() ; i++)
+		{if(productDB.get(i).getPno()==pno)
+			{if(productDB.get(i).getMno()==Mcontroller.getInsetance().getLogSession()) 
+				{return i;
+			}}}// for e
+		return -1;
+	}
 	
 }// class e
