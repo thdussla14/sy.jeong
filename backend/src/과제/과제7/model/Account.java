@@ -70,7 +70,9 @@ public class Account {
 		
 		System.out.println("------------------생성 완료-------------------");
 		System.out.println("계좌주 : "	+ account.name);
-		System.out.println("계좌번호: "	+ account.accountNum);
+		System.out.println("계좌번호: "	
+				+ (bankCode.equals("03")?"국민은행":bankCode.equals("04")?"신한은행":"우리은행")
+				);
 		System.out.println("계좌은행: "	+ account.bankCode);
 		
 		
@@ -90,11 +92,13 @@ public class Account {
 				accountDB.get(i).balance += money; check = i;}
 		}// for e
 
-		System.out.println("-----------------입금 완료-------------------");
-		System.out.println("계좌주 :  "	+accountDB.get(check).name);
-		System.out.println("계좌번호: "	+accountDB.get(check).accountNum);
-		System.out.println("계좌잔액: "	+accountDB.get(check).balance);
-
+		if(check==-1) { System.err.println("[알림] 존재하지 않는 계좌입니다.");}
+		else if (check>=0) {
+			System.out.println("-----------------입금 완료-------------------");
+			System.out.println("계좌주 :  "	+accountDB.get(check).name);
+			System.out.println("계좌번호: "		+accountDB.get(check).accountNum);
+			System.out.println("계좌잔액: "		+accountDB.get(check).balance);
+		}
 		
 		return ;
 	}

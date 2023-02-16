@@ -34,9 +34,9 @@ public class Front {
 				System.out.println(bank+"\t"+a.accountNum.toString()+"\t"+a.balance);
 				
 				} // for e
-			System.out.println("-------------------------------------------");
+			System.out.println("------------------------------------------");
 			System.out.println("메뉴>  1.계좌생성  2.예금 ");
-			System.out.println("-------------------------------------------");
+			System.out.println("------------------------------------------");
 			int ch = scanner.nextInt();
 			if(ch==1) { bankselect_page();}
 			else if(ch==2) { deposit_page(); }
@@ -65,7 +65,7 @@ public class Front {
 		
 		System.out.println("------------------정보 입력------------------");
 		System.out.println("계좌주 	: ");	String name = scanner.next();
-		System.out.println("계좌비밀번호: ");	String pw   = scanner.next();	
+		System.out.println("계좌비밀번호: ");		String pw   = scanner.next();	
 
 		if 		( bank.equals("03")) 	{bankA.create(pw, name); }
 		else if ( bank.equals("04")) 	{bankB.create(pw, name); }
@@ -79,10 +79,8 @@ public class Front {
 
 		System.out.println("-----------------계좌 입금-------------------");
 		System.out.println("입금할 계좌번호: ");	String account = scanner.next();
-		System.out.println("예금액 	   : ");int		money  = scanner.nextInt();
-		
-		
-		
+		System.out.println("예금액: ");		int		money  = scanner.nextInt();
+
 		if	   (account.split("-")[0].equals("03")) {bankA.deposit(account, money);}
 		else if(account.split("-")[0].equals("04")) {bankB.deposit(account, money);}
 		else if(account.split("-")[0].equals("05")) {bankC.deposit(account, money);}
