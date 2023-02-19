@@ -1,7 +1,11 @@
-package 과제.과제9.클래스_상속;
+package 과제.과제9.클래스_상속2;
 
 public class Pigeon extends Animal {
 
+	public Pigeon() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Pigeon(String name, String species, String sex, int age) {
 		super(name,species,sex,age);
 	}

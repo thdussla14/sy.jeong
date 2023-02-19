@@ -1,4 +1,4 @@
-package 과제.과제9.클래스_상속;
+package 과제.과제9.클래스_상속2;
 
 public class Animal {
 
