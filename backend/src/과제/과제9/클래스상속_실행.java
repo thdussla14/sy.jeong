@@ -62,11 +62,11 @@ public class 클래스상속_실행 {
 		// 클래스상속 예제 3) ----------------------------------------------------------------------------------//
 		System.out.println("-----클래스상속 예제 3)---------------------------");
 				
-		Flower flower = new Flower();		
+		Flower flower = new Flower();	
 		flower.color();
 		flower.floriography();
 		
-		flower = new Rose();		
+		flower = new Rose();	
 		flower.color();
 		flower.floriography();
 		
@@ -74,7 +74,7 @@ public class 클래스상속_실행 {
 		flower.color();
 		flower.floriography();
 		
-		flower = new FrenchMarigold();		
+		flower = new FrenchMarigold();
 		flower.color();
 		flower.floriography();
 
