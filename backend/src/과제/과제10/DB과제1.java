@@ -52,7 +52,7 @@ public class DB과제1 {
 					ps.setString(3, pcontent);
 					ps.setInt	(4, price);
 					
-					ps.executeUpdate(sql);
+					ps.executeUpdate();
 				}
 				
 			}
