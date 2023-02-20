@@ -61,7 +61,9 @@ public class Ex5_DB연동2 {
 				System.out.println("[알림] SQL 오류 "+e);
 				scanner = new Scanner(System.in);	// 기존 입력 데이터 제거
 			}
-			
+			catch (Exception e) {
+				System.out.println("[알림] DB연결 후 다시 실행");
+			}
 			
 			
 			
