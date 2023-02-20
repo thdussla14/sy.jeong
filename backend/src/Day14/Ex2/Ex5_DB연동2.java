@@ -49,7 +49,7 @@ public class Ex5_DB연동2 {
 					ps.setString(2, mid);	// 2. sql 구문 두번쨰 ? 자리 대입
 					ps.setString(3, mpw);	// 3. sql 구문 세번쨰 ? 자리 대입
 					// 실행
-					ps.executeUpdate();
+					ps.executeUpdate();	// 실행문에 sql 대입 하지 않기!!
 
 				}
 			}
