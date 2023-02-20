@@ -30,6 +30,9 @@
     
 		1. DDL : 데이터베이스 정의어
 			1. CREATE TABLE/DATABASE 이름 	: 생성
+				CREATE DATABASE 데이터베이스명;
+				USE 데이터베이스명;
+				CREATE TABLE 테이블명 ( 필드명 타입 제약조건, 필드명 타입 제약조건 )
             2. DROP TABLE/DATABASE 이름 		: 삭제
             3. ALTER						: 수정
 			4. TURNCATE						: 테이블 데이터 영구 삭제
@@ -53,6 +56,13 @@
             qwe				qwe					- 레코드1 [행1 = row]
             asd				asd					- 레코드2 [행2]
             zxc				zxc					- 레코드3 [행3]
+            
+	- 필드 타입
+		1. 정수형 : int 					: 정수
+        2. 문자형 : varchar(길이)			: 
+        3. 실수형 : float , double		: 
+        4. 날짜형 : data, time, datatime	:
+        5. 대용량 : text
 */
 
 # 예1 : 데이터베이스 [ 저장소 - 여러개 테이블 저장할 수 있는 공간 ]
@@ -90,12 +100,114 @@ create table member(		-- 3. 선택된 데이터베이스에 표 만들기
 # create 생성한다.
 	# table 표 
 		# member 테이블 이름 [아무거나] * 카멜표기법,언더바 권장
-
-        
-        
+create table member2( 아이디 	text , 비밀번호	text );
+create table member3( 아이디 	text , 비밀번호	text );
+			
 # 예6 : 해당 테이블 검색
-select  *  from member;		-- member 테이블에 모든 필드 검색
+select  *  from member;
 # select
 	# * : 와일드카드 [ 모든 필드 ]
 		# from 테이블명 ;
 # select 필드명  from 테이블명 ; 
+select  *  from member2;
+select  *  from member3;
+
+# 예7 : 해당 테이블 삭제
+drop table member;
+drop table member2;
+drop table member3;
+drop database java;
+
+/*
+	문제1 : 웹개발하는데 
+		1. DB 저장소[스키마] 'JSP' 이름으로 생성
+		2. 테이블 2개 [ 'member', 'board' ] 생성
+		3. member 	필드 : id(문자열), 	password(문자열)
+        4. board 	필드 : title(문자열), 	content(문자열)
+*/
+create database JSP;
+use JSP;
+create table member ( id varchar(100), password varchar(100));
+create table board  ( title varchar(100), content varchar(100));
+select * from member;
+select * from board;
+drop database JSP;
+/*
+	문제2 : 웹개발하는데 
+		1. DB 저장소[스키마] 'SPRING' 이름으로 생성
+		2. 테이블 2개 [ 'member', 'product' ] 생성
+		3. member 	필드 : 회원번호 [정수] , 	id   [문자(20)] 	, pw [문자(20)]
+        4. product 	필드 : 제품번호 [정수] , 	name [문자(30)]	, price [정수]
+        5. 생성한 테이블 2개 검색
+        6. 데이터베이스 삭제
+*/
+create database spring;
+use spring;
+create table member  ( mno int , id   varchar(20) , password varchar(20));
+create table product ( pno int , name varchar(30) , price int );
+select * from member;
+select * from product;
+drop database spring;
+
+# DML
+
+create database java;
+use java;
+create table 게시판 ( 제목 varchar(20), 내용 varchar(20));
+
+# 예1 ) INSERT # insert into 테이블명 values ( 데이터1, 데이터2 );
+	# 필드명이 명시되어있지 않기 때문에 선언된 필드 순서대로 데이터가 삽입
+insert into 게시판 values ('제목구역', '내용구역');
+select *  from 게시판;
+
+# 예2 ) INSERT # insert into 테이블명 (필드명1, 필드명2) values ( 데이터1, 데이터2 );
+	# 필드명이 명시되어 있기 때문에 명시된 필드순으로 데이터를 삽입
+insert into 게시판 (제목 , 내용) values ('제목구역', '내용구역');
+select * from 게시판;
+
+# 예3 ) INSERT [ JDBC 사용 예정 ]
+	# insert into 테이블명 (필드명1, 필드명2) values ( 매개변수, 매개변수 );
+	# ? : 변수가 들어가는 자리를 뜻 함
+insert into 게시판 (제목, 내용) values ( ? , ? );
+drop database java;
+/*
+	문제3 : 웹개발하는데 
+		1. DB 저장소[스키마] 'JSP' 이름으로 생성
+		2. 테이블 1개 [ 'member'] 생성
+		3. member 	필드 : 회원번호 [정수] , 	id   [문자(20)] 	, pw [문자(20)]
+        4. 회원가입 2명 하기
+			insert
+            1	, 	이젠		,	1234
+            2	, 	삼성		, 	4567
+        5. 테이블 확인
+        6. 데이터베이스 삭제
+*/
+create database JSP;
+use JSP;
+create table member ( mno int, mid varchar(20) , mpw varchar(20));
+insert into member (mno , mid, mpw) values ( 1 , '이젠','1234');
+insert into member values ( 2, '삼성', '4567');
+insert into member (mid) values ('LG');
+select * from member;		-- 레코드 생성시 해당 필드의 데이터 생략시 null 대입
+drop database JSP;
+/*
+	문제3 : 웹개발하는데 
+		1. DB 저장소[스키마] 'spring' 이름으로 생성
+		2. 테이블 1개 ['product' ] 생성
+		3. product 	필드 : 제품번호 [정수] , name [문자(20)]	, price [정수]]
+        4. 상품등록 3개 하기
+			insert
+            1	, 	냉장고	,	200000
+            2	, 	선풍기	, 	300000
+            null, 	컴퓨터	, 	null
+        5. 테이블 확인
+        6. 데이터베이스 삭제
+*/
+create database spring;
+use spring;
+create table product( pno int, name varchar(20) , price int);
+insert into product (pno,name,price) values (1,'냉장고',200000);
+insert into product (pno,name,price) values (2,'선풍기',300000);
+insert into product (name) values ('컴퓨터');
+select * from product;
+drop database spring;
