@@ -44,20 +44,20 @@ public class View {
 		ArrayList<MemberDTO> result = Controller.getInstance().list();
 		
 		System.out.println("회원번호\t아이디\t비밀번호");
-		
+			// printf("%2d \t %10s \t %10s \n","회원번호","아이디","비밀번호");
 		for(MemberDTO dto : result) {
 			System.out.println(dto.getMno()+"\t"+dto.getMid()+"\t"+dto.getMpw());
+			// printf("%2d \t %10s \t %10s \n",dto.getMno(),dto.getMid(),dto.getMpw());
 		}
 	}
 	// 4. 수정 화면
 	public void update_page() {
 		System.out.println("-------수정[U]-------");
 		// 1. 입력받기
-		System.out.println("수정할 회원번호 : ");	int    mno = scanner.nextInt();
-		System.out.println("회원아이디 : ");		String mid = scanner.next();
-		System.out.println("비밀번호 : ");		String mpw = scanner.next();
+		System.out.println("수정할 회원번호 : ");		int    mno = scanner.nextInt();
+		System.out.println("새로운 비밀번호 : ");		String mpw = scanner.next();
 		// 2. 입력받은 데이터 컨트롤에 전달 후 결과 얻기
-		boolean result  = Controller.getInstance().update(mno, mid, mpw);
+		boolean result  = Controller.getInstance().update(mno, mpw);
 		// 3. 결과에 따른 출력
 		if(result) { System.out.println("[정보 수정 성공]");}
 		else { System.out.println("[정보 수정 실패]");}

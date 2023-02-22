@@ -24,6 +24,12 @@ public class MemberDTO {
 		this.mpw = mpw;
 	}
 	
+	public MemberDTO(int mno,String mpw) {
+		super();
+		this.mno = mno;
+		this.mpw = mpw;
+	}
+	
 	public MemberDTO(int mno, String mid, String mpw) {
 		super();
 		this.mno = mno;

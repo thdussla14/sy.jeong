@@ -69,7 +69,10 @@ public class MemberDAO {
 			rs = ps.executeQuery(); // Query 서버에서 실행한 내용 보여줘!라는 요청
 			// 5. SQL 결과 
 				// 레코드 -- 자바 형태 --> 객체 DTO // 레코드 1개 -> DTO 1개 -> 회원 1개
-			while(rs.next()) { // rs.next() : 다음 레코드 이동 [없으면 false ] // 마지막 레코드까지 반복
+			while(rs.next()) { 
+				// rs.next() : 다음 레코드 이동 [없으면 false ] // 마지막 레코드까지 반복
+				// rs [ null] --rs.next--> rs [1레코드]--rs.next--> rs [2레코드]--rs.next--> rs [x] false 
+				
 				// 레코드 ---> 객체화 [rs.get~(필드순서번호) ]
 				// MemberDTO dto = new MemberDTO(rs.getInt(1), rs.getString(2), rs.getString(3));				
 				MemberDTO dto = new MemberDTO();
@@ -88,20 +91,21 @@ public class MemberDAO {
 		return list;
 	}
 	// -------------------------------------------------------------------------------------------
-	// 특정 회원 수정 [ 인수 :  dto(mno,mid,mpw) , 반환 : 성공[true], 실패 [false]]]
+	// 특정 회원 수정 [ 인수 :  dto(mno,mpw) , 반환 : 성공[true], 실패 [false]]]
+			// 누구[식별 mno]의 비밀번호를 무엇으로 [mpw] 수정할것인지
 	public boolean update(MemberDTO dto) {
 		// 1. SQL 작성 
-		String sql = "update member set mid = ? , mpw = ? where mno = ? ";		
+		String sql = "update member set mpw = ? where mno = ? ";		
 		
 		try {	
 			// 2. 연동 DB에 SQL 대입 [ ps -> 매개변수 조작 가능 ]
 			ps = conn.prepareStatement(sql);
 			// 3. SQL 조작 ? 매개변수 대입
-			ps.setString(1,dto.getMid());
-			ps.setString(2,dto.getMpw());
-			ps.setInt   (3,dto.getMno());
+			ps.setString(1,dto.getMpw());
+			ps.setInt   (2,dto.getMno());
 			// 4. SQL 실행
-			ps.executeUpdate();
+			ps.executeUpdate();	// insert, update, delete -> executeUpdate();	
+								// select -> executeQuery(); // Query 서버에서 실행한 내용 보여줘!라는 요청
 			// 5. SQL 결과 반환
 			return true;	
 		} 
@@ -111,15 +115,15 @@ public class MemberDAO {
 		return false; // try { } 문제 발생시 실행되는 구역 -> 수정 실패
 	}
 	// -------------------------------------------------------------------------------------------
-	// 특정 회원 삭제 [ 인수 :  dto(mno) , 반환 : 성공[true], 실패 [false]]]
-	public boolean delete(MemberDTO dto) {
+	// 특정 회원 삭제 [ 인수 :  mno , 반환 : 성공[true], 실패 [false]]]
+	public boolean delete(int mno) {
 		// 1. SQL 작성 
 		String sql = "delete from member where mno = ? ";		
 		try {	
 			// 2. 연동 DB에 SQL 대입 [ ps -> 매개변수 조작 가능 ]
 			ps = conn.prepareStatement(sql);
 			// 3. ? 매개변수 대입
-			ps.setInt(1, dto.getMno());
+			ps.setInt(1, mno);
 			// 4. SQL 실행
 			ps.executeUpdate();
 			// 5. 결과 반환
