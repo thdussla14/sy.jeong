@@ -1,5 +1,6 @@
 package Day15.Ex9_MVC패턴;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class View {
@@ -39,6 +40,14 @@ public class View {
 	// 3. 출력 화면
 	public void list_page() {
 		System.out.println("-------출력[R]-------");
+		
+		ArrayList<MemberDTO> result = Controller.getInstance().list();
+		
+		System.out.println("회원번호\t아이디\t비밀번호");
+		
+		for(MemberDTO dto : result) {
+			System.out.println(dto.getMno()+"\t"+dto.getMid()+"\t"+dto.getMpw());
+		}
 	}
 	// 4. 수정 화면
 	public void update_page() {
@@ -47,13 +56,22 @@ public class View {
 		System.out.println("수정할 회원번호 : ");	int    mno = scanner.nextInt();
 		System.out.println("회원아이디 : ");		String mid = scanner.next();
 		System.out.println("비밀번호 : ");		String mpw = scanner.next();
-		
+		// 2. 입력받은 데이터 컨트롤에 전달 후 결과 얻기
+		boolean result  = Controller.getInstance().update(mno, mid, mpw);
+		// 3. 결과에 따른 출력
+		if(result) { System.out.println("[정보 수정 성공]");}
+		else { System.out.println("[정보 수정 실패]");}
 	}
 	// 5. 삭제 화면
 	public void delete_page() {
 		System.out.println("-------삭제[D]-------");
 		// 1. 입력받기
 		System.out.println("삭제할 회원번호 : ");	int mno = scanner.nextInt();
+		// 2. 입력받은 데이터 컨트롤에 전달 후 결과 얻기
+		boolean result  = Controller.getInstance().delete(mno);
+		// 3. 결과에 따른 출력
+		if(result) { System.out.println("[회원 탈퇴 성공]");}
+		else { System.out.println("[회원 탈퇴 실패]");}
 	}
 	
 	

@@ -12,7 +12,12 @@ public class MemberDTO {
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public MemberDTO(int mno) {
+		super();
+		this.mno = mno;
+	}
+	
 	public MemberDTO(String mid, String mpw) {
 		super();
 		this.mid = mid;
