@@ -8,7 +8,7 @@ public class Controller {
 	private Controller () { }
 	public static Controller getInstance() {return cont;}
 	
-	ArrayList<DTO>wishlist = new ArrayList<>(); // 장바구니 리스트
+	ArrayList<DTO> wishlist = new ArrayList<>(); // 장바구니 리스트
 	
 	public boolean register(String pname, int price, int storage) {		
 		DTO dto = new DTO(pname,price,storage);		
@@ -51,15 +51,17 @@ public class Controller {
 	}
 	public boolean slae() {
 		int totalprice = 0;
-		System.out.println("[구매내역]-------------------------");
+		System.out.println("[구매내역]---------------------------------------");
 		System.out.printf("%3s\t%10s\t%10s\n","번호","제품명","가격");
 		for(DTO dto : wishlist) {
 			totalprice += dto.getPrice();
 			System.out.printf("%3s\t%10s\t%10s\n",dto.getPno(),dto.getPname(),dto.getPrice());
 		}
-		System.out.println("-------------------------------");
+		System.out.println("----------------------------------------------");
 		System.out.println("총가격 : "+totalprice);
+		System.out.println("----------------------------------------------");
 		boolean result = DAO.getInsetance().sale2(wishlist);
+		
 		return result;
 	}
 	public void clear() {

@@ -16,7 +16,9 @@ public class View {
 		
 		while(true) {
 			try {
+				System.out.println("----------------------------------------------");
 				System.out.println("메뉴> 1.관리자 2.사용자 ");	
+				System.out.println("----------------------------------------------");
 				int ch = scanner.nextInt();
 				if	   (ch==1) {manager_main(); }
 				else if(ch==2) {user_main(); }
@@ -31,7 +33,9 @@ public class View {
 	public void manager_main() {
 		while(true) {
 			try {
-				System.out.println("메뉴> 1.등록 2.출력 3.수정 4.재고 5.삭제 6.나가기");	
+				System.out.println("----------------------------------------------");
+				System.out.println("메뉴> 1.등록 2.출력 3.수정 4.재고수정 5.삭제 6.나가기");	
+				System.out.println("----------------------------------------------");
 				int ch = scanner.nextInt();
 				if	   (ch==1) {register(); }
 				else if(ch==2) {list(); }
@@ -49,14 +53,16 @@ public class View {
 	}
 	public void user_main() {	
 		while(true) {
-			System.out.println("-------[키오스크]-------");
+			System.out.println("[키오스크]---------------------------------------");
 			System.out.printf("%3s\t%10s\t%10s%10s\n","번호","제품명","가격","상태");
 			ArrayList<DTO> result = Controller.getInstance().list();
 			for(DTO dto : result) {
 			 System.out.printf("%3d\t%10s\t%10d%10s\n",dto.getPno(),dto.getPname(),dto.getPrice(),
 					(dto.getStorage()>0? "판매중":"재고부족"));
 			}// for e
+			System.out.println("----------------------------------------------");
 			System.out.println("메뉴> 0. 결제 1. 제품번호선택 2. 나가기");
+			System.out.println("----------------------------------------------");
 			int ch  = scanner.nextInt();
 			if(ch == 0) {
 				boolean result3 = Controller.getInstance().slae(); 
@@ -66,7 +72,9 @@ public class View {
 				else{System.out.println("[알림] 구매 실패");}
 				}
 			else if ( ch==1 ) { 
-				System.out.println("구매할 제품번호 : "); int pno = scanner.nextInt();			
+				System.out.println("----------------------------------------------");
+				System.out.print("구매할 제품번호 : "); int pno = scanner.nextInt();	
+				System.out.println("----------------------------------------------");
 				boolean result2 = Controller.getInstance().check(pno);
 				if(result2) {}
 				else {System.out.println("[알림] 재고 부족"); }				
@@ -78,18 +86,18 @@ public class View {
 		}
 	}
 	public void register() {	
-		System.out.println("-------[등록]-------");
+		System.out.println("[등록]-----------------------------------------");
 		System.out.print("제품이름 : "); String pname = scanner.next();
 		System.out.print("제품가격 : "); int    price = scanner.nextInt();
 		System.out.print("초기재고 : "); int  storage = scanner.nextInt();
-		
+		System.out.println("----------------------------------------------");
 		boolean result = Controller.getInstance().register(pname,price,storage);
 		
 		if(result) {System.out.println("[알림] 제품 등록 성공");}
 		else {System.err.println("[알림] 제품 등록 실패");}
 	}
 	public void list() {
-		System.out.println("-------[출력]-------");
+		System.out.println("[출력]-----------------------------------------");
 		System.out.printf("%3s\t%10s\t%10s%10s\n","번호","제품명","가격","재고");
 		//System.out.println("제품번호\t제품명\t가격\t재고");
 		ArrayList<DTO> result = Controller.getInstance().list();
@@ -97,37 +105,42 @@ public class View {
 		 System.out.printf("%3d\t%10s\t%10d%10d\n",dto.getPno(),dto.getPname(),dto.getPrice(),dto.getStorage());
 			//System.out.println(dto.getPno()+"\t"+dto.getPname()+"\t"+dto.getPrice()+"\t"+dto.getStorage());
 		}
+		System.out.println("----------------------------------------------");
 	}
 	public void update() {
-		System.out.println("-------[수정]-------");
+		System.out.println("[수정]------------------------------------------");
 		System.out.print("수정할 제품번호 : "); 	int 	pno  = scanner.nextInt();
 		System.out.print("제품이름 : "); 		String pname = scanner.next();
-		System.out.print("제품가격 : "); 		int    price = scanner.nextInt();		
+		System.out.print("제품가격 : "); 		int    price = scanner.nextInt();
+		System.out.println("----------------------------------------------");
 		boolean result = Controller.getInstance().update(pno,pname,price);		
 		if(result) {System.out.println("[알림] 제품 수정 성공");}
 		else {System.err.println("[알림] 제품 수정 실패");}
 		
 	}
 	public void storage_update() {
-		System.out.println("-------[재고수정]-------");
+		System.out.println("-------[재고수정]------------------------------");
 		System.out.print("수정할 제품번호 : "); 	int 	pno  = scanner.nextInt();
 		System.out.print("재고 : "); 			int    stock = scanner.nextInt();
+		System.out.println("--------------------------------------------");
 		boolean result = Controller.getInstance().storage_update(pno,stock);
 		if(result) {System.out.println("[알림] 재고 수정 성공");}
 		else {System.err.println("[알림] 재고 수정 실패");}
 		
 	}
 	public void delete() {
-		System.out.println("-------[삭제]-------");
+		System.out.println("-------[삭제]---------------------------------");
 		System.out.print("삭제할 제품번호 : "); 	int 	pno  = scanner.nextInt();
+		System.out.println("--------------------------------------------");
 		boolean result = Controller.getInstance().delete(pno);
 		if(result) {System.out.println("[알림] 제품 삭제 성공");}
 		else {System.err.println("[알림] 제품 삭제 실패");}
 	}
 	public void sale() {
-		System.out.println("-------[판매]-------");
+		System.out.println("-------[판매]---------------------------------");
 		System.out.print("구매 제품번호 : "); 	int 	pno  = scanner.nextInt();
 		System.out.print("구매 수량  : "); 		int    count = scanner.nextInt();
+		System.out.println("--------------------------------------------");
 		boolean result = Controller.getInstance().sale(pno,count);
 		if(result) {System.out.println("[알림] 제품 판매 성공");}
 		else {System.err.println("[알림] 제품 판메 실패");}
