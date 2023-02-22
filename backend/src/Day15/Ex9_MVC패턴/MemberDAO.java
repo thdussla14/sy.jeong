@@ -74,11 +74,8 @@ public class MemberDAO {
 				// rs [ null] --rs.next--> rs [1레코드]--rs.next--> rs [2레코드]--rs.next--> rs [x] false 
 				
 				// 레코드 ---> 객체화 [rs.get~(필드순서번호) ]
-				// MemberDTO dto = new MemberDTO(rs.getInt(1), rs.getString(2), rs.getString(3));				
-				MemberDTO dto = new MemberDTO();
-				dto.setMno(rs.getInt   ("mno"));
-				dto.setMid(rs.getString("mid"));
-				dto.setMpw(rs.getString("mpw"));
+				MemberDTO dto = new MemberDTO(rs.getInt(1), rs.getString(2), rs.getString(3));				
+
 				// 1개 객체 --> 리스트 담기 
 				list.add(dto);
 				
