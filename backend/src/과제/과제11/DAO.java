@@ -87,30 +87,7 @@ public class DAO {
 		catch (Exception e) {System.out.println("[알림]"+e.getMessage());}
 		return false;		
 	}
-	public boolean sale(int pno,int count) {
-		int stock = 0;
-		String sql1 = "select storage from Icecream where pno = ?";
-		String sql2 = "update Icecream set storage = ? where pno = ?";
-		try {			
-			ps = conn.prepareStatement(sql1);
-			ps.setInt(1, pno);
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				stock = rs.getInt(1);
-			}		
-			
-			ps = conn.prepareStatement(sql2);
-			ps.setInt(1, (stock-count));
-			ps.setInt(2, pno);
-			ps.execute();
-			
-			return true;
-		}
-		catch (Exception e) {System.out.println("[알림]"+e.getMessage());}
-		return false;	
-	}
-	public boolean sale2(ArrayList<DTO> wishlist) {
+	public boolean sale(ArrayList<DTO> wishlist) {
 		
 		for(DTO dto : wishlist) {
 			int stock = 0;

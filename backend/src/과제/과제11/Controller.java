@@ -29,9 +29,6 @@ public class Controller {
 	public boolean delete(int pno) {
 		return DAO.getInsetance().delete(pno);
 	}
-	public boolean sale(int pno,int count) {
-		return DAO.getInsetance().sale(pno,count);
-	}
 	public boolean check(int pno) {
 		int count = 0;
 		int stock = 0;
@@ -39,7 +36,8 @@ public class Controller {
 		for(DTO dto : result) {
 			if(dto.getPno()== pno) {
 				for(DTO dto2 : wishlist) {
-					if(dto2.getPno()==pno) {count++;}
+					if(dto2.getPno()==pno) 
+						{count++;}
 				}	
 				stock = dto.getStorage()-count;
 				if(stock>0) {
@@ -49,22 +47,20 @@ public class Controller {
 		}
 		return false;
 	}
-	public boolean slae() {
+	public boolean sale() {
 		int totalprice = 0;
 		System.out.println("[구매내역]---------------------------------------");
-		System.out.printf("%3s\t%10s\t%10s\n","번호","제품명","가격");
-		for(DTO dto : wishlist) {
-			totalprice += dto.getPrice();
-			System.out.printf("%3s\t%10s\t%10s\n",dto.getPno(),dto.getPname(),dto.getPrice());
-		}
+		System.out.printf("%3s\t%10s\t%10s\n","번호","제품명","가격");		
+		for(int i=0; i<wishlist.size();i++) {
+			System.out.printf("%3s\t%10s\t%10s\n",
+					i+1,wishlist.get(i).getPname(),wishlist.get(i).getPrice());
+			totalprice += wishlist.get(i).getPrice();
+		}		
 		System.out.println("----------------------------------------------");
 		System.out.println("총가격 : "+totalprice);
 		System.out.println("----------------------------------------------");
-		boolean result = DAO.getInsetance().sale2(wishlist);
-		
+		boolean result = DAO.getInsetance().sale(wishlist);
+		wishlist.clear();
 		return result;
-	}
-	public void clear() {
-		wishlist = null;
 	}
 }

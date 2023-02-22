@@ -54,7 +54,7 @@ public class View {
 	public void user_main() {	
 		while(true) {
 			System.out.println("[키오스크]---------------------------------------");
-			System.out.printf("%3s\t%10s\t%10s%10s\n","번호","제품명","가격","상태");
+			System.out.printf("%3s\t%10s\t%9s%10s\n","번호","제품명","가격","상태");
 			ArrayList<DTO> result = Controller.getInstance().list();
 			for(DTO dto : result) {
 			 System.out.printf("%3d\t%10s\t%10d%10s\n",dto.getPno(),dto.getPname(),dto.getPrice(),
@@ -64,11 +64,10 @@ public class View {
 			System.out.println("메뉴> 0. 결제 1. 제품번호선택 2. 나가기");
 			System.out.println("----------------------------------------------");
 			int ch  = scanner.nextInt();
-			if(ch == 0) {
-				boolean result3 = Controller.getInstance().slae(); 
-				if(result3) {
-					Controller.getInstance().clear();
-					System.out.println("[알림] 구매 성공");}
+			// 결제 선택
+			if(ch == 0) {				
+				boolean result3 = Controller.getInstance().sale(); 
+				if(result3) {System.out.println("[알림] 구매 성공");}
 				else{System.out.println("[알림] 구매 실패");}
 				}
 			else if ( ch==1 ) { 
@@ -76,11 +75,11 @@ public class View {
 				System.out.print("구매할 제품번호 : "); int pno = scanner.nextInt();	
 				System.out.println("----------------------------------------------");
 				boolean result2 = Controller.getInstance().check(pno);
-				if(result2) {}
-				else {System.out.println("[알림] 재고 부족"); }				
-			}
+				if(result2) {System.out.println("장바구니 :"+Controller.getInstance().wishlist.size()+"개");}
+				else {System.out.println("[알림] 재고 부족"); }
+				}
 			else if ( ch==2 ) {
-				Controller.getInstance().clear();
+				Controller.getInstance().wishlist.clear();
 				break;}
 			else {System.out.println("프로그램내 오류발생 - 관리자에게 문의하세요.");}	
 		}
@@ -136,17 +135,6 @@ public class View {
 		if(result) {System.out.println("[알림] 제품 삭제 성공");}
 		else {System.err.println("[알림] 제품 삭제 실패");}
 	}
-	public void sale() {
-		System.out.println("-------[판매]---------------------------------");
-		System.out.print("구매 제품번호 : "); 	int 	pno  = scanner.nextInt();
-		System.out.print("구매 수량  : "); 		int    count = scanner.nextInt();
-		System.out.println("--------------------------------------------");
-		boolean result = Controller.getInstance().sale(pno,count);
-		if(result) {System.out.println("[알림] 제품 판매 성공");}
-		else {System.err.println("[알림] 제품 판메 실패");}
-	}
-	
-	
-	
+
 	
 }

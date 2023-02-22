@@ -66,7 +66,5 @@ public class DTO {
 	public void setStorage(int storage) {
 		Storage = storage;
 	}
-	
-	
-	
+
 }
