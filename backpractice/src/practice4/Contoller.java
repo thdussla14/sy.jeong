@@ -64,7 +64,7 @@ public class Contoller {
 			if(shoppingList.size()>0) { 
 				// 장바구니 동일 상품 유
 				for(ProductDTO dto2: shoppingList) {
-					if(dto.getPno()==dto2.getPno()) {
+					if(dto2.getPno()==pno) {
 						if(dto2.getPstock()-1>0) {
 							dto2.setPstock(dto2.getPstock()-1);
 							dto2.setCount(dto2.getCount()+1);
