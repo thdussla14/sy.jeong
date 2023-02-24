@@ -175,6 +175,80 @@ select * from member where mheight >= 164 order by mheight desc;	-- 오류 해�
 -- 키를 내림차순으로 정렬 후 동일한 키가 있을 경우 동일한 키 중에서 데뷔날짜 오름차순
 select * from member order by mheight desc, mdebut asc;		
 
+-- 6. select * from  테이블명 limit 레코드수		
+	-- select * from 테이블명 limit 시작레코드 , 개수 
+select * from member limit 3;	-- 페이징 처리에 사용
+select * from member limit 0,3;	-- 에이핑크, 블랙핑크, 소녀시대  ~~~
+select * from member limit 5,3;
+select * from member order by mheight desc limit 3;	 -- 키 상위 3개 레코드
+
+-- 7. select distinct 필드명 from 테이블명 		: 필드내 데이터 중복 제거 
+select maddr from member;
+select distinct maddr from member;
+
+-- 8. select * from 테이블명 group by 그룹기준필드
+select bamount from buy;		-- 판매수량 필드 검색
+select sum(bamount) from buy;	-- 판매수량 필드 합계
+select avg(bamount) from buy;	-- 판매수량 필드 평균
+select max(bamount) from buy;	-- 판매수량 필드내 최대값
+select min(bamount) from buy;	-- 판매수량 필드내 최대값
+select count(bamount) from buy;	-- 판매수량 필드의 레코드 수 [ null 미포함 ] 
+select count(*) from buy;		-- 전체 레코드 수 		   [ null 포함 ]
+
+-- 1. 회원아이디[그룹]별로  판매수량 합계
+select mid 회원아이디,sum(bamount) as 구매수량총합 from buy group by mid;
+-- 2. 회원아이디 별 금액 총매출액 [ 가격 * 수량 ]
+select mid 회원아이디, sum(bprice*bamount) 총매출액 from buy group by mid; 
+-- 3. 회원아이디 별 수량 평균
+select mid 회원아이디, avg(bamount) 판매수량평균 from buy group by mid;
+-- 4. 회원아이디 별 결제수량 
+select mid 회원아이디, count(*) 결제수량 from buy group by mid;
+
+-- 9. select * from 테이블명 group by 그룹기준필드 having 그룹내조건
+-- * 회원아이디 별 금액 총매출액 [ 가격 * 수량 ] 합계가 1000 이상 검색 
+-- 집계함수는 그룹 후 조건으로 사용 가능 
+select mid 회원아이디, sum(bprice*bamount) 총매출액 from buy group by mid having sum(bprice*bamount)>=1000;
+
+select sum(bprice*bamount) 총매출액 from buy ;                   -- 전체 총 매출액 
+-- select mid 회원아이디, sum(bprice*bamount) 회원별총매출액 from buy ;  -- 오류 발생 !! 
+-- select mid 회원아이디, sum(bprice*bamount) 총매출액 from buy  where sum(bprice*bamount)>=1000 group by mid ; -- 오류 발생 !!
+
+-- 10. [전체]
+	-- select * from 테이블명 where 조건 group by 그룹 having 그룹내조건 order by 정렬 limit 레코드수 제한 
+
+-- insert 
+	-- 1. 특정필드에 값 삽입시 : insert into 테이블명 (필드명1, 필드명2) values (값1, 값2);
+    -- 2. 전체필드에 값 삽입시 : insert into 테이블명 values (값1,값2);
+    -- 3. 다중 레코드 삽입 : insert into 테이블명 vlaues (값1,값2) , (값1,값2);
+    -- 4. 검색된 결과 삽입 : insert into 테이블명 select [ 조건 : 동일한 테이블내만 가능 ] 
+			-- 검색된 필드와 삽입할 테이블내 필드명과 동일한 경우만 가능
+	-- 5. 마지막으로 추가된 레코드의 PK 확인 : select last_insert_id();
+    
+create table maddr(mid char(8),maddr char(2) );		     -- 회원아이디, 주소 필드를 갖는 테이블 
+select * from member limit 5;	                         -- 레코드 5개 검색
+insert into maddr select mid,maddr from member limit 5;  -- 검색된 회원아이디, 주소 주소테이블에 삽입 [ 필드명 일치 필수!! ] 
+select * from maddr;
+select last_insert_id();
+
+select * from member;
+select * from buy;
+select * from maddr;
+
+-- update
+	-- update 테이블명 set 필드명 = 수정할값 where 조건식
+    -- 1. 해당 테이블에서 주소가 서울이면 'SEOUL'로 변경
+    select * from member;
+    -- 워크벤치에서 update, delete 기본적으로 사용 불가능 
+		-- 메뉴 --> edit -> preference -> 사이드메뉴 SQL editor 선택 -> 가장 아래 safe updates 체크 해제
+	update member set maddr = 'se' where maddr = '서울';
+    select * from member;
+
+-- delete
+	-- delete from 테이블명 where 조건식
+    -- * 만일 관계 테이블일 경우 다른 테이블에서 fk필드로 사용된 레코드는 삭제 불가능 [ ** 제약조건 명시 필요 ] 
+    -- 만약 핑크가 포함된 이름 삭제
+    delete from member where mname like '%핑크%'; -- 오류 [ 관계가 있는 테이블에서 pk 필드가 포함되어있는 레코드는 삭제 불가능 ] 
+    delete from member where mname = '잇지';		 -- 성공 [ 관계가 있는 테이블에서 fk 필드가 없을 경우 레코드 삭제 가능 ] 
 
 /*
 	연산자
@@ -191,5 +265,31 @@ select * from member order by mheight desc, mdebut asc;
 			= null [x]
             필드명 is null		: null 이면		[ =null x]
             필드명 is not null 	: null 이 아니면 
+            
+	집계함수 [ 2개 이상의 필드 검색시 그룹 필수 ] 
+		1. sum ( 필드명 ) : 해당 필드내 데이터 종합
+        2. avg ( 필드명 ) : 해당 필드내 데이터 평균
+        3. max ( 필드명 ) : 해당 필드내 데이터 최대값
+        4. min ( 필드명 ) : 해당 필드내 데이터 최소값
+        5. count (필드명) : 해당 필드내 데이터 개수 [ null 제외 ] 
+			count (*)	: 레코드 수 [ null 포함 ]
 		
 */
+drop table if exists testtype;
+create table testtype(
+	tinyint_col  	tinyint, 		-- 1바이트 +- 128
+    smallint_col 	smallint, 		-- 2바이트 +- 3만
+	int_col 		int, 			-- 4바이트 +- 21억
+    int_col2		int unsigned,	-- 4바이트 + 40억정도 저장 [ unsigned : 음수 사용 x : 음수 용량 -> 양수 용량 증가 ]
+    bigint_col		bigint,			-- 4바이트 21억 이상	
+	char_col		char(10),		-- char(길이)	: 고정길이 [ 1 ~ 255 ]
+    varchar_col 	varchar(10),	-- varchar(길이)	: 가변길이 [ 1 ~ 16383 ] 	* MySQL 5.0 이상인 경우만
+	text_col		text,			-- 1 ~ 65535 글자 저장
+    longtext_col 	longtext,		-- 1 ~ 42억  글자 저장						-- 게시판 내용은 longtext 주로 사용
+	float_col 		float,			-- 소수점 7자리 저장
+    double_col		double,			-- 소수점 15자리 저장
+    date_col		date,			-- 날짜 저장 [ yyyy - MM - dd ]
+    time_col 		time,			-- 시간 저장 [ hh : mm : ss ]
+    datetime_col 	datetime		-- 날짜/시간 저장 [ yyyy - MM - dd  hh : mm : ss ]
+);
+select * from testtype;
