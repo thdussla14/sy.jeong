@@ -1,22 +1,25 @@
 package PENGUINFLIGHT.model;
 
 public class LP {
+	
 	private int lpno;
+	private String lpname;
 	private int lno;
 	private int ano;
 	
 	public LP() {}
 
-	public LP(int lpno, int lno, int ano) {
+	public LP(int lpno, String lpname, int lno, int ano) {
 		super();
 		this.lpno = lpno;
+		this.lpname = lpname;
 		this.lno = lno;
 		this.ano = ano;
 	}
 
 	@Override
 	public String toString() {
-		return "LP [lpno=" + lpno + ", lno=" + lno + ", ano=" + ano + "]";
+		return "LP [lpno=" + lpno + ", lpname=" + lpname + ", lno=" + lno + ", ano=" + ano + "]";
 	}
 
 	public int getLpno() {
@@ -25,6 +28,14 @@ public class LP {
 
 	public void setLpno(int lpno) {
 		this.lpno = lpno;
+	}
+
+	public String getLpname() {
+		return lpname;
+	}
+
+	public void setLpname(String lpname) {
+		this.lpname = lpname;
 	}
 
 	public int getLno() {
@@ -42,6 +53,7 @@ public class LP {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
-	
+
+
 	
 }

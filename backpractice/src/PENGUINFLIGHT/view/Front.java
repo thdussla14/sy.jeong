@@ -2,6 +2,10 @@ package PENGUINFLIGHT.view;
 
 import java.util.Scanner;
 
+import PENGUINFLIGHT.controller.Acontroller;
+import PENGUINFLIGHT.model.Adao;
+import PENGUINFLIGHT.model.Dao;
+
 public class Front {
 	
 	private static Front front = new Front();
@@ -124,9 +128,11 @@ public class Front {
 	}
 	
 	public void admin_main() {
+		System.out.println("------------------------------------------------------");
 		System.out.println("1. 비행 확인  2. 비행 등록 3. 비행 수정 4. 비행 삭제 5.뒤로가기");
+		System.out.println("------------------------------------------------------");
 		int ch = scanner.nextInt();
-		if(ch==1) {schedulePrint();}
+		if	   (ch==1) {schedulePrint();}
 		else if(ch==2) {scheduleRegister();}
 		else if(ch==3) {scheduleUpdate();}
 		else if(ch==4) {scheduleDelete();}
@@ -134,7 +140,11 @@ public class Front {
 	}
 	
 	public void schedulePrint() {
-		
+		System.out.println("------------------------------------------------------");
+		System.out.printf("%1s %5s %8s %16s %8s %16s %10s %5s \n",
+				"번호","비행편명","출발지","출발일정","도착지","도착일정","가격","잔여좌석");
+		System.out.println("------------------------------------------------------");
+		Acontroller.getInstance().schedulePrint();
 	}
 	
 	public void scheduleRegister() {
