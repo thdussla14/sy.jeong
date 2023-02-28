@@ -10,7 +10,7 @@ public class Acontroller {
 	private static Acontroller controller = new Acontroller();
 	private Acontroller() {};
 	public static Acontroller getInstance() {return controller;}
-	// 스케줄 목록	10개 출력	
+	// 스케줄 목록	10개 출력	-> 현재 sno 오름차순 기준 추후 변경 예정 / 날짜 지나면 자동 스케줄 삭제 기능 필요?
 	public void schedulePrint() {	
 		ArrayList<Schedule> slist  =  Adao.getInstance().schedulePrint();
 		for(Schedule dto:slist) {
