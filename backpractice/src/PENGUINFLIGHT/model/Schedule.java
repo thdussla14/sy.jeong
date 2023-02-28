@@ -1,36 +1,34 @@
 package PENGUINFLIGHT.model;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 public class Schedule {
-	private int sno;
-	private int lpno;
-	private int spno;
-	private int dpno;
-    private Timestamp stime;
-    private Timestamp dtime;
+	private int sno;//스케줄번호
+	private String lpname;//비행편
+	private String dpname;//출발지
+	private String apname;//도착지
+    private String dtime;//출발시간
+    private String atime;//도착시간
     private int price;
     private int rseats;
     
     public Schedule() {}
 
-	public Schedule(int sno, int lpno, int spno, int dpno, Timestamp stime, Timestamp dtime, int price, int rseats) {
+	public Schedule(int sno, String lpname, String dpname, String apname, String dtime, String atime, int price,
+			int rseats) {
 		super();
 		this.sno = sno;
-		this.lpno = lpno;
-		this.spno = spno;
-		this.dpno = dpno;
-		this.stime = stime;
+		this.lpname = lpname;
+		this.dpname = dpname;
+		this.apname = apname;
 		this.dtime = dtime;
+		this.atime = atime;
 		this.price = price;
 		this.rseats = rseats;
 	}
 
 	@Override
 	public String toString() {
-		return "Schedule [sno=" + sno + ", lpno=" + lpno + ", spno=" + spno + ", dpno=" + dpno + ", stime=" + stime
-				+ ", dtime=" + dtime + ", price=" + price + ", rseats=" + rseats + "]";
+		return "Schedule [sno=" + sno + ", lpname=" + lpname + ", dpname=" + dpname + ", apname=" + apname + ", dtime="
+				+ dtime + ", atime=" + atime + ", price=" + price + ", rseats=" + rseats + "]";
 	}
 
 	public int getSno() {
@@ -41,44 +39,44 @@ public class Schedule {
 		this.sno = sno;
 	}
 
-	public int getLpno() {
-		return lpno;
+	public String getLpname() {
+		return lpname;
 	}
 
-	public void setLpno(int lpno) {
-		this.lpno = lpno;
+	public void setLpname(String lpname) {
+		this.lpname = lpname;
 	}
 
-	public int getSpno() {
-		return spno;
+	public String getDpname() {
+		return dpname;
 	}
 
-	public void setSpno(int spno) {
-		this.spno = spno;
+	public void setDpname(String dpname) {
+		this.dpname = dpname;
 	}
 
-	public int getDpno() {
-		return dpno;
+	public String getApname() {
+		return apname;
 	}
 
-	public void setDpno(int dpno) {
-		this.dpno = dpno;
+	public void setApname(String apname) {
+		this.apname = apname;
 	}
 
-	public Date getStime() {
-		return stime;
-	}
-
-	public void setStime(Timestamp stime) {
-		this.stime = stime;
-	}
-
-	public Date getDtime() {
+	public String getDtime() {
 		return dtime;
 	}
 
-	public void setDtime(Timestamp dtime) {
+	public void setDtime(String dtime) {
 		this.dtime = dtime;
+	}
+
+	public String getAtime() {
+		return atime;
+	}
+
+	public void setAtime(String atime) {
+		this.atime = atime;
 	}
 
 	public int getPrice() {
@@ -96,6 +94,7 @@ public class Schedule {
 	public void setRseats(int rseats) {
 		this.rseats = rseats;
 	}
+
     
     
     
