@@ -46,7 +46,8 @@ public class index_view {
 		System.out.println("아이디: ");  	String mid    = scanner.next();
 		System.out.println("비밀번호: "); 	String mpw    = scanner.next();
 		boolean result = Mcontroller.getInstance().login(mid,mpw);
-		if (result) {System.out.println("[로그인 성공]"); }
+		if (result) {System.out.println("[로그인 성공]");
+			board_view.getInstance().index();}
 		else {System.out.println("[로그인 실패]"); }
 	
 	}

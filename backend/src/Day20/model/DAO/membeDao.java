@@ -56,4 +56,10 @@ public class membeDao extends Dao {
 		}catch (Exception e) {System.out.println(e);}
 		return 0;
 	}
+	
+	
+	
+	
+	
+	
 }

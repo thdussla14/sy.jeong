@@ -10,9 +10,13 @@ public class Mcontroller {
 	public static Mcontroller getInstance() {
 		return mcont;
 	}
+	// 0. 로그인 세션
+	private int loginSession = 0;	// 로그인된 회원번호 담기!
+	public int  getLoginSession() {return loginSession;}
+	public void setLoginSession(int loginSession) {this.loginSession = loginSession;}
+	
 	// 1. 회원가입 처리 [ 아이디 중복 체크 ] 
-	public int signup(String mid,String mpw,String mname,String mphone) {
-		
+	public int signup(String mid,String mpw,String mname,String mphone) {		
 		// 1. 유효성검사
 		if(membeDao.getInstance().IDcheck(mid)) { return 2; }
 		// 2. 객체화
@@ -20,10 +24,7 @@ public class Mcontroller {
 		// 3. DB 처리
 		return membeDao.getInstance().signup(mdto);
 	}
-	
-	private int loginSession = 0;	// 로그인된 회원번호 담기!
-	public int getLoginSession() {return loginSession;}
-	
+
 	// 2. 로그인 처리
 	public boolean login(String mid,String mpw) {
 		
