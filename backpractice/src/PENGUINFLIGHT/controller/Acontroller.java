@@ -27,8 +27,8 @@ public class Acontroller {
 			for(LP lp : ListLP)      {if(sc.getLpno()==lp.getLpno()) {lpname = lp.getLpname();}}
 			for(Airport ap : ListAP) {if(sc.getSpno()==ap.getPno())  {dpname = ap.getPname();}}
 			for(Airport ap : ListAP) {if(sc.getDpno()==ap.getPno())  {apname = ap.getPname();}}
-			SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm"); 
-			System.out.printf("%2d %6s %8s %20s %8s %20s %10d %5d \n",
+			SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm");
+			System.out.printf("%2d %-6s %-8s %-20s %-8s %-20s %-10d %5d \n",
 					sc.getSno(),lpname,dpname,sdf.format(sc.getDtime()),
 					apname,sdf.format(sc.getDtime()),sc.getPrice(),sc.getRseats());
 			

@@ -1,5 +1,6 @@
 package PENGUINFLIGHT.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Schedule {
@@ -7,14 +8,14 @@ public class Schedule {
 	private int lpno;
 	private int spno;
 	private int dpno;
-    private Date stime;
-    private Date dtime;
+    private Timestamp stime;
+    private Timestamp dtime;
     private int price;
     private int rseats;
     
     public Schedule() {}
 
-	public Schedule(int sno, int lpno, int spno, int dpno, Date stime, Date dtime, int price, int rseats) {
+	public Schedule(int sno, int lpno, int spno, int dpno, Timestamp stime, Timestamp dtime, int price, int rseats) {
 		super();
 		this.sno = sno;
 		this.lpno = lpno;
@@ -68,7 +69,7 @@ public class Schedule {
 		return stime;
 	}
 
-	public void setStime(Date stime) {
+	public void setStime(Timestamp stime) {
 		this.stime = stime;
 	}
 
@@ -76,7 +77,7 @@ public class Schedule {
 		return dtime;
 	}
 
-	public void setDtime(Date dtime) {
+	public void setDtime(Timestamp dtime) {
 		this.dtime = dtime;
 	}
 

@@ -53,7 +53,7 @@ public class Adao extends Dao{
 			
 			while(rs.next()) {
 				Schedule schDto = new Schedule(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), 
-						rs.getDate(5), rs.getDate(6), rs.getInt(7), rs.getInt(8));
+						rs.getTimestamp(5), rs.getTimestamp(6), rs.getInt(7), rs.getInt(8));
 				ListSC.add(schDto);
 			}// while e
 			
