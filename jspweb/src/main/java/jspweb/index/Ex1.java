@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jspweb.model.Dao;
+
 /**
  * Servlet implementation class indextest
  */
-@WebServlet("/indextest")
-public class indextest extends HttpServlet {
+@WebServlet("/Ex1")
+public class Ex1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public indextest() {
+    public Ex1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +41,9 @@ public class indextest extends HttpServlet {
 		String data = request.getParameter("data"); // $.ajax({data : {매개변수:데이터} })
 		System.out.println("js get으로 받은 데이터 : "+data);
 		
-		response.getWriter().print("get으로 잘받았습니다.");
+		boolean result = Dao.getInstance().setData(data);
+		
+		response.getWriter().print("get으로 잘받았습니다."+result);
 	}
 
 	/**
@@ -51,9 +55,12 @@ public class indextest extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String data = request.getParameter("data"); // $.ajax({data : {매개변수:데이터} })
+		
 		System.out.println("js post로 받은 데이터 : "+data);
 		
-		response.getWriter().print("post로 good");
+		boolean result = Dao.getInstance().setData(data);
+		
+		response.getWriter().print("post로 잘받았습니다."+result);
 	}
 
 }

@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<h3> 예제1 : [C:쓰기] -> js -> 서블릿 -> DAO </h3>
+	<h3> 예제1 : [C:쓰기] 입력받은 데이터 -> JS -> 서블릿 -> DAO </h3>
 	<input  type="text" class="inputdata">
-	<button type="button" onclick="예제1()"> 예제1 실행</button>
+	<button type="button" onclick="Ex1()"> 예제1 실행</button>
 
 
 	<!--  최신 jquery -->

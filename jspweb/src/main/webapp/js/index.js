@@ -1,10 +1,10 @@
-function 예제1(){
+function Ex1(){
 	let data = document.querySelector('.inputdata').value;
 	console.log(data);
 	
 	$.ajax({
-		url : "http://localhost:8080/jspweb/indextest" , 
-		method : "get" , 
+		url : "http://localhost:8080/jspweb/Ex1" , 
+		method : "post" , 
 		data : {"data":data} , 
 		success : function(result){ console.log(result)}
 	 });	
