@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Dao {
 
@@ -23,8 +24,7 @@ public class Dao {
 	PreparedStatement ps;
 	ResultSet rs;
 	
-	public boolean setData(String data) {
-		
+	public boolean setData(String data) {		
 		String sql = "insert into ex1(e_data) values (?)";
 		try {
 			ps = con.prepareStatement(sql);
@@ -34,7 +34,39 @@ public class Dao {
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
-	
-	
+	public ArrayList<String>getData() {		
+		ArrayList<String> list = new ArrayList<>();		
+		String sql = "select * from ex1";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return list;
+	}
+	public boolean set(String data) {
+		String sql = "insert into 과제1(indata) values (?)";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, data);
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	public ArrayList<String> get() {
+		ArrayList<String> list = new ArrayList<>();
+		String sql = "select * from 과제1";
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));
+			}
+		}catch (Exception e) {System.out.println(e);}
+		return list;
+	}
 	
 }
