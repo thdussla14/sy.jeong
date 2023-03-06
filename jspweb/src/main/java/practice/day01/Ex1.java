@@ -1,4 +1,4 @@
-
+package practice.day01;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jspweb.model.Dao;
-
 /**
- * Servlet implementation class Q1
+ * Servlet implementation class indextest
  */
-@WebServlet("/Q1")
-public class Q1 extends HttpServlet {
+@WebServlet("/Ex1")
+public class Ex1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Q1() {
+    public Ex1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,9 +32,9 @@ public class Q1 extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		ArrayList<String> result = Dao.getInstance().get();
+		ArrayList<String> result = Dao.getInstance().getData();
 		
-		System.out.println(result);
+		System.out.println("확인 :"+result);
 		
 		response.getWriter().print(result);
 	}
@@ -49,12 +47,13 @@ public class Q1 extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String data = request.getParameter("data");
-		System.out.println(data);
-		boolean result = Dao.getInstance().set(data);
-		System.out.println(result);
-		response.getWriter().print(result);
+		String data = request.getParameter("data"); // $.ajax({data : {매개변수:데이터} })
 		
+		System.out.println("js post로 받은 데이터 : "+data);
+		
+		boolean result = Dao.getInstance().setData(data);
+		
+		response.getWriter().print("post로 잘받았습니다."+result);
 	}
 
 }

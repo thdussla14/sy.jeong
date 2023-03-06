@@ -27,7 +27,7 @@
 	<!--  최신 jquery -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!-- JS 연동 -->
-	<script  src="js/index.js" type="text/javascript"></script>
+	<script  src="index.js" type="text/javascript"></script>
 
 </body>
 </html>
