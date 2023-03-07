@@ -204,7 +204,8 @@ public class Front {
 			System.out.println("\t\t\t\t\t 안녕하세요 "+m.getMname()+"님 회원님의 등급은 "+m.getTier()+"["+m.getMileage()+"점]"+"입니다. ");
 			System.out.println("\t\t\t\t\t-------------------------------------------------------------------------------------------------");
 			ArrayList<Airport> list = Mcontroller.getInstance().recommended();
-			System.out.println("\t\t\t\t\t ****************************     이번달 가장 많이 떠난 여행지 TOP3     ********************************");
+			System.out.println("\t\t\t\t\t ***********************************************************************************************");
+			System.out.println("\t\t\t\t\t\t\t\t\t [ 이번달 가장 많이 떠난 여행지 TOP3 ]   ");
 			System.out.println();
 			for(int i = 0 ; i<list.size();i++) {
 				System.out.println("\t\t\t\t\t\t\t\t\t "+(i+1)+". "+list.get(i).getPnation()+"["+list.get(i).getPname()+"] : "+list.get(i).getPno()+"명 이용");
