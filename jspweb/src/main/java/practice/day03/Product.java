@@ -36,7 +36,7 @@ public class Product extends HttpServlet {
 		String jsonarray = objectMapper.writeValueAsString(list);
 		
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("appication/json");
+		response.setContentType("application/json");
 		response.getWriter().print(jsonarray);
 	}
 
