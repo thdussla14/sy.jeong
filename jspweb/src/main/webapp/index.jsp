@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
 
+	<%@ include file = "header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
+	
+	<h3> 대문 입니다. </h3>
 
-	<a href = "/jspweb/member/signup.jsp"> 회원가입 </a>
+	<%@ include file = "footer.jsp" %>
 	
 </body>
 </html>

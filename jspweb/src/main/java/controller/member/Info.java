@@ -89,7 +89,7 @@ public class Info extends HttpServlet {
 		
 		
 	}
-    // 2. 로그인 / 회원1명 / 회원 여러명 호출
+    // 2. 회원1명 / 회원 여러명 호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Dao에게 회원리스트 요청 받아 저장
 		ArrayList<MemberDto> list = MemberDao.getInstance().getMemberList();

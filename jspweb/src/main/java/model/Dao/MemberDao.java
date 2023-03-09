@@ -51,5 +51,31 @@ public class MemberDao extends Dao {
 		return false;
 	}// idCheck e
 	
+	// 4. 로그인 [아이디,비밀번호 일치 검사]
+	public boolean login(String mid,String mpw) {
+		String sql = "select * from member where mid = ? and mpwd = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mid);
+			ps.setString(2, mpw);
+			rs = ps.executeQuery();
+			if(rs.next()) {return true;}		
+		}catch(Exception e) { System.out.println(e);}
+		return false;
+	}
+	// 5. 로그인한 회원 정보 호출
+	public MemberDto getMember(String mid) {
+		String sql = "select * from member where mid = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mid);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				MemberDto dto = new MemberDto(rs.getInt(1), rs.getString(2),null, rs.getString(4), rs.getString(5));
+				return dto;
+			}					
+		}catch(Exception e) { System.out.println(e);}
+		return null;
+	}
 
 }// dao e
