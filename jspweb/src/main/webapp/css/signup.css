@@ -56,6 +56,12 @@
 	display: flex;
 	align-items: center;
 }
+#file{
+	border: none;
+}
+input[type=file]::file-selector-button{
+	border: none;
+}
 .premimg{ /* 프로필 미리보기 */
 	width: 150px;
 	height: 150px;

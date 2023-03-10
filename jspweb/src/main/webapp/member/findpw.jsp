@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title> 비밀번호 찾기 </title>
 
 	<link href = "/jspweb/css/signup.css" rel="stylesheet">
 
@@ -15,24 +15,21 @@
 
 	<div class="container">
 		<form class="signupForm">
-			<h3> Ezen commmunity </h3>
-			<p> 환영합니다. 다양한 커뮤니티 플랫폼 제공합니다.</p>
+			<h3> 비밀번호 찾기 </h3>
+			<p> 회원님의 계정 정보를 찾아드립니다.</p>
 					
 			<div class="title"> 아이디</div>
-			<input type="text" 	   name="mid"  		 class="mid">		
-						
-			<div class="title">비밀번호</div>
-			<input type="password" name="mpw" 		 class="mpw">
-			
-			<button class="signupbtn" type="button" onclick="login()"> 로그인 </button>
-			
+			<input type="text" 	   name="mid"  		 class="mid">				
+			<div class="title"> 이메일 </div>
+			<input type="text" 	   name="memail"  	 class="memail">		
 			<div class="checkconfirm"></div>
-			
+			<button class="signupbtn" type="button" onclick="findpw()"> 비밀번호 찾기 </button>
+
 			<div class="subbtnbox">
 				<a href = "/jspweb/member/findid.jsp"> 아이디 찾기</a>
 				<a href = "/jspweb/member/findpw.jsp"> 비밀번호 찾기</a>
 			</div>
-			
+
 		</form>
 	</div>
 	

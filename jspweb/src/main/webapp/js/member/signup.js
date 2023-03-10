@@ -116,7 +116,8 @@ function mailcheck(){
 // 6. 이메일 인증
 function getauth(){
 	console.log('getauth')
-	
+	//---------------------메일 전송 테스트 할 경우 -------------------------------//
+	/*
 	// ajax 가 java에게 이메일 전송 후 인증코드 받기
 	$.ajax({ 
          url 	 : "/jspweb/email" , 
@@ -124,14 +125,17 @@ function getauth(){
          data	 : {"memail": document.querySelector('.memail').value},
          success : (result)=>{
 			console.log('응답성공')
-			console.log(result)
+				let html = `<div class="timebox">  </div>
+				<input type="text" class="authinput" placeholder="인증코드">
+				<button onclick="authconfirm()"  type="button"> 확인 </button>`				
+				document.querySelector('.authbox').innerHTML = html;
+				// 3. 타이머함수 실행
+				auth  = result;	   // 이메일에게 보낸 난수 대입 [인증코드]
+				timer = 5;	       // 5초 인증 시간 대입
+				settimer(); 	   // 타이머 함수 실행	
 		}
-     });
-	
-	
-	
-	
-	
+     });*/
+	//---------------------메일 전송 불가능 할 경우 -------------------------------//
 	let html = `<div class="timebox">  </div>
 				<input type="text" class="authinput" placeholder="인증코드">
 				<button onclick="authconfirm()"  type="button"> 확인 </button>`				

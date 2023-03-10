@@ -23,12 +23,12 @@ public class MemberDto {
     public boolean sendEmail( String toEmail, String contentHTML ) {		
     	
     	// 1. 보내는 사람의 정보
-    	String fromEmail = "@gmail.com";
-    	String Emailpw	 = "";
+    	String fromEmail = ""; // 메일 주소 
+    	String Emailpw	 = ""; // 계정 비밀번호 
     	
     	// 2. 호스팅 설정 [구글 기준] 
     	Properties properties = new Properties();
-    	properties.put("mail.smtp.host", "smtp.gmail.com");			// "smtp.naver.com"
+    	properties.put("mail.smtp.host", "smtp.naver.com");			// "smtp.gmail.com"
     	properties.put("mail.smtp.port",  587 );
     	properties.put("mail.smtp.auth",  true);
     	properties.put("mail.smtp.ssl.protocols",  "TLSv1.2" );

@@ -43,8 +43,8 @@
 				
 			<div class="title">프로필</div>	
 			<div class="pimgbox">																		
-				<input onchange="premimg(this)"	type="file"	name="mimg"   class="mimg">		
-				<img class="premimg" alt="" src="/jspweb/member/pimg/default.webp"> 
+				<input onchange="premimg(this)"	type="file"	name="mimg"  id="file" class="mimg">		
+				<img class="premimg" alt="" src="/jspweb/member/pimg/사람.png"> 
 			</div>	
 																								
 			<button class="signupbtn" type="button" onclick="signup()"> 가입 </button>
