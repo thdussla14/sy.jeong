@@ -106,19 +106,86 @@ function pwconfirmcheck(){
 function mailcheck(){
 	let memail = document.querySelector('.memail').value;
 	let midj = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/;
-	
-	// 아이디 구역
-	// [0-9a-zA-Z]	: 영문+숫자
-	// [0-9a-zA-Z_-]: 영문+숫자+ _ + -
-	// +@			: 아이디와 도메인 사이 @ 
-	// 도메인 구역
-	// [0-9a-zA-Z-] : 영문+숫자+ -
-	// +\.			: 도메인과 최상위 도메인 사이 .
-	//  [0-9a-zA-Z-]: 영문+숫자+ -
-	// +
-	if(midj.test(memail)){checkconfirm[2].innerHTML = 'O';}
-	else {checkconfirm[2].innerHTML = '양식에 맞춰 입력해주세요'}
+	if(midj.test(memail)){
+		  checkconfirm[2].innerHTML = '인증 버튼을 눌러주세요';
+		document.querySelector('.authbtn').disabled = false;}
+	else {checkconfirm[2].innerHTML = '양식에 맞춰 입력해주세요'
+		document.querySelector('.authbtn').disabled = true;}
 } // mailcheck e
+
+// 6. 이메일 인증
+function getauth(){
+	console.log('getauth')
+	
+	// ajax 가 java에게 이메일 전송 후 인증코드 받기
+	$.ajax({ 
+         url 	 : "/jspweb/email" , 
+         method  : "post" , 		
+         data	 : {"memail": document.querySelector('.memail').value},
+         success : (result)=>{
+			console.log('응답성공')
+			console.log(result)
+		}
+     });
+	
+	
+	
+	
+	
+	let html = `<div class="timebox">  </div>
+				<input type="text" class="authinput" placeholder="인증코드">
+				<button onclick="authconfirm()"  type="button"> 확인 </button>`				
+	document.querySelector('.authbox').innerHTML = html;
+	// 3. 타이머함수 실행
+	auth  = 1234;	// 이메일에게 보낸 난수 대입 [인증코드]
+	timer = 5;	// 5초 인증 시간 대입
+	settimer(); 	// 타이머 함수 실행	
+}
+
+let auth = 0;
+let timer = 0 ;
+let timerInter;
+
+// 7. 타이머 함수
+function settimer(){	
+	// setInterval(()=>{},시간) // '시간'초마다 { } 코드 실행
+	// clearInterval : setInterval 종료
+	timerInter = 
+		setInterval(()=>{
+			let minutes = parseInt(timer/60); 
+			let seconds = parseInt(timer%60); 		
+			// 한자리수 이면 0 추가
+			minutes = minutes <10 ? "0"+minutes : minutes;
+			seconds = seconds <10 ? "0"+seconds : seconds;
+			// 시간 구성
+			let timehtml = minutes +":"+seconds;
+			console.log(timehtml)
+			// html 대입
+			document.querySelector('.timebox').innerHTML = timehtml;
+			// 초 차감
+			timer--;
+			// 타이머 종료
+			if( timer <0 ){
+				clearInterval(timerInter);
+				checkconfirm[2].innerHTML = '인증 실패';
+				document.querySelector('.authbox').innerHTML = "";}
+		},1000);	
+}
+
+// 8. 인증코드 확인
+function authconfirm(){
+	console.log('authconfirm');
+	// 1. 입력받은 인증코드 불러오기
+	let authinput = document.querySelector('.authinput').value;
+	// 2. 보낸 인증코드와 대조
+	if( auth == authinput ){
+		checkconfirm[2].innerHTML = 'O ';
+		clearInterval(timerInter);
+		document.querySelector('.authbox').innerHTML = "";
+		document.querySelector('.authbtn').innerHTML = "완료";
+		document.querySelector('.authbtn').disabled  = true;
+	}else{checkconfirm[2].innerHTML = '인증 코드가 일치하지 않습니다.';}
+}
 
 // 1. 회원가입  *** 첨부파일이 있을때 ***
 function signup(){

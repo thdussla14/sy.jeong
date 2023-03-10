@@ -33,5 +33,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/cos.jar"/>
+	<classpathentry kind="lib" path="C:/java-mail.jar"/>
+	<classpathentry kind="lib" path="C:/java-activation.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
