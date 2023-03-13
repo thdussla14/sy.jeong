@@ -21,13 +21,18 @@
 	height:45px;
 	padding-left: 20px;
 	border: 1px solid #e8e8e8;
-	border-radius: 20px;
-	
+	border-radius: 20px;	
 }
 .title{
 	font-size: 20px;
 	font-weight: bold;
 	margin: 10px 0px;
+}
+/* input password 의 경우 
+특정 웹폰트에서 해당 특수문자를 지원하지 않으면 안보이므로 
+폰트 바꿔서 사용할 것*/
+.mpw, .mpwconfirm{
+	font-family: "굴림";
 }
 .checkconfirm{
 	font-size: 15px;

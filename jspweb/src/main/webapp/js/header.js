@@ -17,7 +17,7 @@ function getLogin(){
 				html += `			
 				<div class="dropdown">
 				  <button class="hpimgbtn" type="button" data-bs-toggle="dropdown">
-				   	<img src="/jspweb/member/pimg/${ r.mimg == null ? 'default.webp' : r.mimg }" class="hpimg"/>
+				   	<img src="/jspweb/member/pimg/${ r.mimg == null ? '사람.png' : r.mimg }" class="hpimg"/>
 				  </button>
 				  <ul class="dropdown-menu">	<!-- 드롭다운시 표기되는 구역 -->
 				    <li><a class="dropdown-item" href="#"> 내프로필 	</a></li>

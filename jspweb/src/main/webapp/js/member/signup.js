@@ -142,7 +142,7 @@ function getauth(){
 	document.querySelector('.authbox').innerHTML = html;
 	// 3. 타이머함수 실행
 	auth  = 1234;	// 이메일에게 보낸 난수 대입 [인증코드]
-	timer = 5;	// 5초 인증 시간 대입
+	timer = 120;	// 120초(2분) 인증 시간 대입
 	settimer(); 	// 타이머 함수 실행	
 }
 
@@ -183,7 +183,7 @@ function authconfirm(){
 	let authinput = document.querySelector('.authinput').value;
 	// 2. 보낸 인증코드와 대조
 	if( auth == authinput ){
-		checkconfirm[2].innerHTML = 'O ';
+		checkconfirm[2].innerHTML = 'O';
 		clearInterval(timerInter);
 		document.querySelector('.authbox').innerHTML = "";
 		document.querySelector('.authbtn').innerHTML = "완료";
