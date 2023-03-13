@@ -43,9 +43,9 @@ public class Find extends HttpServlet {
 					// 해당 인덱스의 문자1개 
 					updatepw += ranStr.charAt(ran);	
 				}			
-			result = MemberDao.getInstance().findpw(mid, memail,updatepw);	
+			result = MemberDao.getInstance().findpw(mid, memail,updatepw);	System.out.println(updatepw);
 		}		
-		response.getWriter().print(result);
+		response.getWriter().print(result); 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -215,7 +215,9 @@ function signup(){
 			console.log('응답성공')
 			if(result == 'true'){
 				alert('회원가입 성공');
-				location.href="/jspweb/index.jsp";}
+				openmodal();
+				// location.href="/jspweb/index.jsp"
+				;}
 			else{alert('회원가입 실패')}
 		}
      });

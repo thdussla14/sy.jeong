@@ -85,9 +85,7 @@ public class Info extends HttpServlet {
 		boolean result = MemberDao.getInstance().signup(mdto);
 		System.out.println(mdto);
 		// 4. 결과 응답
-		response.getWriter().print(result);	
-		
-		
+		response.getWriter().print(result);			
 	}
     // 2. 회원1명 / 회원 여러명 호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -104,11 +102,56 @@ public class Info extends HttpServlet {
 	}
 	// 3. 회원정보 수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		// 1. 업로드 코드 구현
+			// 업로드 경로 
+			String path = request.getSession().getServletContext().getRealPath("/member/pimg");
+			// 업로드 객체
+			MultipartRequest multi = new MultipartRequest(request,
+					path, 1024*1024*10, "UTF-8", new DefaultFileRenamePolicy());
+		// 2. 
+		String mid    	 = (String)request.getSession().getAttribute("login");
+		String mpwd  	 = multi.getParameter("mpw");			
+		String newmpwd   = multi.getParameter("newmpw");		
+		String newmemail = multi.getParameter("newmemail");		
+		String mimg		 = multi.getFilesystemName("newmimg");	
+		String defaultimg= multi.getParameter("defaultimg");
 
+		// 3. 
+		if(mimg == null) {
+			mimg = MemberDao.getInstance().getMember(mid).getMimg();
+		}
+		if(defaultimg.equals("true")) {
+			mimg = null;
+		}
+		
+		boolean result = MemberDao.getInstance().update(mid, mpwd, newmpwd, newmemail,mimg);
+		response.getWriter().print(result);	
 	}
-	// 4. 회원탈퇴
+	
+	/* 
+	 	// 1. 로그인 회원 아이디 호출
+		String mid    = (String)request.getSession().getAttribute("login");
+		// 2. 수정 입력 데이터 호출
+		String mpwd  	 = request.getParameter("mpwd");	System.out.println(mpwd);
+		String newmpwd   = request.getParameter("newmpwd");	System.out.println(newmpwd);
+		String memail 	 = request.getParameter("memail");	System.out.println(memail);
+		// 3. Dao 에 요청 후 결과 저장
+		boolean result = MemberDao.getInstance().update(mid, mpwd, newmpwd, memail);
+		// 4. 결과 응답
+		response.getWriter().print(result);	
+	*/
+	// 4.  로그인된 회원 탈퇴
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 1. 로그인 회원 아이디 호출
+		String mid = (String)request.getSession().getAttribute("login");
+		String mpwd = request.getParameter("mpwd");
 
+		// 2. Dao 에 요청 후 결과 저장
+		boolean result = MemberDao.getInstance().delete(mid,mpwd);
+		// 3. 결과 응답
+		response.getWriter().print(result);		
 	}
 
 }

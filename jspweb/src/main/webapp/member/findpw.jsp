@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title> 비밀번호 찾기 </title>
 
-	<link href = "/jspweb/css/signup.css" rel="stylesheet">
+	<link href = "/jspweb/css/member/signup.css" rel="stylesheet">
 
 </head>
 <body>

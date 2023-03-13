@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 
-	<link href = "/jspweb/css/signup.css" rel="stylesheet">
+	<link href = "/jspweb/css/member/signup.css" rel="stylesheet">
 
 </head>
 <body>
@@ -51,6 +51,23 @@
 		</form>
 	
 	</div>
+	
+		<!-- 모달 구역 -->
+
+	<div class="modal_wrap">	
+		<div class="modal_box">
+		
+		<h3  class="modal_title"> 환영합니다! </h3>		
+		<div class="modal_content">
+			가족이 되어주셔서 감사합니다 ~
+		</div>
+		
+		<div class="modal_btns">
+			<button onclick="closemodal()" class="modal_cancel btns" type="button"> 닫기 </button>
+		</div>
+			
+		</div>	<!-- modal_box e -->
+	</div>	<!-- modal_wrap e -->
 	
 	<%@ include file = "/footer.jsp" %>
 

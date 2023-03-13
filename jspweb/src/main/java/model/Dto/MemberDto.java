@@ -18,6 +18,7 @@ public class MemberDto {
     private String	mpwd;
     private String	mimg;
     private String	memail;
+    private int 	mpoint; // DB에 없는 필드 추가
     
     // 1. 이메일 전송 메소드 [ 받는 사람 이메일 , 보낼 내용 HTML ] 
     public boolean sendEmail( String toEmail, String contentHTML ) {		
@@ -70,10 +71,28 @@ public class MemberDto {
 		this.memail = memail;
 	}
 
+	public MemberDto(int mno, String mid, String mpwd, String mimg, String memail, int mpoint) {
+		super();
+		this.mno = mno;
+		this.mid = mid;
+		this.mpwd = mpwd;
+		this.mimg = mimg;
+		this.memail = memail;
+		this.mpoint = mpoint;
+	}
+
 	@Override
 	public String toString() {
-		return "Membedto [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", mimg=" + mimg + ", memail=" + memail
-				+ "]";
+		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", mimg=" + mimg + ", memail=" + memail
+				+ ", mpoint=" + mpoint + "]";
+	}
+
+	public int getMpoint() {
+		return mpoint;
+	}
+
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
 	}
 
 	public int getMno() {
