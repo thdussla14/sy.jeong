@@ -25,9 +25,63 @@ public class Dao {
 		}
 	}
 	
+	
+	public boolean insert(Sdto sdto) {
+		String sql = "insert into staff(sname,sclass,stype,fnum,edate,simg) values (?,?,?,(select fnum from field where fname=?),?,?);";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, sdto.getSname());
+			ps.setString(2, sdto.getSclass());
+			ps.setString(3, sdto.getStype());
+			ps.setString(4, sdto.getField());
+			ps.setString(5, sdto.getEdate());
+			ps.setString(6, sdto.getSimg());
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}return false;
+	}
+	
+	public Sdto selectStaff(int sno) {
+		String sql = "select s.sno ,s.sname, s.sclass , s.stype, f.fname ,  s.edate, s.simg, s.ddate, s.dcontent from staff s, field f where s.fnum = f.fnum and s.sno=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, sno);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				Sdto sdto = new Sdto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+				return sdto;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}return null;
+	}
+	
+	public boolean updateStaff(Sdto sdto) {
+		String sql = "update staff set sname=? , sclass=? , stype=? , fnum=(select fnum from field where fname=?) ,simg=? ,ddate=? , dcontent=? where sno =?;";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, sdto.getSname());
+			ps.setString(2, sdto.getSclass());
+			ps.setString(3, sdto.getStype());
+			ps.setString(4, sdto.getField());
+			ps.setString(5, sdto.getSimg());
+			ps.setString(6, sdto.getDdate());
+			ps.setString(7, sdto.getDcontent());
+			ps.setInt(8, sdto.getSno());
+			int no = ps.executeUpdate();
+			if(no==1) {
+			return true;}
+		} catch (Exception e) {
+			System.out.println("여기"+e);
+		}return false;
+	}
+	
+	
 	public ArrayList<Sdto> getStaff() {
 		ArrayList<Sdto> list = new ArrayList<>();
-		String sql = "select s.sno ,s.sname, s.sclass , s.stype, f.fname ,  s.edate, s.simg, s.ddate, s.dcontent from staff s, field f where s.fnum = f.fnum;";	
+		String sql = "select s.sno ,s.sname, s.sclass , s.stype, f.fname ,  s.edate, s.simg, s.ddate, s.dcontent from staff s, field f where s.fnum = f.fnum order by sno asc;";	
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -52,9 +106,36 @@ public class Dao {
 		return false;
 	}
 	
+	public ArrayList<Sdto> seachStaff(String search) {
+		ArrayList<Sdto> list = new ArrayList<>();
+		String sql = "select s.sno ,s.sname, s.sclass , s.stype, f.fname ,s.edate, s.simg, s.ddate, s.dcontent from staff s, field f where s.fnum = f.fnum and s.sname like '%"+search+"%' order by sno asc;";	
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();				
+			while(rs.next()) {
+				Sdto sdto = new Sdto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+						rs.getString(6),  rs.getString(7),  rs.getString(8),  rs.getString(9));
+				list.add(sdto);
+			}
+			return list;
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
 	
-	
-	
+	public ArrayList<Fdto> getfield() {
+	       ArrayList<Fdto> list = new ArrayList<>();
+	       String sql = "select f.fnum, fname, s.sname from field f, staff s where s.fnum=f.fnum and sclass='부장';";
+	       try {
+	         ps = con.prepareStatement(sql);
+	         rs = ps.executeQuery();
+	         while(rs.next()) {
+	            Fdto fdto = new Fdto(rs.getInt(1), rs.getString(2), rs.getString(3));
+	            list.add(fdto);            
+	         }
+	         return list;
+	      }catch (Exception e) {System.out.println(e);}
+	      return null;       
+	   }
 	
 	
 }
