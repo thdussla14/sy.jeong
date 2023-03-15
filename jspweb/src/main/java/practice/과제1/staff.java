@@ -114,7 +114,8 @@ public class staff extends HttpServlet {
 		String dcontent = multi.getParameter("update_dcontent");
 		if(simg  == null)  {simg  = Dao.getInstance().selectStaff(sno).getSimg();}
 		
-		if(!ddate.contains("-")) {ddate=null;}
+		if(!ddate.contains("-"))    	{ddate=null;}
+		if(dcontent.length()==0)    	{dcontent=null;}
 		Sdto sdto = new Sdto(sno, sname, sclass, stype, field, null, simg, ddate, dcontent);
 		System.out.println(sdto);
 		

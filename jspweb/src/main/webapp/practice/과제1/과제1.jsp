@@ -75,14 +75,15 @@
 		<!-- 인사출력 -->
 		<div class="box2">
 		<h3>인사목록</h3>
-			<button onclick = "getStaff()"  	type="button"> 전체 </button>
-			<button onclick = "getStaff_e()"  	type="button"> 직무 </button>
-			<button onclick = "getStaff_d()" 	type="button"> 퇴사 </button>
+			<div class="top">
+				<button onclick = "getStaff()"  	type="button"> 전체 </button>
+				<button onclick = "getStaff_e()"  	type="button"> 재직 </button>
+				<button onclick = "getStaff_d()" 	type="button"> 퇴사 </button>
 			
-			<span> 사원검색 : <input class="search" type="text">
-				<button onclick = "search()" 	type="button"> 검색 </button>
-			</span>
-			
+				<span> 사원검색 : <input class="search" type="text">
+					<button onclick = "search()" 	type="button"> 검색 </button>
+				</span>
+			</div>
 			<div>
 				<table class="stafftable" border="1">
 		

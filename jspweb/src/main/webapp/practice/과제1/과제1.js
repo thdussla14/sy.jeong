@@ -98,8 +98,7 @@ function updateStaff(){
 			if( r == 'true'){
 				alert('수정성공')
 				getStaff()
-				document.querySelector('.update_modal_wrap').style.display ='none'; 
-					 
+				document.querySelector('.update_modal_wrap').style.display ='none'; 					 
 			}else{ alert('수정실패') }
 		}
 	})
@@ -233,9 +232,9 @@ function getStaff_d(){
    console.log('getStaff_d실행');   
    
    $.ajax ({
-      url    : "/jspweb/staff",
-      method   : "get",
-      data : { "type" : 2 } ,
+      url    	: "/jspweb/staff",
+      method   	: "get",
+      data 		: { "type" : 2 } ,
       success   : (r)=>{
          console.log('응답')
          console.log(r)
@@ -253,7 +252,7 @@ function getStaff_d(){
                </tr>`
                
          r.forEach((o)=>{
-            if(o.dcontent!=null){
+            if(o.ddate!=null){
                html +=`<tr>
                         <td>${o.sno}   </td>                  
                         <td><img src="/jspweb/practice/과제1/simg/${ o.simg == null ? 'default.webp' : o.simg }"  width="50px" height="50px"/></td>
