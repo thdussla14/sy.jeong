@@ -1,12 +1,15 @@
 package controller.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -20,7 +23,6 @@ public class Boardinfo extends HttpServlet {
 
     public Boardinfo() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,14 +40,16 @@ public class Boardinfo extends HttpServlet {
  		);
  		System.out.println("multi : "+multi);
  		// 
- 		int     cno 		= Integer.parseInt(multi.getParameter("cno"));			System.out.println(cno);
- 		String 	btitle		= multi.getParameter("btitle");							System.out.println(btitle);
-		String 	bcontent 	= multi.getParameter("bcontent");						System.out.println(bcontent);
-		String 	bfile 		= multi.getFilesystemName("bfile");						System.out.println(bfile);
+ 		int     cno 		= Integer.parseInt(multi.getParameter("cno"));			
+ 		String 	btitle		= multi.getParameter("btitle");							
+		String 	bcontent 	= multi.getParameter("bcontent");						
+		String 	bfile 		= multi.getFilesystemName("bfile");						
+		// 공백입력시 
+		if(btitle.length()==0||bcontent.length()==0) {response.getWriter().print("false");}
 		// 로그인한 회원 mno 필요
 		String  mid = (String)request.getSession().getAttribute("login"); 
 		int 	mno = MemberDao.getInstance().getMno(mid);		
-		if (mno < 0) {response.getWriter().print("false");}
+		if (mno < 1) {response.getWriter().print("false");}
 		// 정보 객체에 담기 
 		BoardDto bdto = new BoardDto(btitle, bcontent, bfile, mno, cno);
 		// Dao에 응답 요청 
@@ -55,6 +59,41 @@ public class Boardinfo extends HttpServlet {
 	}
         
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		int type = Integer.parseInt(request.getParameter("type"));
+				
+		if(type==1) { 			// 1. 전체 게시물 조회
+			ArrayList<BoardDto> list = BoardDao.getInstance().getBlist();
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonarray = mapper.writeValueAsString(list);			
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("appication/json");
+			response.getWriter().print(jsonarray);	
+		}else if(type==2) {		// 2. 선택 게시물 조회
+			int bno = Integer.parseInt(request.getParameter("bno"));			
+			BoardDto result = BoardDao.getInstance().selectBoard(bno);
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(result);	
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("appication/json");
+			response.getWriter().print(json);
+		}else if(type==3) {		// 3. 검색 게시물 조회			
+			request.setCharacterEncoding("UTF-8");
+			int    search      = Integer.parseInt(request.getParameter("search"));
+			String searchinput = request.getParameter("searchinput");
+			System.out.println(search);
+			System.out.println(searchinput);
+			ArrayList<BoardDto> list = BoardDao.getInstance().getBlist();
+			if 		(search==1) {list = BoardDao.getInstance().searchBoard_T(searchinput);}
+			else if (search==2) {list = BoardDao.getInstance().searchBoard_M(searchinput);}
+			else if (search==3) {list = BoardDao.getInstance().searchBoard_D(searchinput);}
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(list);	
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("appication/json");
+			response.getWriter().print(json);
+		}
+		
 
 	}
 

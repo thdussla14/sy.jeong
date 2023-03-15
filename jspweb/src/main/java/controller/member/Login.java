@@ -29,7 +29,6 @@ public class Login extends HttpServlet {
 		MemberDto result = MemberDao.getInstance().getMember(mid);		
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(result);
-		System.out.println(json);
 		// 3. 응답
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");

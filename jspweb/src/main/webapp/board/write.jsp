@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title> 게시판 글작성 </title>
+
+	<link href = "/jspweb/css/board/board.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -21,23 +24,38 @@
 
 	<div class="container">
 	
+		<div class="box">
+		
+		<form class="writeform">
+		
 		<h3> 글쓰기 </h3>
 
-		<form class="writeform">
-			카테고리 	:
-					 <select 	name="cno">
+		<div class="col-auto">
+		 <label class="form-label">카테고리 	:</label>		 
+					 <select class="form-control"	name="cno">
 						<option value="1"> 공지사항 	</option>
 						<option value="2"> 커뮤니티 	</option>
 						<option value="3"> QnA  	</option>
 						<option value="4"> 노하우   	</option>
-					  </select>					  
-			제목		: <input  	name="btitle" 	type="text">
-			내용		: <textarea name="bcontent" rows="3" cols="3"></textarea>
-			첨부파일	: <input 	name="bfile" 	type="file">				
-			<button onclick="bwrite()" type="button"> 글등록 </button>
+					  </select>		
+		</div>
+		<div class="col-auto">
+		<label class="form-label">제목		:</label>		  								
+			 <input  class="form-control"	name="btitle" 	type="text">
+		</div>
+		<div class="col-auto">	
+		<label class="form-label">내용		:</label>			
+			 <textarea class="form-control" name="bcontent" rows="" cols=""></textarea>
+		</div>
+		<div class="col-auto">			 
+		<label class="form-label">첨부파일		:</label>			
+			 <input  class="form-control"	name="bfile" 	type="file">		
+		</div>		 			
+			<button onclick="bwrite()"  class="btn btn-primary" type="button"> 글등록 </button>			
 		</form>
 	
-	
+		</div>
+		
 	</div>
 
 	<%@ include file = "/footer.jsp" %>

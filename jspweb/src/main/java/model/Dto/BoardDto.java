@@ -15,6 +15,7 @@ public class BoardDto {
     
     private String 	mid	;
     private String 	cname;
+    private String  pimg;
     
     // 빈생성자
     public BoardDto() { }
@@ -46,11 +47,37 @@ public class BoardDto {
 		this.cname = cname;
 	}
 
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int blike,
+			int bhate, int mno, int cno, String mid, String cname, String pimg) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.bdate = bdate;
+		this.bview = bview;
+		this.blike = blike;
+		this.bhate = bhate;
+		this.mno = mno;
+		this.cno = cno;
+		this.mid = mid;
+		this.cname = cname;
+		this.pimg = pimg;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
 				+ ", bdate=" + bdate + ", bview=" + bview + ", blike=" + blike + ", bhate=" + bhate + ", mno=" + mno
 				+ ", cno=" + cno + ", mid=" + mid + ", cname=" + cname + "]";
+	}
+
+	public String getPimg() {
+		return pimg;
+	}
+
+	public void setPimg(String pimg) {
+		this.pimg = pimg;
 	}
 
 	public int getBno() {
