@@ -216,7 +216,7 @@ function signup(){
 			if(result == 'true'){
 				alert('회원가입 성공');
 				openmodal();
-				// location.href="/jspweb/index.jsp"
+				location.href="/jspweb/index.jsp"
 				;}
 			else{alert('회원가입 실패')}
 		}

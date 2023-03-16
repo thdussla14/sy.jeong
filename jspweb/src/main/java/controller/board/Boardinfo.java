@@ -16,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import model.Dao.BoardDao;
 import model.Dao.MemberDao;
 import model.Dto.BoardDto;
+import model.Dto.PageDto;
 
 @WebServlet("/boardinfo")
 public class Boardinfo extends HttpServlet {
@@ -39,7 +40,7 @@ public class Boardinfo extends HttpServlet {
  				new DefaultFileRenamePolicy()	// 동일한 첨부파일명이 존재하면 뒤에 숫자 붙여서 식별
  		);
  		System.out.println("multi : "+multi);
- 		// 
+ 		// form name 식별자 --> multi.getParameter("name")
  		int     cno 		= Integer.parseInt(multi.getParameter("cno"));			
  		String 	btitle		= multi.getParameter("btitle");							
 		String 	bcontent 	= multi.getParameter("bcontent");						
@@ -62,13 +63,39 @@ public class Boardinfo extends HttpServlet {
 
 		int type = Integer.parseInt(request.getParameter("type"));
 				
-		if(type==1) { 			// 1. 전체 게시물 조회
-			ArrayList<BoardDto> list = BoardDao.getInstance().getBlist();
+		if(type==1) { 			// 1. 전체 게시물 조회				
+			// --- 검색 처리 --- //
+			request.setCharacterEncoding("UTF-8");
+			int    cno     = Integer.parseInt(request.getParameter("cno")) ;
+			String key     = request.getParameter("key");
+			String keyword = request.getParameter("keyword");	System.out.println(key+keyword);
+
+			// --- page 처리 --- //
+			// 1. 현재페이지[요청] , 2.페이지당 표시할 개수 , 3. 현재페이지 [ 시작번호, 끝번호 ]
+			int page     = Integer.parseInt(request.getParameter("page"));
+			int listsize = Integer.parseInt(request.getParameter("listsize")) ;
+			int startrow = (page-1)*listsize; // 해당 페이지 게시물 시작번호 
+			// --- page 버튼 만들기 --- //
+			// 1. 전체페이지수 , 2.페이지당 표시할 개수 3. 시작버튼 번호 
+			int totalsize = BoardDao.getInstance().totalsize(cno,key,keyword);
+			int totalpage = totalsize % listsize == 0 ? totalsize/listsize : totalsize/listsize+1 ;		
+			
+			int btnsize   = 5 ; 								// 최대 페이지버튼 출력수 
+			int startbtn  = ((page-1)/btnsize)* btnsize+1;	    // 1 6 11 16 21 26  
+			int endbtn    = startbtn + (btnsize - 1);			
+			// * 단 마지막 페이지버튼수가 총 페이지 수보다 커지면 X     
+			if(endbtn > totalpage) endbtn = totalpage ;
+
+			ArrayList<BoardDto> list = BoardDao.getInstance().getBlist(cno,key,keyword,startrow,listsize);
+			
+			PageDto pdto = new PageDto(page, listsize, startrow, totalsize, totalpage,btnsize,startbtn,endbtn, list);
+			
 			ObjectMapper mapper = new ObjectMapper();
-			String jsonarray = mapper.writeValueAsString(list);			
+			String jsonarray = mapper.writeValueAsString(pdto);			
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("appication/json");
 			response.getWriter().print(jsonarray);	
+			
 		}else if(type==2) {		// 2. 선택 게시물 조회
 			int bno = Integer.parseInt(request.getParameter("bno"));			
 			BoardDto result = BoardDao.getInstance().selectBoard(bno);
@@ -76,25 +103,8 @@ public class Boardinfo extends HttpServlet {
 			String json = mapper.writeValueAsString(result);	
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("appication/json");
-			response.getWriter().print(json);
-		}else if(type==3) {		// 3. 검색 게시물 조회			
-			request.setCharacterEncoding("UTF-8");
-			int    search      = Integer.parseInt(request.getParameter("search"));
-			String searchinput = request.getParameter("searchinput");
-			System.out.println(search);
-			System.out.println(searchinput);
-			ArrayList<BoardDto> list = BoardDao.getInstance().getBlist();
-			if 		(search==1) {list = BoardDao.getInstance().searchBoard_T(searchinput);}
-			else if (search==2) {list = BoardDao.getInstance().searchBoard_M(searchinput);}
-			else if (search==3) {list = BoardDao.getInstance().searchBoard_D(searchinput);}
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(list);	
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("appication/json");
-			response.getWriter().print(json);
+			response.getWriter().print(json);			
 		}
-		
-
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

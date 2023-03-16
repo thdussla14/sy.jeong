@@ -13,41 +13,48 @@
 
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
 
+	<%
+		// 1. jsp 이용한 http url 변수 호출
+		String cno = request.getParameter("cno");
+	%>
+	<!-- cno 숨겨서 js 전달 -->
+	<input type="hidden" class="cno" value="<%=cno%>">
+	
+	
 	<div class="container">
 	
-		<div class="box">
-
-			카테고리 	:
-			<select class ="cno">
-				<option value="0"> 전체 		</option>
-				<option value="1"> 공지사항 	</option>
-				<option value="2"> 커뮤니티 	</option>
-				<option value="3"> QnA  	</option>
-				<option value="4"> 노하우   	</option>
-			</select>	
-					  
-			<button onclick="getBlist_c()" class="cbtn" type="button"> 출력 </button>
-				  
-			<a href="/jspweb/board/write.jsp"> 게시글 쓰기 </a>
+		<h3  class="cname"> </h3>
+		
+			<a href="/jspweb/board/write.jsp"> <button class="cbtn"> 게시글 쓰기</button> </a>
+			<button onclick="reset()" class="cbtn" type="button"> 전체보기 </button>	
+			<div class="searchcount"> 총 게시물 수  </div>
+			<select class="listsize" onchange="setsize()">
+				<option value="3" >3 </option>
+				<option value="5" >5 </option>
+				<option value="10">10</option>
+			</select>
 
 			<table class="boardlist table table-hover" >
 			
 			</table>
-		
-			<select class="search">
-				<option value="1"> 제목 		</option>
-				<option value="2"> 작성자 	</option>
-				<option value="3"> 작성일 	</option>
-			</select>	
-				
-			<input class="searchinput" type="text">
-				
-					  
-			<button onclick="searchBlist()" class="cbtn" type="button"> 검색 </button>	
-		
-		
-		</div>
-		
+
+			<!-- 페이징 처리 버튼들 -->
+			<div class="page btn-group"> 
+
+			</div>
+			
+			<!-- 검색 -->		
+			<div class="searchbox">				
+				<select class="key">
+					<option value="b.btitle"> 	제목 		</option>
+					<option value="m.mid"> 		작성자 	</option>
+					<option value="b.bdate"> 	작성일 	</option>
+					<option value="b.bcontent"> 내용 		</option>
+				</select>					
+				<input  class="keyword" type="text">							  
+				<button onclick="searchBlist()" class="cbtn" type="button"> 검색 </button>		
+			</div>					
+
 	</div>
 
 	<%@ include file = "/footer.jsp" %>

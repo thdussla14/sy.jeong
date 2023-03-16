@@ -25,7 +25,7 @@
 	
 			<h3> 게시물 상세 </h3>
 			<div> 
-				<div class="title"> 게시물 번호 		</div>
+				<div class="title"> 게시물 번호    </div>
 				<div class="bno"><%= bno %></div>
 			</div>
 			<div> 
