@@ -1,1 +1,36 @@
 @charset "UTF-8";
+
+.box{
+	margin: auto;
+	font-size: 20px;
+}
+
+h3{
+	font-family: 'KCCMurukmuruk';
+	font-size: 30px;
+}
+.boardlist{
+	text-align: center;
+}
+.writeform, .updateform{
+	margin: auto;
+	width: 50%;
+}
+
+.btn, .form-label{
+	margin-top: 20px;
+}
+.cbtn{
+	width : 5%;
+	border : none;
+	border-radius : 50px;
+	background-color: #92c030;
+	color: white;
+}
+select{
+	border: none;
+}
+
+.title{
+	font-weight: bold;
+}

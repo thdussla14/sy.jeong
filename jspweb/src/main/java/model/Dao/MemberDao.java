@@ -38,22 +38,46 @@ public class MemberDao extends Dao {
 			if(rs.next()) {int pk = rs.getInt(1);}
 
 	 */
+	// 총 회원수 
+	public int totalsizeM(String key,String keyword) {
+		
+		String sql = "";
+		if(key.equals("") && keyword.equals("")) {
+			sql = "select count(*) from member ";
+		}else {
+			sql = "select count(*) from member where "+key+" like '%"+keyword+"%' ";
+		}
+
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {return rs.getInt(1);}
+		}catch(Exception e) { System.out.println(e);}		
+		return 0;
+	}
+
 	// 2. 회원리스트 호출
-	public ArrayList<MemberDto> getMemberList () {
+	public ArrayList<MemberDto> getMemberList (String key,String keyword,int startrow,int listsize) {
 		ArrayList<MemberDto> list = new ArrayList<>();
-		String sql = "select * from member";
+	
+		String sql = "";
+		if(key.equals("") && keyword.equals("")) {
+			sql = "select * from member order by mno desc limit "+startrow+","+listsize;
+		}else {
+			sql = "select * from member where "+key+" like '%"+keyword+"%' order by mno desc limit "+startrow+","+listsize;
+		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				MemberDto mdto = new MemberDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-				list.add(mdto);
+				list.add(mdto); System.out.println(mdto);
 			}
 			return list;
 		}catch(Exception e) { System.out.println(e);}		
 		return null;		
 	}// getMemberList e
-	
+		
 	// 3. 아이디 중복 검사
 	public boolean idCheck(String mid) {
 		String sql = "select * from member where mid = '"+mid+"'";

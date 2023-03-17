@@ -52,7 +52,7 @@
 		</div>
 		<div class="col-auto">			 
 		<label class="form-label">첨부파일		:</label>	
-			 <span class="oldbfile"> </span>
+			 <div class="oldbfilebox"> </div>
 			 <input  class="form-control bfile"	name="bfile" 	type="file">		
 		</div>		 			
 			<button onclick="bupdate()"  class="btn btn-primary" type="button"> 수정완료 </button>			

@@ -14,7 +14,12 @@ function getBoard(){
 			console.log('응답')
 			console.log(r)
 			document.querySelector('.infobox').innerHTML	
-			= `${r.bdate} / ${r.bview} / <button onclick="bIncrease(2)" > ${r.blike} </button> / <button onclick="bIncrease(3)" > ${r.bhate} </button>`
+			= `${r.bdate} / ${r.bview} / 			
+			<img src="/jspweb/board/bfile/좋아요.png" width="20px" onclick="bIncrease(2)"> ${r.blike} / 			
+			<img src="/jspweb/board/bfile/싫어요.png" width="20px" onclick="bIncrease(3)"> ${r.bhate} `
+			//
+			//
+			
 			document.querySelector('.pimgbox').innerHTML	= 
 			`<img src="/jspweb/member/pimg/${r.pimg==null? '사람.png':r.pimg}" width="100px">`;
 			document.querySelector('.btitle').innerHTML 	= r.btitle;
@@ -32,8 +37,8 @@ function getBoard(){
 			// 로그인 회원과 작성자가 일치하면 게시물 수정/삭제 버튼 생성
 			if(memberInfo.mid == r.mid){
 			document.querySelector('.btnbox').innerHTML = 
-				`	<button calss="cbtn" onclick="bdelete(${bno},${r.cno})" type="button"> 삭제 </button>
-					<button calss="cbtn" onclick="bupdate(${bno})" type="button"> 수정 </button>
+				`	<button class="btn" onclick="bdelete(${bno},${r.cno})" type="button"> 삭제 </button>
+					<button class="btn" onclick="bupdate(${bno})" type="button"> 수정 </button>
 				`
 			}
 

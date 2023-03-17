@@ -29,19 +29,10 @@
 			<button onclick="reset()" class="cbtn" type="button"> 전체보기 </button>	
 			<div class="searchcount"> 총 게시물 수  </div>
 			<select class="listsize" onchange="setsize()">
-				<option value="3" >3 </option>
-				<option value="5" >5 </option>
+				<option value="3" >3</option>
+				<option value="5" >5</option>
 				<option value="10">10</option>
 			</select>
-
-			<table class="boardlist table table-hover" >
-			
-			</table>
-
-			<!-- 페이징 처리 버튼들 -->
-			<div class="page btn-group"> 
-
-			</div>
 			
 			<!-- 검색 -->		
 			<div class="searchbox">				
@@ -53,7 +44,20 @@
 				</select>					
 				<input  class="keyword" type="text">							  
 				<button onclick="searchBlist()" class="cbtn" type="button"> 검색 </button>		
-			</div>					
+			</div>		
+
+
+
+			<table class="boardlist table table-hover" >
+			
+			</table>
+
+			<!-- 페이징 처리 버튼들 -->
+			<div class="page btn-group"> 
+
+			</div>
+			
+			
 
 	</div>
 

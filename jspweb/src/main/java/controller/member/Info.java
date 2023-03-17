@@ -15,6 +15,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.Dao.MemberDao;
 import model.Dto.MemberDto;
+import model.Dto.PageDto;
 
 @WebServlet("/member")
 public class Info extends HttpServlet {
@@ -89,16 +90,36 @@ public class Info extends HttpServlet {
 	}
     // 2. 회원1명 / 회원 여러명 호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. Dao에게 회원리스트 요청 받아 저장
-		ArrayList<MemberDto> list = MemberDao.getInstance().getMemberList();
-		// 2. JAVA 객체 -> JS 객체 형변환
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonarray = objectMapper.writeValueAsString(list);
-		// 3. 응답
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		response.getWriter().print(jsonarray);
 		
+			String key 		= request.getParameter("key");
+			String keyword 	= request.getParameter("keyword");
+			
+			int page     = Integer.parseInt(request.getParameter("page"));
+			int listsize = Integer.parseInt(request.getParameter("listsize"));
+			int startrow = (page-1)*listsize;
+			
+			int totalsize = MemberDao.getInstance().totalsizeM(key,keyword);
+			int totalpage = totalsize % listsize == 0 ? totalsize/listsize : totalsize/listsize+1;
+			
+			int btnsize  = 5;
+			int startbtn = ((page-1)/btnsize) * btnsize + 1;
+			int endbtn	 = startbtn+btnsize-1;
+			if(endbtn>totalpage) {endbtn = totalpage;}
+			
+			// 1. Dao에게 회원리스트 요청 받아 저장
+			ArrayList<MemberDto> list = MemberDao.getInstance().getMemberList(key,keyword,startrow,listsize);
+			
+			PageDto dto = new PageDto(page, listsize, startrow, totalsize, totalpage, btnsize, startbtn, endbtn, null, list);
+			
+			System.out.println(dto);
+			// 2. JAVA 객체 -> JS 객체 형변환
+			ObjectMapper objectMapper = new ObjectMapper();
+			String jsonarray = objectMapper.writeValueAsString(dto);
+			// 3. 응답
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonarray);
+
 	}
 	// 3. 회원정보 수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

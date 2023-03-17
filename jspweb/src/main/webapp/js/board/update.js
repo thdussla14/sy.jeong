@@ -29,9 +29,9 @@ function getBoard(){
 			if(r.bfile == null){
 				html = '기존 첨부파일 없음';
 			}else{
-				html = r.bfile+`<button onclick="bfiledelete(${bno})" type="button"> 삭제 </button>`;
+				html = `<span class="oldbfile">${r.bfile}</span> <button onclick="bfiledelete(${bno})" type="button"> 삭제 </button>`;
 			}
-			document.querySelector('.oldbfile').innerHTML = html;
+			document.querySelector('.oldbfilebox').innerHTML = html;
 					
 		}// success e
 	})// ajax e
@@ -54,7 +54,13 @@ function bfiledelete(bno){
 		success : (r)=>{
 			console.log('응답')
 			console.log(r)
-			if(r=='true'){alert('파일 삭제 성공');location.href = '/jspweb/board/view.jsp?bno='+bno; }
+			if(r=='true'){
+				alert('파일 삭제 성공');
+			// 특정 div만 reload [랜더링] 방법 => Jquery 함수  
+			// load( location.href+' .oldbfilebox'); 
+			// href 뒤 띄어쓰기 중요!! = > 띄어쓰기 없으면 전체 랜더링
+			   $(".oldbfilebox").load( location.href+' .oldbfilebox');
+			 }
 			else{alert('파일 삭제 실패 [관리자에게 문의]')}
 		}
 	})
