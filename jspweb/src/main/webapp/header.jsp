@@ -35,6 +35,8 @@
 				<li><a href="/jspweb/board/list.jsp?cno=3"> QnA 	</a></li>
 				<li><a href="/jspweb/board/list.jsp?cno=4"> 노하우	</a></li>
 				<li><a href="#"> 기능메뉴5 </a></li>
+				<li><a href="#"> 기능메뉴6 </a></li>
+				<li><a href="#"> 기능메뉴7 </a></li>
 			</ul>
 			
 			<!-- 서브메뉴 -->

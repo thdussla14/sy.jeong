@@ -21,8 +21,8 @@ public class BoardDao extends Dao{
 			ps.setString(3, bdto.getBfile());
 			ps.setInt(4, bdto.getMno());
 			ps.setInt(5, bdto.getCno());
-			ps.executeUpdate();
-			return true;
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
 		}catch(Exception e) { System.out.println(e);}
 		return false;
 	}
@@ -88,12 +88,47 @@ public class BoardDao extends Dao{
 		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.executeUpdate();
-			return true;
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
+		}catch(Exception e) { System.out.println(e);}
+		return false;
+	}
+	// 4. 삭제
+	public boolean bdelete(int bno) {
+		String sql ="delete from board where bno = "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
+		}catch(Exception e) { System.out.println(e);}
+		return false;
+	}
+	// 4-1. file 만 삭제
+	public boolean bfiledelete(int bno) {
+		String sql ="update board set bfile = null where bno = "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
 		}catch(Exception e) { System.out.println(e);}
 		return false;
 	}
 
+	// 5. 수정 
+	public boolean bupdate(BoardDto bdto) {
+		String sql ="update board set cno = ? , btitle = ? , bcontent = ? , bfile = ? where bno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, bdto.getCno());
+			ps.setString(2, bdto.getBtitle());
+			ps.setString(3, bdto.getBcontent());
+			ps.setString(4, bdto.getBfile());
+			ps.setInt(5, bdto.getBno());
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
+		}catch(Exception e) { System.out.println(e);}
+		return false;		
+	}
 	
 	
 	

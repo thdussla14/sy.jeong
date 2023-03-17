@@ -39,6 +39,8 @@ public class view extends HttpServlet {
 			 	// 2. 세션 생성 	[ type + ip + bno ] 
 			 	request.getSession().setAttribute(type + ip + bno, 1 );
 			 	// 3. 세션 생명주기 [ 생명주기 지나면 자동으로 메모리 삭제 / 초단위 ] 
+			 		// 1. 서버끄기 2. 서버재가동 3. MaxInactiveInterval 설정 시간 초과
+			 		// 4. invalidate()
 			 	request.getSession().setMaxInactiveInterval(24*60*60); // 하루  24*60*60
 				BoardDao.getInstance().bIncrease(type,bno);
 		 	}

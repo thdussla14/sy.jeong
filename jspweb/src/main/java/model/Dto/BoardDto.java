@@ -46,7 +46,16 @@ public class BoardDto {
 		this.mid = mid;
 		this.cname = cname;
 	}
-
+	// 업데이트용
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, int cno) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.cno = cno;
+	}
+	// 풀생성자 
 	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int blike,
 			int bhate, int mno, int cno, String mid, String cname, String pimg) {
 		super();
@@ -64,6 +73,8 @@ public class BoardDto {
 		this.cname = cname;
 		this.pimg = pimg;
 	}
+
+
 
 	@Override
 	public String toString() {

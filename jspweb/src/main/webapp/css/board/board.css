@@ -12,7 +12,7 @@ h3{
 .boardlist{
 	text-align: center;
 }
-.writeform{
+.writeform, .updateform{
 	margin: auto;
 	width: 50%;
 }

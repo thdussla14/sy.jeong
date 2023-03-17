@@ -27,7 +27,8 @@ function bwrite(){
 		success : (r)=>{
 			console.log('응답')
 			console.log(r)
-			if(r=='true'){alert('게시물 작성 성공');location.href = '/jspweb/board/list.jsp'; }
+			if(r=='true'){alert('게시물 작성 성공');
+			location.href = '/jspweb/board/list.jsp?cno='+writeFormData.get('cno'); }
 			else{alert('게시물 작성 실패 [관리자에게 문의]')}
 		}
 	})

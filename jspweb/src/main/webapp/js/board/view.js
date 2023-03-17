@@ -27,6 +27,18 @@ function getBoard(){
 				document.querySelector('.bfile').innerHTML  = 
 				`${r.bfile} <button onclick="download('${r.bfile}')" class="cbtn" type="button"> 다운로드 </button>`;
 			}	
+			console.log(memberInfo.mid)
+			console.log(r.mid)
+			// 로그인 회원과 작성자가 일치하면 게시물 수정/삭제 버튼 생성
+			if(memberInfo.mid == r.mid){
+			document.querySelector('.btnbox').innerHTML = 
+				`	<button calss="cbtn" onclick="bdelete(${bno},${r.cno})" type="button"> 삭제 </button>
+					<button calss="cbtn" onclick="bupdate(${bno})" type="button"> 수정 </button>
+				`
+			}
+
+
+
 
 		}// success e
 	})// ajax e
@@ -67,6 +79,26 @@ function bIncrease(type){
 	})
 }
 
+// 4. 삭제 
+function bdelete(bno,cno){
+	console.log(bno)
+	$.ajax({
+		url 	: "/jspweb/boardinfo",
+		method	: "delete",
+		data	: {"type":1, "bno" : bno },
+		success	: (r)=>{
+			console.log('응답')
+			if(r=='true'){
+				alert('게시물 삭제 성공')
+				location.href="/jspweb/board/list.jsp?cno="+cno ;}
+			else{alert('게시물 삭제 실패')}			
+		}		
+	})
+}
+
+function bupdate(bno){
+	location.href="/jspweb/board/update.jsp?bno="+bno;
+}
 
 
 // download(${r.bfile}) vs download('${r.bfile}') 인수 전달시 주의 문자 전달을 위하여 '' 필수!!
