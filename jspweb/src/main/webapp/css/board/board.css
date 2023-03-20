@@ -8,8 +8,9 @@
 .toptitle, .page, .searchbox{
 	text-align: center;
 }
-h3{
+.toptitle h3{
 	font-family: 'KCCMurukmuruk';
+	font-weight: bold;
 	font-size: 30px;
 }
 .topetc {
@@ -43,21 +44,66 @@ h3{
 	background-color: #92c030;
 	color: white;
 }
-select{
+.page{
+	border-top: 1px solid #e8e8e8;
+}
+.pagebtn{
 	border: none;
+	background-color: transparent;
+	font-weight: bold;
+	margin: 20px 10px;	
 }
 /*----------------------------*/
-.box{
-	margin: auto;
-	font-size: 20px;
+.minfo{
+	display: flex;
 }
-
+.minfo img{
+	margin: 0px 10px;
+}
+.mid{
+	margin: 5px 0px;
+}
+.mimg span{
+	margin-right: 5px;
+}
 .writeform, .updateform{
 	margin: auto;
 	width: 50%;
 }
 .title{
 	font-weight: bold;
+	font-size: 20px;
+	margin: 15px;
+}
+.bcontent{
+	height: 400px;
+	margin: 15px;
+}
+.bfile, .rcount{
+	margin: 15px;
+}
+.bfilebox{
+	display: flex;
+	justify-content : space-between;
+	border-top: 1px solid #e8e8e8;
+	margin: 20px 0px;
+	padding: 10px 0px;
+}
+.replybox {
+	display: flex;
+	border: 1px solid #eeeeee;
+	padding :20px;
+	border-radius: 20px;
+}
+.rcontent, .rerecontent{
+	width: 90%;
+	resize: none;
+	border: 1px solid #eeeeee;
+	padding : 5px 10px;
+	border-radius: 20px;
+}
+.replyitem {
+	margin: 20px;
 }
 .rereply{
 	margin-left: 5%;

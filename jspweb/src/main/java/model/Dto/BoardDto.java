@@ -1,5 +1,8 @@
 package model.Dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BoardDto {
 
 	private int 	bno;	
@@ -38,6 +41,19 @@ public class BoardDto {
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.bfile = bfile;
+		// * 오늘 날짜와 작성일이 동일하면 시간 표기 / 아니면 날짜 표기
+		// 1. 오늘 날짜
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String now = sdf.format(date);
+		// 2. 
+			// now.split(" ")[0] : 일
+			// now.split(" ")[1] : 시
+		if(now.split(" ")[0].equals(bdate.split(" ")[0]) ) {
+			this.bdate = bdate.split(" ")[1];
+		}else {
+			this.bdate = bdate.split(" ")[0];
+		}
 		this.bdate = bdate;
 		this.bview = bview;
 		this.blike = blike;
@@ -64,7 +80,19 @@ public class BoardDto {
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.bfile = bfile;
-		this.bdate = bdate;
+		// * 오늘 날짜와 작성일이 동일하면 시간 표기 / 아니면 날짜 표기
+		// 1. 오늘 날짜
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String now = sdf.format(date);
+		// 2. 
+			// now.split(" ")[0] : 일
+			// now.split(" ")[1] : 시
+		if(now.split(" ")[0].equals(bdate.split(" ")[0]) ) {
+			this.bdate = bdate.split(" ")[1];
+		}else {
+			this.bdate = bdate.split(" ")[0];
+		}
 		this.bview = bview;
 		this.blike = blike;
 		this.bhate = bhate;

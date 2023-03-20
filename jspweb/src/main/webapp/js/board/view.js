@@ -7,7 +7,7 @@ if(memberInfo== null){
 	document.querySelector('.rwritebtn').disabled = true;
 }
 // * 현재 게시물 번호 
-let bno = document.querySelector('.bno').innerHTML;
+let bno = document.querySelector('.bno').value;
 console.log(bno);
 // 1. 게시물 상세 출력 
 getBoard() 
@@ -21,24 +21,24 @@ function getBoard(){
 			console.log('응답')
 			console.log(r)
 			document.querySelector('.infobox').innerHTML	
-			= `${r.bdate} / 
-			<span> <i class="far fa-eye"></i>  </span> ${r.bview} / 			
-			<span> <i class="far fa-thumbs-up"></i>  </span> ${r.blike} / 			
-			<span> <i class="far fa-thumbs-down"></i></span> ${r.bhate} `
-			//
-			//
+			= `<span> ${r.bdate}  </span>
+			<span> <i class="far fa-eye"></i>         </span><span class="bview">${r.bview} </span>			
+			<span> <i class="far fa-thumbs-up"   onclick="bIncrease(2)" type="type"> </i> </span><span class="bup"> ${r.blike}  </span>			
+			<span> <i class="far fa-thumbs-down" onclick="bIncrease(3)" type="type"></i> </span><span class="bdown">${r.bhate} </span>`
 			
 			document.querySelector('.pimgbox').innerHTML	= 
-			`<img src="/jspweb/member/pimg/${r.pimg==null? '사람.png':r.pimg}" width="100px">`;
-			document.querySelector('.btitle').innerHTML 	= r.btitle;
+			`<img class="hpimg" src="/jspweb/member/pimg/${r.pimg==null? '사람.png':r.pimg}">`;
+			document.querySelector('.mid').innerHTML 	    = r.mid;
+			document.querySelector('.title').innerHTML 	    = r.btitle;
 			document.querySelector('.bcontent').innerHTML 	= r.bcontent;
+			document.querySelector('.rcount').innerHTML 	= `${r.rcount} </span> 개의 댓글 `;
 			
 			if(r.bfile == null){
-				document.querySelector('.bfile').innerHTML  = '첨부파일없음';
+				document.querySelector('.bfile').innerHTML  = '<i class="fas fa-file-download"></i>  첨부파일없음';
 			}
 			else{
 				document.querySelector('.bfile').innerHTML  = 
-				`${r.bfile} <button onclick="download('${r.bfile}')" class="cbtn" type="button"> 다운로드 </button>`;
+				`<i class="fas fa-file-download"></i> ${r.bfile} <button onclick="download('${r.bfile}')" class="cbtn" type="button"> 다운로드 </button>`;
 			}	
 			console.log(memberInfo.mid)
 			console.log(r.mid)
@@ -141,8 +141,8 @@ function getReplyList(){
 			console.log('응답'); console.log(r);
 			let html = '';
 			r.forEach((o)=>{				
-				html += `<div>
-							<span><img src="/jspweb/member/pimg/${o.mimg}" width="23px"></span>				
+				html += `<div calss="replyitem">
+							<span><img src="/jspweb/member/pimg/${o.mimg==null? '사람.png':o.mimg}" width="23px"></span>				
 							<span>${o.mid}</span>
 							<span>${o.rdate}</span>
 							<span>${o.rcontent}</span>

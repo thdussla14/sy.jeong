@@ -33,7 +33,7 @@
 				<div> 
 					<span class="searchcount"> 총 게시물 수  </span>
 					<button onclick="reset()" class="cbtn" type="button"> 전체보기 </button>	
-					<select class="listsize" onchange="setsize()">
+					<select class="listsize cbtn" onchange="setsize()">
 						<option value="3" >3</option>
 						<option value="5" >5</option>
 						<option value="10">10</option>
@@ -50,7 +50,7 @@
 			</div>
 			<!-- 검색 -->		
 			<div class="searchbox">				
-				<select class="key">
+				<select class="key cbtn">
 					<option value="b.btitle"> 	제목 		</option>
 					<option value="m.mid"> 		작성자 	</option>
 					<option value="b.bdate"> 	작성일 	</option>

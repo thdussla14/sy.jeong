@@ -1,5 +1,8 @@
 package model.Dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReplyDto {
 
 	private int 	rno;		
@@ -18,7 +21,20 @@ public class ReplyDto {
 		super();
 		this.rno = rno;
 		this.rcontent = rcontent;
-		this.rdate = rdate;
+		// * 오늘 날짜와 작성일이 동일하면 시간 표기 / 아니면 날짜 표기
+		// 1. 오늘 날짜
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String now = sdf.format(date);
+		// 2. 
+			// now.split(" ")[0] : 일
+			// now.split(" ")[1] : 시
+		if(now.split(" ")[0].equals(rdate.split(" ")[0])) {
+			this.rdate = rdate.split(" ")[1];
+		}else {
+			this.rdate = rdate.split(" ")[0];
+		}
+
 		this.rindex = rindex;
 		this.mno = mno;
 		this.bno = bno;
