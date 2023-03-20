@@ -3,6 +3,7 @@ package model.Dao;
 import java.util.ArrayList;
 
 import model.Dto.BoardDto;
+import model.Dto.ReplyDto;
 
 
 public class BoardDao extends Dao{
@@ -130,6 +131,41 @@ public class BoardDao extends Dao{
 		return false;		
 	}
 	
+	// 6. 댓글 작성
+	public boolean rwrite(ReplyDto rdto) {
+		String sql ="";
+		if(rdto.getRindex() == 0) {
+			sql ="insert reply (rcontent,mno,bno) values(?, ?, ?)";
+		}else {
+			sql ="insert reply (rcontent,mno,bno,rindex) values(?, ?, ? ,"+rdto.getRindex()+")";
+		}
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, rdto.getRcontent());
+			ps.setInt(2, rdto.getMno());
+			ps.setInt(3, rdto.getBno());
+			int count = ps.executeUpdate();
+			if(count==1) {return true;}
+		}catch(Exception e) { System.out.println(e);}
+		return false;	
+	}
 	
+	// 7. 댓글 출력
+	public ArrayList<ReplyDto> getRlist(int bno,int rindex) {
+		ArrayList<ReplyDto> list = new ArrayList<>();
+		String sql="select r.*, m.mid,m.mimg from reply r natural join member m where r.rindex = "+rindex+" and bno = "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				ReplyDto rdto = new ReplyDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), 
+						rs.getInt(6), rs.getString(7), rs.getString(8));
+				list.add(rdto);
+			}
+			return list;
+		}catch (Exception e){ System.out.println(e);}
+		return null;
+	}
 	
 }

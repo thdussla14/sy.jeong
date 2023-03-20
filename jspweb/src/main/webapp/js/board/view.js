@@ -1,11 +1,18 @@
 console.log('view')
-
+console.log(memberInfo)
+// * 비로그인시 댓글 비활성화
+if(memberInfo== null){
+	document.querySelector('.rcontent').disabled = true;
+	document.querySelector('.rcontent').value = '로그인 후 작성 가능합니다.';
+	document.querySelector('.rwritebtn').disabled = true;
+}
+// * 현재 게시물 번호 
+let bno = document.querySelector('.bno').innerHTML;
+console.log(bno);
+// 1. 게시물 상세 출력 
 getBoard() 
 function getBoard(){ 
 	console.log('getBoard 실행')
-	let bno = document.querySelector('.bno').innerHTML;
-	console.log(bno);
-	
 	$.ajax({
 		url		: "/jspweb/boardinfo",
 		method	: "get",
@@ -15,7 +22,7 @@ function getBoard(){
 			console.log(r)
 			document.querySelector('.infobox').innerHTML	
 			= `${r.bdate} / ${r.bview} / 			
-			<img src="/jspweb/board/bfile/좋아요.png" width="20px" onclick="bIncrease(2)"> ${r.blike} / 			
+			<img src="/jspweb/board/bfile/좋아요.png" width="23px" onclick="bIncrease(2)"> ${r.blike} / 			
 			<img src="/jspweb/board/bfile/싫어요.png" width="20px" onclick="bIncrease(3)"> ${r.bhate} `
 			//
 			//
@@ -41,10 +48,8 @@ function getBoard(){
 					<button class="btn" onclick="bupdate(${bno})" type="button"> 수정 </button>
 				`
 			}
-
-
-
-
+			// 댓글 출력
+			getReplyList();
 		}// success e
 	})// ajax e
 }
@@ -70,8 +75,6 @@ function download(bfile){
 bIncrease(1) // 스크립트가 열리는 순간 조회수 증가 
 function bIncrease(type){
 	// 1. 현재 게시물의 번호  [ 증감의 대상 ]
-	let bno = document.querySelector('.bno').innerHTML;
-	console.log(bno);
 	$.ajax({
 		url 	: "/jspweb/board/view",
 		method	: "get",
@@ -100,10 +103,116 @@ function bdelete(bno,cno){
 		}		
 	})
 }
-
+// 5. 수정 페이지 이동
 function bupdate(bno){
 	location.href="/jspweb/board/update.jsp?bno="+bno;
 }
+
+// 6. 댓글 작성
+function rwrite(){
+	$.ajax({
+		url 	: "/jspweb/boardreply",
+		method	: "post",
+		data	: {
+				"type": 1,
+				"bno" : bno , 
+				"rcontent" : document.querySelector('.rcontent').value },
+		success	: (r)=>{
+			console.log('응답'); console.log(r);
+			if(r=='true'){
+				alert('댓글 작성 성공');
+				document.querySelector('.rcontent').value = '';
+				// 댓글 박스만 랜더링
+				//$('.replylistbox').load(location.href)+' .replylistbox';
+				// 전체 랜더링
+				location.reload();}
+			else{alert('댓글 작성 실패')}		
+		}
+	})
+}
+// 7. 댓글 출력
+function getReplyList(){
+	$.ajax({
+		url 	: "/jspweb/boardreply",
+		method	: "get",
+		data	: {"bno" : bno, "rindex":0},
+		success	: (r)=>{
+			console.log('응답'); console.log(r);
+			let html = '';
+			r.forEach((o)=>{				
+				html += `<div>
+							<span><img src="/jspweb/member/pimg/${o.mimg}" width="23px"></span>				
+							<span>${o.mid}</span>
+							<span>${o.rdate}</span>
+							<span>${o.rcontent}</span>
+							<button class="btn" onclick="rereplyview(${o.rno})" type="button"> 댓글 작성 </button>
+							<div class="rereplybox${o.rno}">
+							
+							</div>
+						</div>`
+			})			
+			document.querySelector('.replylistbox').innerHTML = html ;
+		}
+	})
+}
+
+// 8. 대댓글 작성란 오픈 
+function rereplyview(rno){
+	console.log('rereplyview')
+	console.log(rno)
+	
+	let html = '';
+	
+	$.ajax({
+		url 	: "/jspweb/boardreply",
+		async	: "false",	// 동기식 통신 
+		method	: "get",
+		data	: {"bno" : bno, "rindex":rno},
+		success	: (r)=>{
+			console.log('응답'); console.log(r);		
+			r.forEach((o)=>{	
+							
+				html += `<div class="rereply">
+							<span><img src="/jspweb/member/pimg/${o.mimg}" width="23px"></span>				
+							<span>${o.mid}</span>
+							<span>${o.rdate}</span>
+							<span>${o.rcontent}</span>
+						</div>`
+						
+			})	// forEach e
+			html += `<textarea class="rereply rerecontent" rows="" cols=""></textarea>
+					<button onclick="rerewrite(${rno})" class="btn" type="button">  대댓글 작성 </button>`
+			document.querySelector('.rereplybox'+rno).innerHTML = html;			
+		} // success e
+	}) // ajax e
+
+}
+// 9. 하위 댓글 작성
+function rerewrite(rno){
+	$.ajax({
+		url 	: "/jspweb/boardreply",
+		method	: "post",
+		data	: {
+				"type": 2,
+				"bno" : bno , 
+				"rcontent" : document.querySelector('.rerecontent').value ,
+				"rindex": rno},
+		success	: (r)=>{
+			console.log('응답'); console.log(r);
+			if(r=='true'){
+				alert('대댓글 작성 성공');
+				document.querySelector('.rerecontent').value = '';
+				// 댓글 박스만 랜더링
+				//$('.replylistbox').load(location.href)+' .replylistbox';
+				// 전체 랜더링
+				location.reload();}
+			else{alert('대댓글 작성 실패')}		
+		}
+	})
+}
+
+
+
 
 
 // download(${r.bfile}) vs download('${r.bfile}') 인수 전달시 주의 문자 전달을 위하여 '' 필수!!

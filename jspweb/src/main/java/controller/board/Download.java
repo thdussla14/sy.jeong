@@ -40,7 +40,6 @@ public class Download extends HttpServlet {
 				"attachment;filename="+URLEncoder.encode(bfile, "UTF-8"));// 다운로드시 파일명이 표시되는 옵션 [ 한글파일 인코딩 ]				
 		// 4. 파일 스트림 [ 바이트 단위 ]
 			// 4-1. 파일 객체의 바이트를 모두 읽어온다. => 예외 처리 발생하나 servlet 자동 예외 
-		// BufferedInputStream fin = new BufferedInputStream(new FileInputStream(file));
 		BufferedInputStream fin = new BufferedInputStream(new FileInputStream(file));
 			// 4-2. 파일 입력 스트림 객체에서 꺼내올 바이트들을 저장할 배열 선언 // 파일의 길이 만큼의 저장 공간을 선언
 		byte[] bytes = new byte[(int)file.length()];
