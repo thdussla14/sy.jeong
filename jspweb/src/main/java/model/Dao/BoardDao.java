@@ -1,5 +1,6 @@
 package model.Dao;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.Dto.BoardDto;
@@ -48,16 +49,23 @@ public class BoardDao extends Dao{
 		ArrayList<BoardDto> list = new ArrayList<>();
 		String sql = "";
 		if(key.equals("") && keyword.equals("")) {
-			sql = "select b.*, m.mid,c.cname from board b, member m, category c where b.mno = m.mno and b.cno = c.cno and b.cno = "+cno+" order by b.bdate desc limit "+startrow+","+listsize;
+			sql = "select b.*, m.mid,c.cname, m.mimg from board b, member m, category c where b.mno = m.mno and b.cno = c.cno and b.cno = "+cno+" order by b.bdate desc limit "+startrow+","+listsize;
 		}else {
-			sql = "select b.*, m.mid,c.cname from board b, member m, category c where b.mno = m.mno and b.cno = c.cno and b.cno = "+cno+" and "+key+" like '%"+keyword+"%' order by b.bdate desc limit "+startrow+","+listsize;
+			sql = "select b.*, m.mid,c.cname, m.mimg from board b, member m, category c where b.mno = m.mno and b.cno = c.cno and b.cno = "+cno+" and "+key+" like '%"+keyword+"%' order by b.bdate desc limit "+startrow+","+listsize;
 		}
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				BoardDto bdto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
-						rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11), rs.getString(12));
+						rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13));
+				
+				// * 추가 현재 레코드의 댓글 수 구하기 
+				sql = "select count(*) from reply where bno = "+rs.getInt(1);
+				ps = con.prepareStatement(sql);
+				ResultSet rs2 = ps.executeQuery();
+				if(rs2.next()) { bdto.setRcount(rs2.getInt(1));}
+				
 				list.add(bdto);				
 			}
 			return list;

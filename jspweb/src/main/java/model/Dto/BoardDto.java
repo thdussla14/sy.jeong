@@ -16,6 +16,7 @@ public class BoardDto {
     private String 	mid	;
     private String 	cname;
     private String  pimg;
+    private int		rcount;
     
     // 빈생성자
     public BoardDto() { }
@@ -81,6 +82,16 @@ public class BoardDto {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
 				+ ", bdate=" + bdate + ", bview=" + bview + ", blike=" + blike + ", bhate=" + bhate + ", mno=" + mno
 				+ ", cno=" + cno + ", mid=" + mid + ", cname=" + cname + "]";
+	}
+
+	
+	
+	public int getRcount() {
+		return rcount;
+	}
+
+	public void setRcount(int rcount) {
+		this.rcount = rcount;
 	}
 
 	public String getPimg() {

@@ -25,17 +25,7 @@ function getBlist(page){
 	pageObject.page = page ; // 인수로 받은 현재 페이지를 객체에 대입
 	
 	console.log('blist 실행')
-	html = `<tr>
-				<th width="10%"> 카테고리	</th>		
-				<th width="5%">  번호		</th>
-				<th width="25%"> 제목 	</th>
-				<th width="10%"> 작성자 	</th>
-				<th width="25%"> 작성일 	</th>
-				<th width="10%"> 조회수 	</th>
-				<th width="10%"> 좋아요 	</th>
-				<th width="10%"> 싫어요 	</th>
-			
-			</tr>`
+	html = ``
 	$.ajax({
 		url		: "/jspweb/boardinfo",
 		method	: "get",
@@ -44,28 +34,33 @@ function getBlist(page){
 			console.log('응답')
 			console.log(r)
 		r.boardList.forEach((o)=>{
-			html += `<tr>
-						<td> ${o.cname}		</td>
-						<td> ${o.bno}		</td>
-						<td> <a href="/jspweb/board/view.jsp?bno=${o.bno}" >${o.btitle}</a> </td>
-						<td> ${o.mid} 		</td>
-						<td> ${o.bdate} 	</td>
-						<td> ${o.bview} 	</td>
-						<td> ${o.blike} 	</td>
-						<td> ${o.bhate} 	</td>		
-					</tr>`
+			html += `
+				<div class="bcontentbox">
+					<div>
+						<img class="hpimg" src="/jspweb/member/pimg/${o.pimg==null? '사람.png' : o.pimg}" > 
+						<span  class="mid">  ${o.mid}</span>
+						<span  class="bdate">${o.bdate}</span>
+					</div>
+					<div class="btitle"> <a href="/jspweb/board/view.jsp?bno=${o.bno}" >${o.btitle}</a> </div>
+					<div class="etc">
+						<span> <i class="far fa-eye"></i>			<span class="bview"> ${o.bview} </span>	</span>
+						<span> <i class="far fa-thumbs-up"></i> 	<span class="bup">	 ${o.blike} </span>	</span>
+						<span> <i class="far fa-thumbs-down"></i> 	<span class="bdown"> ${o.bhate} </span>	</span>
+						<span> <i class="far fa-comment-dots"></i> 	<span class="bcomme">${o.rcount} </span></span>					
+					</div>
+				</div>`
 			})
 			document.querySelector('.boardlist').innerHTML = html;
 			
 			html = '' ;
 			html += page <=1 ? ``:
-				`<button onclick="getBlist(${page-1})" class="btn btn-outline-secondary" type="button"> 이전 </button>`;
+				`<button onclick="getBlist(${page-1})" class="btn" type="button"> < </button>`;
 			for(let i=r.startbtn ; i<=r.endbtn ; i++){
 				html += 
-				`<button onclick="getBlist(${i})"      class="btn btn-outline-secondary" type="button"> ${i} </button>`
+				`<button onclick="getBlist(${i})"      class="btn" type="button"> ${i} </button>`
 			}
 			html += page >= r.totalpage ? ``:
-				`<button onclick="getBlist(${page+1})" class="btn btn-outline-secondary" type="button"> 다음 </button>`
+				`<button onclick="getBlist(${page+1})" class="btn" type="button"> > </button>`
 				
 			document.querySelector('.page').innerHTML = html;
 			

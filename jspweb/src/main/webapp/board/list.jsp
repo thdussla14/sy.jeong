@@ -20,20 +20,34 @@
 	<!-- cno 숨겨서 js 전달 -->
 	<input type="hidden" class="cno" value="<%=cno%>">
 	
-	
 	<div class="container">
-	
-		<h3  class="cname"> </h3>
-		
-			<a href="/jspweb/board/write.jsp"> <button class="cbtn"> 게시글 쓰기</button> </a>
-			<button onclick="reset()" class="cbtn" type="button"> 전체보기 </button>	
-			<div class="searchcount"> 총 게시물 수  </div>
-			<select class="listsize" onchange="setsize()">
-				<option value="3" >3</option>
-				<option value="5" >5</option>
-				<option value="10">10</option>
-			</select>
+		<div class="boardbox"> 
+			<div class="toptitle">
+				<h3  class="cname"> </h3>
+				<p> 다양한 사람들과 정보를 공유해보세요. </p>
+			</div>
 			
+			<div class="topetc">
+			
+				<a href="/jspweb/board/write.jsp"> <button class="cbtn">글쓰기 <i class="fas fa-pen"></i></button> </a>
+				<div> 
+					<span class="searchcount"> 총 게시물 수  </span>
+					<button onclick="reset()" class="cbtn" type="button"> 전체보기 </button>	
+					<select class="listsize" onchange="setsize()">
+						<option value="3" >3</option>
+						<option value="5" >5</option>
+						<option value="10">10</option>
+					</select>
+				</div>				
+			</div> <!-- topetc e -->
+
+			<div class="boardlist table table-hover" >
+
+			</div>
+			<!-- 페이징 처리 버튼들 -->
+			<div class="page"> 
+
+			</div>
 			<!-- 검색 -->		
 			<div class="searchbox">				
 				<select class="key">
@@ -43,23 +57,12 @@
 					<option value="b.bcontent"> 내용 		</option>
 				</select>					
 				<input  class="keyword" type="text">							  
-				<button onclick="searchBlist()" class="cbtn" type="button"> 검색 </button>		
-			</div>		
-
-
-
-			<table class="boardlist table table-hover" >
+				<button onclick="searchBlist()" class="cbtn" type="button"> 검색 <i class="fas fa-search"></i></button>		
+			</div>	
 			
-			</table>
+		</div> <!-- boardbox e -->
+	</div> <!-- container e -->
 
-			<!-- 페이징 처리 버튼들 -->
-			<div class="page btn-group"> 
-
-			</div>
-			
-			
-
-	</div>
 
 	<%@ include file = "/footer.jsp" %>
 

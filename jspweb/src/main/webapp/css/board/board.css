@@ -1,36 +1,61 @@
 @charset "UTF-8";
 
-.box{
-	margin: auto;
-	font-size: 20px;
+/* 게시물 리스트 출력 구역 */
+.boardbox{
+	width: 80%;
+	margin: 40px auto;
 }
-
+.toptitle, .page, .searchbox{
+	text-align: center;
+}
 h3{
 	font-family: 'KCCMurukmuruk';
 	font-size: 30px;
 }
-.boardlist{
-	text-align: center;
+.topetc {
+	display: flex;
+	justify-content: space-between;
 }
-.writeform, .updateform{
-	margin: auto;
-	width: 50%;
+.bcontentbox{
+	margin: 20px 0px ;
+	border-top: 1px solid #e8e8e8;
+	padding: 20px 10px;
+	font-size: 20px;
 }
-
-.btn, .form-label{
-	margin-top: 20px;
+.bdate{
+	font-size: 13px;
+}
+.btitle{
+	margin: 15px;
+}
+.etc{
+	text-align: right;
+	font-size: 15px;	
+}
+.etc span{
+	padding-right: 5px;
 }
 .cbtn{
-	width : 5%;
+	padding : 5px;
+	margin:0px 10px ;
 	border : none;
-	border-radius : 50px;
+	border-radius : 10%;
 	background-color: #92c030;
 	color: white;
 }
 select{
 	border: none;
 }
+/*----------------------------*/
+.box{
+	margin: auto;
+	font-size: 20px;
+}
 
+.writeform, .updateform{
+	margin: auto;
+	width: 50%;
+}
 .title{
 	font-weight: bold;
 }

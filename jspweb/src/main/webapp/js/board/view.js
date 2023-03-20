@@ -21,9 +21,10 @@ function getBoard(){
 			console.log('응답')
 			console.log(r)
 			document.querySelector('.infobox').innerHTML	
-			= `${r.bdate} / ${r.bview} / 			
-			<img src="/jspweb/board/bfile/좋아요.png" width="23px" onclick="bIncrease(2)"> ${r.blike} / 			
-			<img src="/jspweb/board/bfile/싫어요.png" width="20px" onclick="bIncrease(3)"> ${r.bhate} `
+			= `${r.bdate} / 
+			<span> <i class="far fa-eye"></i>  </span> ${r.bview} / 			
+			<span> <i class="far fa-thumbs-up"></i>  </span> ${r.blike} / 			
+			<span> <i class="far fa-thumbs-down"></i></span> ${r.bhate} `
 			//
 			//
 			
@@ -180,7 +181,7 @@ function rereplyview(rno){
 						</div>`
 						
 			})	// forEach e
-			html += `<textarea class="rereply rerecontent" rows="" cols=""></textarea>
+			html += `<textarea class="rereply rerecontent" rows="" cols="40"></textarea>
 					<button onclick="rerewrite(${rno})" class="btn" type="button">  대댓글 작성 </button>`
 			document.querySelector('.rereplybox'+rno).innerHTML = html;			
 		} // success e

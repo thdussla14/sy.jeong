@@ -55,8 +55,8 @@
 			
 			<div> 
 				<div class="title"> 댓글 			</div>
-				<textarea class="rcontent" rows="" cols=""></textarea>
-				<button onclick="rwrite()" class="rwritebtn cbtn" type="button">  댓글 작성 </button>
+				<textarea class="rcontent" rows="" cols="45"></textarea>
+				<button onclick="rwrite()" class="rwritebtn btn" type="button">  댓글 작성 </button>
 			</div>
 			<div class="replylistbox"> 
 			
