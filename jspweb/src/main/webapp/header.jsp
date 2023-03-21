@@ -38,7 +38,8 @@
 				<li><a href="/jspweb/board/list.jsp?cno=3"> QnA 	</a></li>
 				<li><a href="/jspweb/board/list.jsp?cno=4"> 노하우	</a></li>
 				<li><a href="/jspweb/api/api1.jsp">			API1	</a></li>
-				<li><a href="/jspweb/api/api2.jsp"> 		API2	</a></li>
+				<li><a href="/jspweb/api/api2.jsp"> 		API2	</a></li>				
+				<li><a href="/jspweb/api/api3.jsp"> 		API3[과제]	</a></li>
 			</ul>
 			
 			<!-- 서브메뉴 -->
@@ -57,8 +58,8 @@
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
 	<!-- summernote -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	<!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>-->
 	<!-- 사용자정의 -->
 	<script src ="/jspweb/js/modal.js"  type="text/javascript"></script>	
 	<script src ="/jspweb/js/header.js" type="text/javascript"></script>
