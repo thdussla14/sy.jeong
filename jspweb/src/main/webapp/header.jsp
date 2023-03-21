@@ -37,8 +37,8 @@
 				<li><a href="/jspweb/board/list.jsp?cno=2"> 커뮤니티 	</a></li>
 				<li><a href="/jspweb/board/list.jsp?cno=3"> QnA 	</a></li>
 				<li><a href="/jspweb/board/list.jsp?cno=4"> 노하우	</a></li>
-				<li><a href="#"> 기능메뉴5 </a></li>
-				<li><a href="#"> 기능메뉴6 </a></li>
+				<li><a href="/jspweb/api/api1.jsp">			API1	</a></li>
+				<li><a href="/jspweb/api/api2.jsp"> 		API2	</a></li>
 			</ul>
 			
 			<!-- 서브메뉴 -->
@@ -54,10 +54,11 @@
 	<!-- 모든 페이지 공통 js -->
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<!-- summernote -->
-	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<!-- 부트스트랩 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+	<!-- summernote -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<!-- 사용자정의 -->
 	<script src ="/jspweb/js/modal.js"  type="text/javascript"></script>	
 	<script src ="/jspweb/js/header.js" type="text/javascript"></script>

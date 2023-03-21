@@ -27,7 +27,7 @@ function getBoard(){
 			<span> <i class="far fa-thumbs-down" onclick="bIncrease(3)" type="type"></i> </span><span class="bdown">${r.bhate} </span>`
 			
 			document.querySelector('.pimgbox').innerHTML	= 
-			`<img class="hpimg" src="/jspweb/member/pimg/${r.pimg==null? '사람.png':r.pimg}">`;
+			`<img class="pimg" src="/jspweb/member/pimg/${r.pimg==null? '사람.png':r.pimg}">`;
 			document.querySelector('.mid').innerHTML 	    = r.mid;
 			document.querySelector('.title').innerHTML 	    = r.btitle;
 			document.querySelector('.bcontent').innerHTML 	= r.bcontent;

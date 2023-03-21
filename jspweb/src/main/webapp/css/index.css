@@ -5,9 +5,13 @@
 	list-style: none;
 	font-family: 'GangwonEduSaeeum_OTFMediumA';
 }
+
 a{ color: black; text-decoration: none; }
+
 a:hover{color: black;}
+
 i{margin:0px 5px; }
+
 @font-face {
     font-family: 'GangwonEduSaeeum_OTFMediumA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff') format('woff');

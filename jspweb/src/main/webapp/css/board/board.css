@@ -17,6 +17,12 @@
 	display: flex;
 	justify-content: space-between;
 }
+.pimg{
+	width:50px;
+	height:50px;
+	border: 1px solid #e8e8e8;
+	border-radius: 50%;
+}
 .bcontentbox{
 	margin: 20px 0px ;
 	border-top: 1px solid #e8e8e8;
@@ -89,8 +95,10 @@
 	margin: 20px 0px;
 	padding: 10px 0px;
 }
-.replybox {
-	display: flex;
+.replybox{
+	display: flex;	
+}
+.replybox, .replylistbox {
 	border: 1px solid #eeeeee;
 	padding :20px;
 	border-radius: 20px;

@@ -40,7 +40,7 @@ function getBlist(page){
 				html += `
 					<div class="bcontentbox">
 						<div>
-							<img class="hpimg" src="/jspweb/member/pimg/${o.pimg==null? '사람.png' : o.pimg}" > 
+							<img class="pimg" src="/jspweb/member/pimg/${o.pimg==null? '사람.png' : o.pimg}" > 
 							<span  class="mid">  ${o.mid}</span>
 							<span  class="bdate">${o.bdate}</span>
 						</div>

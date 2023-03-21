@@ -3,7 +3,7 @@
 
 /* 1. 회원가입 입력 구역*/
 .signupForm{
-	width: 30%;
+	width: 40%;
 	margin: 30px auto;
 	font-size: 20px;
 }
@@ -66,6 +66,8 @@
 }
 input[type=file]::file-selector-button{
 	border: none;
+	background-color:#e8e8e8;
+	font-family: 'GangwonEduSaeeum_OTFMediumA';
 }
 .premimg{ /* 프로필 미리보기 */
 	width: 150px;
