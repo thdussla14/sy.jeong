@@ -38,7 +38,7 @@
 	<%@include file="/footer.jsp" %>
 	
 	<!-- 카카오 지도에 필요한 클래스/메소드 가지고 있는 js 라이브러리 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	3af099b2c66ef75958a992c6b8ba20c3&libraries=services,clusterer,drawing"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3af099b2c66ef75958a992c6b8ba20c3&libraries=services,clusterer,drawing"></script>
 	
 	<script src ="/jspweb/api/api3.js" type="text/javascript"></script>
 

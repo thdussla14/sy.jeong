@@ -33,12 +33,12 @@
 			
 			<!-- 본메뉴 -->
 			<ul class="mainmenu"> 
-				<li><a href="/jspweb/board/list.jsp?cno=1"> 공지사항 	</a></li>
-				<li><a href="/jspweb/board/list.jsp?cno=2"> 커뮤니티 	</a></li>
-				<li><a href="/jspweb/board/list.jsp?cno=3"> QnA 	</a></li>
-				<li><a href="/jspweb/board/list.jsp?cno=4"> 노하우	</a></li>
-				<li><a href="/jspweb/api/api1.jsp">			API1	</a></li>
-				<li><a href="/jspweb/api/api2.jsp"> 		API2	</a></li>				
+				<li><a href="/jspweb/board/list.jsp?cno=1"> 공지사항 		</a></li>
+				<li><a href="/jspweb/board/list.jsp?cno=2"> 커뮤니티 		</a></li>
+				<li><a href="/jspweb/board/list.jsp?cno=3"> QnA 		</a></li>
+				<li><a href="/jspweb/board/list.jsp?cno=4"> 노하우		</a></li>
+				<li><a href="/jspweb/api/api1.jsp">			API1		</a></li>
+				<li><a href="/jspweb/api/api2.jsp"> 		API2		</a></li>				
 				<li><a href="/jspweb/api/api3.jsp"> 		API3[과제]	</a></li>
 			</ul>
 			
