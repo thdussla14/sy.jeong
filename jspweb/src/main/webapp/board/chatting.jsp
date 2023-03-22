@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> chatting </title>
+<title> 채팅 </title>
+
+	<link href="/jspweb/css/board/chatting.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -12,16 +15,28 @@
 	
 	<div class="container"> 
 	
-		<!-- 채팅 내용물이 표시되는 구역 -->
-		<div class="contentbox"> </div>
+		<div class="chattingbox"> 
 		
-		<!-- 채팅 입력창 -->
-		<textarea class="msgbox" rows="" cols=""></textarea>
-	
-		<!-- 채팅 전송 버튼 -->
-		<button onclick="전송()" type="button"> 전송 </button>
-	
-	</div>
+			<!-- 채팅창 -->
+			<div class="contentbox">  
+
+				
+			
+			</div> <!-- contentbox e -->
+		
+			<!-- 채팅 입력창 -->
+			<textarea onkeyup="enterkey()" class="msgbox" rows="" cols=""> </textarea>
+		
+
+			<div class="chattingbtnbox">
+				<div> 이모티콘 </div>
+				<div> 첨부파일 </div>
+				<!-- 채팅 전송 버튼 -->
+				<button  class="sendbtn" onclick="전송()" type="button"> 전송 </button>
+			</div>
+
+		</div> <!-- chattingbox e -->
+	</div> <!-- container e -->
 
 	<%@ include file = "/footer.jsp" %>
 

@@ -55,7 +55,7 @@ public class Chatting {
 		System.out.println("클라이언트 웹소켓 메시지 전송");
 		System.out.println(msg);
 		
-		// 메세지 형식 구성
+		// 메세지 형식 구성 // Session 객체를 json으로 형변환 불가능
 		MessageDto dto = new MessageDto(session,msg);
 		
 		ObjectMapper mapper = new ObjectMapper();

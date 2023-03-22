@@ -26,7 +26,7 @@ public class MessageDto {
 				
 				this.frommid  = cdto.getMid();
 				this.frommimg = MemberDao.getInstance().getMember(this.frommid).getMimg();
-				this.time     = new SimpleDateFormat("hh:mm:ss").format(new Date());
+				this.time     = new SimpleDateFormat("aa hh:mm").format(new Date());
 				
 			}
 		}

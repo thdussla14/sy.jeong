@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.chattingbox{
+	width: 40%;
+	margin: 50px auto;
+	border: 1px solid #eeeeee;
+}
+.contentbox{
+	height:600px;
+	border: 1px solid #eeeeee;
+	background-color: #deeebd;
+	padding: 5px 10px;
+	/* 해당구역보다 내용물이 커지면 스크롤 */	
+	overflow-y:auto; 
+}
+.alarm{
+	text-align: center;
+	background-color: rgba(173,173,173,0.5);
+	border-radius: 10px;
+	margin:10px;
+}
+.secontent{
+	display : flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-top: 10px;
+}
+.contentdate{
+	display : flex;
+	align-items: flex-end;
+}
+.secontent .content{
+	background-color:#ffffbf;
+}
+.recontent{
+	display : flex;
+	margin-top: 10px;
+}
+.rcontent, .name{
+	margin-left: 10px;
+}
+.date{
+	font-size: 5px;
+	margin: 0px 5px;
+}
+.content{
+	background-color: white;
+	border-radius: 5px;
+	padding : 10px;
+	/* 해당구역보다 내용물이 커지면 자동줄바꿈 */
+	max-width: 70%;
+	word-break:break-all;	
+}
+.msgbox{
+	width: 100%;
+	border: 1px solid #eeeeee;
+	padding : 15px;
+	resize: none;
+}
+.chattingbtnbox{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.sendbtn{
+	width: 20%;
+	color:white;
+	background-color:#759a27;
+	border: none;
+	border-radius: 5px;
+	margin: 10px;
+}

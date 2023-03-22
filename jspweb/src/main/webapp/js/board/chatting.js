@@ -41,7 +41,10 @@ if(memberInfo == null){
 let contentbox = document.querySelector('.contentbox')
 
 // 2. 클라이언트소켓 접속시 이벤트 정의 
-function 소켓연결(e){contentbox.innerHTML += `<div> ***** ${memberInfo.mid}님 채팅방 입장 ***** </div>` ;}
+function 소켓연결(e){
+	contentbox.innerHTML += `<div class="alarm"> 
+								<span> ***** ${memberInfo.mid}님 채팅방 입장 ***** </span> 
+							</div>` ;}
 
 // 3. 클라이언트 소켓이 메세지 전송 [@OnMessage]
 function 전송(){
@@ -59,9 +62,37 @@ function 전송(){
 function 수신(e){ // e.data <--- e --- session.getBasicRemote().sendText(msg);
 	console.log(e)
 	console.log(e.data)
-	// json형태의 문자열로 온 데이터를 객체로 강제 형변환
 	console.log(JSON.parse(e.data)) 
-	contentbox.innerHTML += `<div> ${e.data} </div>`
+	
+	// json형태의 문자열로 온 데이터를 객체로 강제 형변환
+	let data = JSON.parse(e.data);
+	
+	// 보낸 사람
+	if(data.frommid == memberInfo.mid){
+		contentbox.innerHTML += `<div class="secontent">
+										<div class="date"> 		${data.time}	</div>
+										<div class="content"> 	${data.msg}		</div>
+								</div>`
+	}else{// 받은 사람
+		contentbox.innerHTML += `<div class="recontent">
+									<span> <img src="/jspweb/member/pimg/${data.frommimg==null?사람.png:data.frommimg}" class="hpimg">	</span>
+									<div class="rcontent">
+										<div class="name"> ${data.frommid}	</div>	
+										<div class="contentdate">		
+											<div class="content"> 	${data.msg}		</div>
+											<div class="date"> 		${data.time}	</div>
+										</div>		
+									</div>
+								</div>`
+	}
+	
+	// 스크롤 최하단으로 내리기 
+	let top = contentbox.scrollTop;		 	// 현재 스크롤의 위치
+	console.log(top);
+	let height = contentbox.scrollHeight; 	// 현재 스크롤의 전체 높이
+	console.log(height);
+
+	contentbox.scrollTop = contentbox.scrollHeight ;
 }
 
 // 5. 서버와 연결이 종료되었을때 = 클라이언트 객체 초기화
@@ -76,7 +107,10 @@ function 연결해제(e){console.log('연결 해제');}
 	clientsocket.onclose = (e)=>{연결해제(e)}
 
 */
-
+function enterkey(){
+	console.log( window.event.keycode )
+	if( window.event.keyCode == 13){전송();}
+}
 
 
 
