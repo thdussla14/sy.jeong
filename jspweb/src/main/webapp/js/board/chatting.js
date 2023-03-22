@@ -31,7 +31,7 @@ if(memberInfo == null){
 	location.href = "/jspweb/member/login.jsp";
 }else{
 // 1. 클라이언트소켓 객체 생성과 동시에 서버소켓과 연결 [@OnOpen]
-	clientsocket = new WebSocket("ws://localhost:8080/jspweb/chatting/"+memberInfo.mid);
+	clientsocket = new WebSocket("ws://192.168.17.31:8080/jspweb/chatting/"+memberInfo.mid);
 	clientsocket.onopen    = function(e){소켓연결(e);}
 	clientsocket.onmessage = function(e){수신(e)}
 	clientsocket.onclose   = function(e){연결해제(e)}
@@ -75,7 +75,7 @@ function 수신(e){ // e.data <--- e --- session.getBasicRemote().sendText(msg);
 								</div>`
 	}else{// 받은 사람
 		contentbox.innerHTML += `<div class="recontent">
-									<span> <img src="/jspweb/member/pimg/${data.frommimg==null?사람.png:data.frommimg}" class="hpimg">	</span>
+									<span> <img src="/jspweb/member/pimg/${data.frommimg==null? 'default.webp' :data.frommimg}" class="hpimg">	</span>
 									<div class="rcontent">
 										<div class="name"> ${data.frommid}	</div>	
 										<div class="contentdate">		
