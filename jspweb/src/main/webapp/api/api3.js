@@ -15,11 +15,11 @@ console.log('api3 js')
 	    imageSize = new kakao.maps.Size(40, 40), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(27, 69)}; 
 	      
-	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 	    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); 
 	    
-	// ----------------------- 마커 1개 생성 ------------------------------------ //
+// ----------------------- 마커 1개 생성 ------------------------------------ //
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var marker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다 
@@ -83,7 +83,7 @@ console.log('api3 js')
 		        // 위에서 생성된 마커객체의 클릭 이벤트 추가 하기   
 		        kakao.maps.event.addListener(marker, 'click', function() {	
 					document.querySelector('.modal_title').innerHTML   = o.약국명;
-					document.querySelector('.modal_content').innerHTML = `대표전화 : ${o.대표전화} `;			
+					document.querySelector('.modal_content').innerHTML = o.대표전화;			
 					openmodal(); 
 				}); // event e
 
