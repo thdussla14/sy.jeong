@@ -33,18 +33,28 @@ public class Chatting {
 	
 	// 클라이언트 소켓이 접속시 실행되는 메소드
 	@OnOpen
-	public void OnOpen(Session session, @PathParam("mid") String mid) {
+	public void OnOpen(Session session, @PathParam("mid") String mid) throws Exception {
 		System.out.println("클라이언트 웹소켓 접속");
 		list.add(new ClientDto(session,mid));
+		OnMessage(session, "enter");
 	}
 	
 	// 클라이언트 소켓이 연결 해제시 실행되는 메소드
 	@OnClose
-	public void OnClose(Session session) {
+	public void OnClose(Session session) throws Exception {
 		System.out.println("클라이언트 웹소켓 접속해제");
 		for (ClientDto cdto : list) {
 			if(cdto.getSession() == session) {
 				list.remove(cdto);
+				
+				// 연결이 끊긴 클라이언트 소켓을 모든 접속명단에게 알림 메시지 보내기
+				String msg = "{\"type\":\"alarm\",\"msg\":\""+cdto.getMid()+"님이 채팅방에서 퇴장하셨습니다. \"}";
+				OnMessage(session, msg);
+				
+				
+				// 연결이 끊긴 클라이언트 소켓을 모든 접속명단에게 연결 해제 알림
+				OnMessage(session, "enter");
+				break;
 			}
 		}
 	}
@@ -55,19 +65,33 @@ public class Chatting {
 		System.out.println("클라이언트 웹소켓 메시지 전송");
 		System.out.println(msg);
 		
-		// 메세지 형식 구성 // Session 객체를 json으로 형변환 불가능
-		MessageDto dto = new MessageDto(session,msg);
-		
 		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(dto);
-
-		System.out.println(json);
-
+		String json = null;
+		
+		// 접속 명단 알림 
+		if(msg.equals("enter")) {
+			// 회원명단 [ 이미지, 아이디 ] 포함된 회원리스트 작성 
+			ArrayList<MessageDto> list2 = new ArrayList<>();
+			for( ClientDto dto : list) {
+				list2.add(new MessageDto(dto.getSession(), null));
+			}
+			
+			json = mapper.writeValueAsString(list2);
+			
+		}else {
+			// 메세지 형식 구성 // Session 객체를 json으로 형변환 불가능
+			MessageDto dto = new MessageDto(session,msg);
+			json = mapper.writeValueAsString(dto);
+		}
+		
 		// * 서버가 클라이언트 소켓에게 메세지 전송
 		for (ClientDto cdto : list) {
 							//getBasicRemote().sendText(json);은 setcontentType 지원 X 객체가 아닌 문자열로 전송
 			cdto.getSession().getBasicRemote().sendText(json);
 		}
+		
+		
+
 	}
 
 }

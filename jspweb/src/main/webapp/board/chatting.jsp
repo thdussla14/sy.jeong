@@ -13,7 +13,16 @@
 
 	<%@ include file = "/header.jsp" %>	<!-- JSP 별도의 페이지를 현재 페이지에 삽입 -->
 	
-	<div class="container"> 
+	<div class="container chattingwrap"> 
+	
+		<!-- 접속명단 표시 --> 
+		<div class="connectlistbox"> 
+			<!-- 접속명단 1명  표시 --> 
+
+			
+		</div>
+	
+	
 	
 		<div class="chattingbox"> 
 		
@@ -29,8 +38,14 @@
 		
 
 			<div class="chattingbtnbox">
-				<div> 이모티콘 </div>
-				<div> 첨부파일 </div>
+			
+				<!-- 드롭다운 버튼 -->
+				<button class="emobtn" type="button" data-bs-toggle="dropdown"> <i class="far fa-smile"></i>  </button>
+				<!-- 드롭다운 버튼 -->
+				<div class="dropdown-menu emolist"> 
+
+				</div>
+	
 				<!-- 채팅 전송 버튼 -->
 				<button  class="sendbtn" onclick="전송()" type="button"> 전송 </button>
 			</div>
