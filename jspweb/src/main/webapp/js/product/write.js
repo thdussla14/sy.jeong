@@ -3,6 +3,7 @@ console.log('pwrite js')
 let plat = 0;
 let plang= 0;
 
+// 1. 제품 등록 
 function onwrite(){
 	
 	let writeForm     = document.querySelectorAll('.writeForm')[0];
@@ -10,6 +11,8 @@ function onwrite(){
 	
 	writeFormData.set("plat",plat);
 	writeFormData.set("plang",plang);
+	
+	if( plat == 0 || plang == 0 ){alert('위치 선택 후 등록해주세요')}
 	
 	console.log(writeFormData)
 
@@ -22,6 +25,8 @@ function onwrite(){
 		success : (r)=>{
 			console.log('응답')
 			console.log(r)
+			if(r=='true'){alert('등록 성공'); location.href="/jspweb/index.jsp"}
+			else{alert('등록 실패')}
 		}
 	})	
 }
@@ -30,7 +35,7 @@ function onwrite(){
 var mapContainer = document.getElementById('map'),
     mapOption = { 
 		// 지도의 중심 지정
-        center: new kakao.maps.LatLng(33.450701, 126.570667), 
+        center: new kakao.maps.LatLng(37.3218778,126.8308848), 
         // 지도의 확대 레벨
         level: 3 
     };
@@ -59,3 +64,15 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 	plang= latlng.getLng() ; console.log('경도 : '+plang)
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
