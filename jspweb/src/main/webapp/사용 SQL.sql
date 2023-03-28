@@ -177,6 +177,58 @@ create table 아파트실거래가(
     계약금액	text
 );
 
+-- 제품 테이블                              			
+create table product(               
+   pno       	int auto_increment primary key,      -- 제품번호 pk
+   pname      	varchar(30) not null,            	 -- 제품명
+   pcontent   	longtext not null,              	 -- 제품설명
+   pprice   	longtext not null,              	 -- 제품가격
+   pstate		int default 1,						 -- 제품상태  [ 1: 판매중 / 2: 거래중 / 3: 판매완료 등등 ] 
+   plat			varchar(100) not null,				 -- 위도
+   plng			varchar(100) not null,				 -- 경도
+   pview		int default 0,						 -- 조회수
+   pdate		datetime default now(),				 -- 등록일
+   mno			int	not null,						 -- 등록 회원
+   foreign key (mno) references member(mno) on delete cascade
+);
+
+select * from product; 
+select * from product where plng between 126.82 and 126.83 and plat between 37.320 and 37.325 ; 
+
+
+-- 제품 사진 테이블										 -- 제품당 사진이 여러개인 경우 테이블 분리
+create table pimg(
+	pimg_no 	bigint auto_increment primary key,
+	pimg_name 	longtext not null,
+    pno 		int,
+    foreign key (pno) references product(pno) on delete cascade
+);
+select * from pimg; 
+-- 제품 찜하기 테이블 
+create table plike(
+	plike_no	bigint auto_increment primary key,
+	mno 		int not null,	-- 누가?
+    pno 		int not null, 	-- 무엇을?
+	foreign key (mno) references member (mno) on delete cascade,
+    foreign key (pno) references product (pno) on delete cascade
+);
+select * from plike; 
+select p.*, m.mid, m.mimg from product p natural join member m where plng between 127 and 128 and plat between 36 and 37;
+-- 제품 쪽지 테이블 
+create table note(
+	nno			bigint auto_increment primary key,
+	ncontent	text,
+	ndate		datetime default now(),
+	pno			int not null,
+    frommno		int not null,
+	tomno		int not null,
+    foreign key (pno) 		references product(pno) on delete cascade,
+	foreign key (frommno) 	references member (mno) on delete cascade,
+	foreign key (tomno) 	references member (mno) on delete cascade 
+);
+
+
+
 select * from 아파트실거래가;
 select * from member;
 select * from friend;

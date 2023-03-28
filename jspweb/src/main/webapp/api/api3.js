@@ -88,11 +88,11 @@ console.log('api3 js')
 				}); // event e
 
 	            // 리턴해서 markers에 대입하기 [ map함수 제공 ]
-	            clusterer.addMarkers(markers);
+	            return marker; 
             
         	}); // map e
         	
-	          // 클러스터러에 마커들/배열 을 추가합니다
+	        clusterer.addMarkers(markers);  // 클러스터러에 마커들/배열 을 추가합니다
 	        console.log(markers)
 	    	console.log(clusterer)
 			

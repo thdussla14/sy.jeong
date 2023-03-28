@@ -71,12 +71,18 @@ i{margin:0px 5px; }
 	background-color:white;
 	border: 1px solid #e8e8e8;
 	border-radius: 50%;
+	margin-right: 10px;
 }
-/*-------------------------- 인덱스 -------------------------- */
-.body{
+/*-------------------------- 인덱스 ------------------------ */
+body{
 	height: 100%;
+	/* 브라우저 [크롬]의 스크롤바 제거 */
+	-ms-overflow-style :  none;
 }
-.searchbox{
+/* 브라우저 [크롬]의 스크롤바 제거 */
+::-webkit-scrollbar{display:none}
+
+.search_box{
 	position: fixed;
 	left: 50px;
 	top:50%;
@@ -84,38 +90,147 @@ i{margin:0px 5px; }
 	width : 150px;
 	height: 100px;
 	background-color: white;
-	padding: 10px;
-	
+	padding: 10px;	
 }
 .mapbox{
 	display: flex;
 	width :  100%;
-	height:  80%;
+	height:  100%;
 }
+/* 사이드바 */
 .productlistbox{
-	width:20%;
+	width:25%;
+	height:100%;
 	padding: 0px 10px;
 }
-
-.items{
+/* 제품 1개 */
+.productbox{
+	width:100%;
+	display: flex;
+	padding: 5px;
+	border-bottom: 1px solid #eeeeee;
 	margin-top: 10px;
 }
+.pcontentbox{ /* 제품 내용 구역 */
+	width: 100%; 
+	padding: 0px 15px;
+}
+.pimgbox img{
+	width: 100px;
+	height: 100px;
+	object-fit : cover;
+	margin-right: 5px;
+}
+.pname{
+    font-family: 'KCCMurukmuruk';
+    font-size: 25px;
+    /* 글자수 길어지면 말줄임표 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;   
+    max-width: 90%;    	
+}
+.pprice{
+	font-weight:bold;
+	text-align: right;
+	margin-top: 10px;
+	font-size: 20px;
+}
+.pdate{
+	font-size: 10px;
+}
+.petc{
+	text-align: right;
+	font-size: 12px;
+	margin-top: 10px;
+}
+/* 제품 상세 */
+.pviewbox{
+	padding: 10px;
+}
+.pviewinfo{
+	display: flex;	
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	height: 10%;
+}
+.pbadge{
+	background-color: #f59bab;
+	border: none;
+	border-radius: 10px;
+	padding: 5px;
+	color: white;
+	font-size: 20px;
+}
+.carousel-item img{
+	height: 250px;
+	object-fit:cover;
+}
+.pviewbox .mid{
+	font-size: 20px;
+}
+.pviewbox .pdate{
+	margin: 5px;
+	font-size: 13px;
+}
+.pviewbox .pcontent{
+	height: 50px;
+	padding: 10px;
+	font-size: 20px;
+}
+.pviewbox .pprice{
+	font-size: 25px;
+}
+.pstate{
+	text-align: right;
+	font-size: 20px;
+}
+.pviewbtnbox button{
+	width: 48%;
+	border: none;
+	border-radius: 10px;
+	background-color: #f59bab;
+	color: white; 
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 20px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* 제품 채팅 */
+.chatbox{
+	height: 100%;
+	padding: 10px;
+}
+.chatcontent{
+	height:550px;;
+	border: 1px solid #92c030;
+	overflow: auto;
+	padding: 20px;
+	font-size: 20px;
+}
+.sendbox{
+	text-align: right;
+}
+.chatbtn{
+	height: 10%;
+	display: flex;
+	margin-top: 10px;
+}
+.chatbtn textarea {
+	width: 80%;
+	resize: none;
+	padding: 10px;
+	border: 1px solid #92c030;
+}
+.chatbtn button{
+	width: 20%;
+	border: none;
+	margin-left: 10px;
+	background-color: #92c030;
+	color: white;
+	font-size: 20px;
+}
 
 
 

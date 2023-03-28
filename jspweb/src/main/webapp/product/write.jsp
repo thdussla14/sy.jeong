@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title> 제품등록 </title>
+
+	<style type="text/css">
+		.fileDrop{width:500px; height : 150px; overflow:auto; border: 1px solid black;}
+	</style>
+
 </head>
 <body>
 
@@ -20,7 +25,30 @@
 			위치 		:  
 			<div id="map" style="width:100%;height:350px;"></div>		
 						
+<!-- 		첨부파일	:
+			<input type="file" name="pfiles" multiple="multiple" accept="image/*">	 -->		
+						
+			<!-- 드래그앤 드랍 : multiple -->
+			<div class="fileDrop">
+				여기에 첨부파일을 넣어주세요		
+			</div>
+			
 			<button onclick="onwrite()" type="button"> 제품등록 </button>		
+			
+			
+			
+			
+			<!-- 
+				<h3>첨부파일 1개</h3>
+				<input type="file" name="pfile" accept="image/*">	
+				<h3>첨부파일 여러개</h3>
+				<input type="file" name="pfile1" accept="image/*">
+				<input type="file" name="pfile2" accept="image/*">
+				<input type="file" name="pfile3" accept="image/*">
+			 -->
+
+			
+			
 			
 		</form>
 	

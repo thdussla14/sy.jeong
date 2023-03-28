@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-	<!-- 부트스트랩  -->
+	<!-- 뷰포트 - 반응형  -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 부트스트랩  -->	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	<!-- 모든 페이지 공통 css -->

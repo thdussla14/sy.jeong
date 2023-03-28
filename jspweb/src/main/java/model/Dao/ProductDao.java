@@ -1,7 +1,10 @@
 package model.Dao;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import model.Dto.NoteDto;
 import model.Dto.ProductDto;
 
 public class ProductDao extends Dao{
@@ -14,16 +17,28 @@ public class ProductDao extends Dao{
 	
 	// 1. 제품 등록
 	public boolean register(ProductDto dto) {		
-		String sql = "insert into product (pname,pcontent,pprice,plat,plng) values (?,?,?,?,?)";		
+		String sql = "insert into product (pname,pcontent,pprice,plat,plng,mno) values (?,?,?,?,?,?)";		
 		try {
-			ps = con.prepareStatement(sql);
+			// insert 후 생성된 제품의 pk 번호 가져오기 
+			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, dto.getPname());
 			ps.setString(2, dto.getPcontent());
 			ps.setInt(3, dto.getPprice());
 			ps.setString(4, dto.getPlat());
 			ps.setString(5, dto.getPlng());
+			ps.setInt(6, dto.getMno());
 			ps.executeUpdate();
-			return true;
+			// insert 후 생성된 제품의 pk 번호 가져오기 => 제품 사진 테이블에 등록 
+			rs = ps.getGeneratedKeys();
+			if(rs.next()) {
+				for(String pimg_name : dto.getPimglist()) {
+					sql = "insert into pimg (pimg_name , pno) values (?,?)";
+					ps = con.prepareStatement(sql);
+					ps.setString(1,pimg_name); ps.setInt(2, rs.getInt(1));
+					ps.executeUpdate();					
+				}
+				return true;
+			}			
 		}catch (Exception e) {System.out.println(e);}
 		return false;	
 	}
@@ -31,7 +46,7 @@ public class ProductDao extends Dao{
 	// 2. 제품 출력 
 	public ArrayList<ProductDto> getPlist(String 동,String 서,String 남,String 북 ) {		
 		ArrayList<ProductDto> list = new ArrayList<>();
-		String sql = "select * from product where plng between ? and ? and plat between ? and ? ; ";	
+		String sql = "select p.*, m.mid, m.mimg from product p natural join member m where plng between ? and ? and plat between ? and ? ; ";	
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, 서);
@@ -39,10 +54,18 @@ public class ProductDao extends Dao{
 			ps.setString(3, 남);
 			ps.setString(4, 북);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				ProductDto pdto = new ProductDto(rs.getInt(1), rs.getString(2),  rs.getString(3), rs.getInt(4),
-						rs.getInt(5),  rs.getString(6),  rs.getString(7), rs.getInt(8),  rs.getString(9));
-				list.add(pdto);
+			while(rs.next()) {				
+				ArrayList<String> pimgList = new ArrayList<>();
+				sql = "select * from pimg where pno = "+rs.getInt(1);
+				ps = con.prepareStatement(sql);
+				ResultSet rs2 = ps.executeQuery();
+				while(rs2.next()) {
+					pimgList.add(rs2.getString(2));
+				}				
+				ProductDto dto = new ProductDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6), 
+						rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), pimgList);
+
+				list.add(dto);				
 			}
 			return list;
 		}catch (Exception e) {System.out.println(e);}
@@ -81,6 +104,40 @@ public class ProductDao extends Dao{
 			if(rs.next()){return true;}					
 		}catch (Exception e) {System.out.println(e);}
 			return false;
+	}
+	
+	// 5. 쪽지 저장
+	public boolean setnote(NoteDto dto) {
+		String sql = "insert into note (ncontent,pno,frommno,tomno) values (?,?,?,?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getNcontent());
+			ps.setInt(2, dto.getPno());
+			ps.setInt(3, dto.getFrommno());
+			ps.setInt(4, dto.getTomno());
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	// 6. 쪽지 출력
+	public ArrayList<NoteDto> getnotelist(int pno, int mno) {
+		ArrayList<NoteDto> list = new ArrayList<>();
+		String sql = "select * from note where pno = ?  and ( frommno = ? or tomno = ? )";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, pno);
+			ps.setInt(2, mno);
+			ps.setInt(3, mno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				NoteDto dto = new NoteDto(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5), rs.getInt(6));
+				list.add(dto);
+			}
+			return list;
+		}catch (Exception e) {System.out.println(e);}
+		return null;
 	}
 
 }	
