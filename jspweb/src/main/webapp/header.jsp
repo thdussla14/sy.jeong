@@ -20,6 +20,11 @@
 	
 </head>
 <body>
+	
+	<div class="msgbox">
+		메시지 도착했어요.
+	</div>
+
 
 	<div class="container">
 	

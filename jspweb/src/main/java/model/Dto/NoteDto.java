@@ -25,6 +25,18 @@ public class NoteDto {
 		this.tomno = tomno;
 	}
 
+	public NoteDto(int nno, String ncontent, String ndate, int pno, int frommno, int tomno, String mimg, String mid) {
+		super();
+		this.nno = nno;
+		this.ncontent = ncontent;
+		this.ndate = ndate;
+		this.pno = pno;
+		this.frommno = frommno;
+		this.tomno = tomno;
+		this.mimg = mimg;
+		this.mid = mid;
+	}
+
 	@Override
 	public String toString() {
 		return "NoteDto [nno=" + nno + ", ncontent=" + ncontent + ", ndate=" + ndate + ", pno=" + pno + ", frommno="

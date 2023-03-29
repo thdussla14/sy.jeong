@@ -1,27 +1,41 @@
 console.log('index js')
+/*
+	1.printproductList()	: 사이드바 제품 목록 출력
+	2.printProduct(i)		: 제품 1개 출력
+	
+	3.chatprint(i)			: 채팅페이지로 전환
+	4.sendchat(pno,tomno)	: 채팅페이지 전송
+	
+	5.setplike(pno)			: 찜하기 등록/취소
+	6.getplike(pno)			: 기존 찜하기 내역 불러오기
+	
+	7.get동서남북()			: 현재 지도 좌표구하기
+	8.getPlist(동,서,남,북)	: 현재 좌표내에 등록된 제품 목록 요청해서 마커생성
 
+
+ */
 
 let productList = null;
 // 사이드바 제품 목록 출력---------------------------------------------------------------------------------------------------
 function printproductList(){
 	
-	let html = '';
-			productList.forEach((o,i)=>{
-				html+=`<div onclick="printProduct(${i})" class="productbox">
-							<div class="pimgbox">
-								<img src="/jspweb/product/pimg/${o.pimglist[0]}">
-							</div>
-							<div class="pcontentbox">
-								<div class="pdate">  ${o.pdate} 	</div>
-								<div class="pname">  ${o.pname}		</div>
-								<div class="pprice"> ${o.pprice}원 	</div>
-								<div class="petc">
-									<i class="far fa-eye"></i> ${o.pview}	<!-- 조회수 -->
-									<i class="far fa-thumbs-up"  ></i> 5	<!-- 찜수 -->
-									<i class="far fa-comment-dots"></i> 2	<!-- 쪽지수 -->						
-								</div>
-							</div>
-						</div>`
+	let html = `<p style="font-size:12px; text-align:right" > 제품목록수 : ${ productList.length } 개 </h6>`;
+	productList.forEach((o,i)=>{
+		html+=`<div onclick="printProduct(${i})" class="productbox">
+					<div class="pimgbox">
+						<img src="/jspweb/product/pimg/${o.pimglist[0]}">
+					</div>
+					<div class="pcontentbox">
+						<div class="pdate">  ${o.pdate} 	</div>
+						<div class="pname">  ${o.pname}		</div>
+						<div class="pprice"> ${o.pprice.toLocaleString()}원 	</div>
+						<div class="petc">
+							<i class="far fa-eye"></i> ${o.pview}	<!-- 조회수 -->
+							<i class="far fa-thumbs-up"  ></i> 5	<!-- 찜수 -->
+							<i class="far fa-comment-dots"></i> 2	<!-- 쪽지수 -->						
+						</div>
+					</div>
+				</div>`
 			})			
 	 document.querySelector('.productlistbox').innerHTML = html;
 }
@@ -50,7 +64,7 @@ function printProduct(i){
 						<!-- 등록한 회원 정보 -->
 						<div class="pviewinfo">
 							<div class="mimgbox">
-								<img src="/jspweb/member/pimg/사람.png" class="hpimg" alt="" > <span class="mid"> qweqwe </span>
+								<img src="/jspweb/member/pimg/${p.mimg==null?'사람.png':p.mimg}" class="hpimg" alt="" > <span class="mid"> ${p.mid} </span>
 							</div>
 							<div>
 								<button class="pbadge" onclick="get동서남북()" type="button"> 목록보기 </button>
@@ -94,34 +108,79 @@ function printProduct(i){
 		getplike(p.pno); 
 }
 
-// 채팅페이지로 전환-------------------------------------------------------------------------------
-function chatprint(i){
-	
-	if(memberInfo == null){
-		alert('회원제 기능입니다. 로그인 후 사용해주세요.'); return ; 
-	}
+
+
+// 제품별 채팅 목록 페이지 [ 등록자만 가능 ]
+function chatlistprint(i){
+	let p = productList[i];console.log(p);	
+	let html = ``;	
+	$.ajax({
+			url 	: "/jspweb/pchat",
+			method 	: "get",
+			data	:{"pno":p.pno, "chatmno":0},
+			async	: false,
+			success	: (r)=>{
+				console.log(r)
+				let printfrommno = [] // 출력된 mno				
+				r.forEach((o)=>{					
+					if(!printfrommno.includes(o.frommno)){						
+						printfrommno.push(o.frommno)						
+						html+=`	<div class="chatlist" onclick="chatinfoprint(${i},${o.frommno})" > 
+									<div class="frommimg"><img src="/jspweb/member/pimg/${o.mimg==null?'사람.png':o.mimg}" class="hpimg"></div>
+									<div class="frominfo">
+										<div class="fromndate"> 	${o.ndate} 		</div>
+										<div class="formmid"> 		${o.mid} 		</div>
+										<div class="fromncontent"> 	${o.ncontent} 	</div>
+									</div>
+								</div>`	
+					}
+				})
+				
+				if(printfrommno.length == 0){html += `채팅목록이 없습니다.` }
+			
+			} // success e
+		}) // ajax e
+	document.querySelector('.productlistbox').innerHTML = html;
+}
+
+let index = 0 ; 	//현재 보고있는 제품의 인덱스
+let chatmno = 0 ; 	// 현재 채팅하고 있는 상대방의 mno
+
+// 채팅 내용물
+function getcontent(){
+
 	let chathtml ='';
-	let p = productList[i];console.log(p);
+	let p = productList[index];console.log(p);
 	
 	$.ajax({
 			url 	: "/jspweb/pchat",
 			method 	: "get",
-			data	:{"pno":p.pno},
+			data	:{"pno":p.pno, "chatmno":chatmno},
 			async	: false,
 			success	: (r)=>{
 				console.log(r)
 				r.forEach((o)=>{
 					if(o.frommno == memberInfo.mno){
-						chathtml +=`<div class="sendbox">		${o.ncontent}	</div>`
+						chathtml +=`<div class="sendbox">	 	${o.ncontent}	</div>`
 					}else{
 						chathtml +=`<div class="recievebox">	${o.ncontent}	</div>`
 					}
 				})
-			
-			
+
 			} // success e
 		}) // ajax e
+	document.querySelector('.chatcontent').innerHTML = chathtml;	
+}
 
+function chatinfoprint(i,tomno){
+
+	console.log(tomno+'에게 메세지 전송')
+	
+	index    = i;
+	chatmno  = tomno;
+	
+	let p = productList[index];console.log(p);
+	
 	let html = `	<div class="chatbox">
 					
 						<!-- 등록한 회원 정보 -->
@@ -136,37 +195,53 @@ function chatprint(i){
 						</div>
 						
 						<div class="chatcontent">
-							${chathtml}
+
 						</div><!-- chatcontent e -->
 						
 						<div class="chatbtn">
-							<textarea class="ncontentinput" rows="" cols=""></textarea>
-							<button onclick="sendchat(${p.pno},${p.mno})" type="button"> 전송 </button>
+							<textarea class="ncontentinput" rows="" cols="">         </textarea>
+							<button onclick="sendchat(${p.pno})" type="button"> 전송 </button>
 						</div>
 						
 						
 					</div> <!-- chatbox e -->`
 	
 	document.querySelector('.productlistbox').innerHTML = html;
+	getcontent()
+}
+
+// 채팅페이지로 전환-------------------------------------------------------------------------------
+function chatprint(i){
+	
+	
+	let p = productList[index];console.log(p);
+	// 로그인 검사 
+	if(memberInfo == null){
+		alert('회원제 기능입니다. 로그인 후 사용해주세요.'); return ; 
+	}
+	// 제품을 등록한 회원 [ 판매자 ]
+	if(memberInfo.mno == p.mno){
+		alert('본인이 등록한 제품입니다.'); chatlistprint(i) ; return ; 
+	}
+	// 구매자
+	chatinfoprint(i,p.mno)
+
 }
 
 // 쪽지보내기  ----------------------------------------------------------------------------------
-function sendchat(pno,tomno){
-	
-	if(memberInfo.mno == tomno){
-		alert('본인에게 쪽지 보내기는 불가능합니다.'); return ;
-	}
-	
+function sendchat(pno){
+
 	let ncontent = document.querySelector('.ncontentinput').value;	
 	console.log(ncontent)
 	
 	$.ajax({
 		url 	: "/jspweb/pchat",
 		method 	: "post",
-		data	:{"pno":pno ,"tomno":tomno ,"ncontent":ncontent},
+		data	:{"pno":pno ,"tomno":chatmno ,"ncontent":ncontent},
 		success	: (r)=>{
 			if(r=='true'){
 				document.querySelector('.ncontentinput').value ='';
+				getcontent()
 			}else{
 				alert('[오류] 관리자에게 문의바랍니다.')
 			}
@@ -339,8 +414,6 @@ function getPlist(동,서,남,북){
 		}
 	})		
 }
-
-
 
 
 

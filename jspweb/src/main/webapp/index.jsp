@@ -18,7 +18,8 @@
 			
 			<div class="productlistbox">
 
-			</div>	
+				
+			</div><!-- productlistbox e -->	
 		
 		</div>
 

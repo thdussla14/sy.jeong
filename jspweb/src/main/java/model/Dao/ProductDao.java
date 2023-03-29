@@ -14,9 +14,9 @@ public class ProductDao extends Dao{
 	public static ProductDao getInstantce() {
 		return dao;
 	}
-	
+	// synchronized 스레드1 해당메소드 리턴 전까지 다른 요청 대기  
 	// 1. 제품 등록
-	public boolean register(ProductDto dto) {		
+	public synchronized boolean register(ProductDto dto) {		
 		String sql = "insert into product (pname,pcontent,pprice,plat,plng,mno) values (?,?,?,?,?,?)";		
 		try {
 			// insert 후 생성된 제품의 pk 번호 가져오기 
@@ -44,7 +44,7 @@ public class ProductDao extends Dao{
 	}
 	
 	// 2. 제품 출력 
-	public ArrayList<ProductDto> getPlist(String 동,String 서,String 남,String 북 ) {		
+	public synchronized ArrayList<ProductDto> getPlist(String 동,String 서,String 남,String 북 ) {		
 		ArrayList<ProductDto> list = new ArrayList<>();
 		String sql = "select p.*, m.mid, m.mimg from product p natural join member m where plng between ? and ? and plat between ? and ? ; ";	
 		try {
@@ -73,7 +73,7 @@ public class ProductDao extends Dao{
 	}
 	
 	// 3. 찜하기 등록 / 취소
-	public boolean setplike(int pno, int mno) {
+	public synchronized boolean setplike(int pno, int mno) {
 		// 찜하기 여부 확인 
 		String sql = "select * from plike where pno = "+pno+" and mno = "+mno;
 		try {
@@ -96,7 +96,7 @@ public class ProductDao extends Dao{
 	}
 	
 	// 4. 로그인한 회원의 해당 찜하기 상태 확인	
-	public boolean getplike(int pno, int mno) {
+	public synchronized boolean getplike(int pno, int mno) {
 		String sql = "select * from plike where pno = "+pno+" and mno = "+mno;			
 		try {
 			ps = con.prepareStatement(sql);
@@ -107,7 +107,7 @@ public class ProductDao extends Dao{
 	}
 	
 	// 5. 쪽지 저장
-	public boolean setnote(NoteDto dto) {
+	public synchronized boolean setnote(NoteDto dto) {
 		String sql = "insert into note (ncontent,pno,frommno,tomno) values (?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
@@ -122,17 +122,21 @@ public class ProductDao extends Dao{
 	}
 	
 	// 6. 쪽지 출력
-	public ArrayList<NoteDto> getnotelist(int pno, int mno) {
+	public synchronized ArrayList<NoteDto> getnotelist(int pno, int mno, int chatmno) {
 		ArrayList<NoteDto> list = new ArrayList<>();
-		String sql = "select * from note where pno = ?  and ( frommno = ? or tomno = ? )";
+		String sql = null;
+			if(chatmno == 0) { // 전체 채팅목록 출력
+				sql = "select n.*,  m.mimg, m.mid from note n , member m  where n.frommno = m.mno and pno = "+pno+" and (frommno = "+mno+" or tomno = "+mno+") ";
+			}else { // 현재 같이 채팅하고 있는 대상자들의 내용물만 출력
+				sql = "select n.*,  m.mimg, m.mid from note n , member m  where n.frommno = m.mno and pno = "+pno
+						+ " and ( ( frommno = "+mno+" and tomno = "+chatmno+" )  or  ( frommno =  "+chatmno+"  and tomno = "+mno+" ) ) ;";
+			}
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, pno);
-			ps.setInt(2, mno);
-			ps.setInt(3, mno);
+
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				NoteDto dto = new NoteDto(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5), rs.getInt(6));
+				NoteDto dto = new NoteDto(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),rs.getInt(5), rs.getInt(6),rs.getString(7),rs.getString(8));
 				list.add(dto);
 			}
 			return list;

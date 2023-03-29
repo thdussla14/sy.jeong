@@ -39,3 +39,37 @@ function getLogin(){
 		}
 	})
 }
+
+// 
+let 알림용소켓 = null;
+if(memberInfo == null ){
+	
+}else{
+	// JS 실행주체 = 클라이언트 // JAVA = 서버
+	// 1. JS 클라이언트 소켓 생성
+	알림용소켓 = new WebSocket('ws://localhost:8080/jspweb/alarm/'+memberInfo.mid)
+	// 2. 클라이언트 소켓 이벤트 메소드 정의 
+	알림용소켓.onopen 		= (e)=>{console.log('알림용 서버소켓 IN')}
+	알림용소켓.onclose 		= (e)=>{console.log('알림용 서버소켓 OUT')}
+	알림용소켓.onerror 		= (e)=>{console.log('알림용 서버소켓 ERROR')}
+	알림용소켓.onmessage 	= (e)=>{onalarm(e)}
+}
+
+function onalarm(e){
+	let msgbox = document.querySelector('.msgbox');
+	
+	msgbox.style.bottom = "100px";
+	
+	// * 4초 후에 자동 내려가기
+	// n초 후에 이벤트 실행 setTimeout
+	// n초 마다 이벤트 실행 setInterver
+	setTimeout(()=>{msgbox.style.bottom = "-200px";},4000)
+	
+	// 여러명이 요청하면 Dao 충돌 발생
+		// Dao synchronized
+		// 스레드1 해당메소드 리턴 전까지 다른 요청 대기  
+	getcontent()
+	
+	
+}
+
