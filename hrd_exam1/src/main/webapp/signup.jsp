@@ -29,7 +29,7 @@
 			<table border="1" width="600px">
 				<tr>
 					<th> 회원번호 (자동발생) </th> 
-					<td> <input name="custno"   type="text" value=<%=custno%>></td>
+					<td> <input name="custno"   type="text" value="<%=custno%>"></td>
 				</tr>
 				<tr>
 					<th> 회원성명 </th> 
@@ -45,7 +45,7 @@
 				</tr>		
 				<tr>
 					<th> 가입일자 </th> 
-					<td> <input name="joindate" type="text" value=<%=now%>></td>
+					<td> <input name="joindate" type="text" value="<%=now%>"></td>
 				</tr>		
 				<tr>
 					<th> 고객등급 [A:VIP,B:일반,C:직원] </th> 

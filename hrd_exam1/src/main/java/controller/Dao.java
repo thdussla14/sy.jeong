@@ -96,7 +96,7 @@ public class Dao{
 
 	// 회원정보 수정
 	public boolean setMember(memberDto dto) {	
-		String sql = "update member_tbl_02 set custno = ? , custname = ?, phone = ? , address = ? , joindate = ?, grade = ?, citywhere = ? ";
+		String sql = "update member_tbl_02 set custno = ? , custname = ?, phone = ? , address = ? , joindate = ?, grade = ?, city = ? where custno = ? ";
 		
 		try {
 			ps= con.prepareStatement(sql);
@@ -106,7 +106,8 @@ public class Dao{
 			ps.setString(4, dto.getAddress());
 			ps.setString(5, dto.getJoindate());
 			ps.setString(6, dto.getGrade());
-			ps.setString(7, dto.getCity());			
+			ps.setString(7, dto.getCity());	
+			ps.setInt(8, dto.getCustno());
 			ps.executeUpdate();
 			return true;		
 		}catch (Exception e) {System.out.println(e);}

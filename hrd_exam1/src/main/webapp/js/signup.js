@@ -46,7 +46,7 @@ function signup(){
 	// 완료 알림
 	alert('회원등록이 완료 되었습니다!') ; 
 	// 페이지 전환
-	location.href="/hrd_exam1/view.jsp"
+	// location.href="/hrd_exam1/view.jsp"
 }
 
 function update(){
@@ -94,7 +94,6 @@ function update(){
 	
 	// 완료 알림
 	alert('회원정보 수정이 완료 되었습니다!') ; 
-	// 페이지 전환
-	location.href="/hrd_exam1/view.jsp"
+
 	
 }

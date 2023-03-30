@@ -22,35 +22,35 @@
 
 	<center> 	
 		<h3> 홈쇼핑 회원 수정 </h3>
-		<form name="updateform"  action="/hrd_exam1/exam" method="put">
+		<form name="updateform"  action="/hrd_exam1/exam" method="get">
 			<table border="1" width="600px">
 				<tr>
 					<th> 회원번호 </th> 
-					<td> <input name="custno"   type="text" value=<%=custno%>></td>
+					<td> <input name="custno"   type="text" value="<%=custno%>"></td>
 				</tr>
 				<tr>
 					<th> 회원성명 </th> 
-					<td> <input name="custname" type="text" value= <%=dto.getCustname()%> ></td>
+					<td> <input name="custname" type="text" value="<%=dto.getCustname()%>" ></td>
 				</tr>
 				<tr>
 					<th> 회원전화 </th> 
-					<td> <input name="phone"   type="text"  value= <%=dto.getPhone()%> ></td>
+					<td> <input name="phone"   type="text"  value="<%=dto.getPhone()%>" ></td>
 				</tr>
 				<tr>
 					<th> 회원주소 </th> 
-					<td> <input name="address" type="text"  value= <%=dto.getAddress()%> ></td>
+					<td> <input name="address" type="text"  value="<%=dto.getAddress()%>" ></td>
 				</tr>		
 				<tr>
 					<th> 가입일자 </th> 
-					<td> <input name="joindate" type="text" value= <%=dto.getJoindate()%>></td>
+					<td> <input name="joindate" type="text" value="<%=dto.getJoindate()%>"></td>
 				</tr>		
 				<tr>
 					<th> 고객등급 [A:VIP,B:일반,C:직원] </th> 
-					<td> <input name="grade" type="text"    value= <%=dto.getGrade()%>></td>
+					<td> <input name="grade" type="text"    value="<%=dto.getGrade()%>"></td>
 				</tr>
 				<tr>
 					<th> 도시코드 </th> 
-					<td> <input name="city"  type="text"    value= <%=dto.getCity()%>></td>
+					<td> <input name="city"  type="text"    value="<%=dto.getCity()%>"></td>
 				</tr>	
 				<tr>
 					<th colspan="2"> 
