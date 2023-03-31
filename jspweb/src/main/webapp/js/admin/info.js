@@ -1,5 +1,42 @@
 console.log('js 실행')
 
+  const ctx = document.getElementById('myChart');
+
+	// new Chart( 'dom객체' , {차트옵션} );
+		// type 	: '차트이름'
+		// data 	: { 차트에 표시할 데이터 }
+		// options	: 
+		
+$.get("/jspweb/point",(r)=>{
+	console.log(r);
+	console.log(Object.keys(r))
+	console.log(Object.values(r))
+	
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(r),
+      datasets: [{
+        label: '포인트 충전 내역',
+        data: Object.values(r),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+	
+	
+ })
+
+
+// ------------------------------------------------------
+
 let mObject = {
 	page	: 1,
 	listsize: 3,
@@ -81,3 +118,5 @@ function setsize(){
 function updated(){ }
 
 function deleted(){ }
+
+

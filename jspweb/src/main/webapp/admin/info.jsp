@@ -13,6 +13,13 @@
 
 	<%@ include file = "/header.jsp" %>	<!-- (webapp 이하 생략) 절대 경로  -->
 	<div class="container">
+		
+		<h3> Chart.js 사용 </h3>
+		<div>		
+			 <canvas id="myChart"></canvas>		
+		</div>
+	
+	
 		<h3> 회원 명단 </h3>
 		
 		<div class="top">
@@ -50,7 +57,8 @@
 		
 	</div>
 	<%@ include file = "/footer.jsp" %>
-
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="/jspweb/js/admin/info.js" type="text/javascript"></script>
 	
 </body>

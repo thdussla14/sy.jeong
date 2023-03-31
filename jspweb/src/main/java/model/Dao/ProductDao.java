@@ -3,6 +3,7 @@ package model.Dao;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Dto.NoteDto;
 import model.Dto.ProductDto;
@@ -144,4 +145,29 @@ public class ProductDao extends Dao{
 		return null;
 	}
 
+	// 7. 날짜별 포인트 충전 내역
+	public HashMap<String, Integer> getsum() {
+		HashMap<String, Integer> map = new HashMap<>();
+		String sql = "select sum(if(mpamount>0,mpamount,0)),date_format(mpdate,'%Y%m%d') as 충전날짜 from mpoint group by 충전날짜 order by 충전날짜 desc limit 5";			
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				map.put(rs.getString(2), rs.getInt(1));
+			}	
+			return map;
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
+	
+	/*
+	 	 // 1. 해당 타입의 객체를 여러개 저장할 수 있는 리스트 객체 선언
+	 	 	ArrayList< 데이터타입 > list = new ArrayList<>();
+	 	 
+	 	 // 2. 해당 키 타입과 데이터 타입에 해당하는 키와 데이터를 여러개 저장할 수 있는 맵 객체 선언
+	 		HashMap< 키타입, 데이터타입 > map = new HashMap<>();
+
+	 */
+
+	
 }	

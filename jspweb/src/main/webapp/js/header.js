@@ -25,7 +25,7 @@ function getLogin(){
 				    <li><a class="dropdown-item" href="/jspweb/member/info.jsp"> 내프로필 	</a></li>
 				    <li><a class="dropdown-item" href="#"> 친구목록 	</a></li>
 				    <li><a class="dropdown-item" href="#"> 쪽지함		</a></li>
-				    <li><a class="dropdown-item" href="#"> ${r.mpoint} 포인트 </a></li>
+				    <li><a class="dropdown-item" href="/jspweb/point.jsp"> ${r.mpoint} 포인트 </a></li>
 				    <li><a class="dropdown-item" href="/jspweb/member/logout.jsp"> 로그아웃 	</a></li>
 				  </ul>
 				</div>
